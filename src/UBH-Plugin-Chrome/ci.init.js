@@ -1,0 +1,1 @@
+window["framework"] = new AddonsFramework({"statUrl":"","version":"1.2","name":"YouBeHero","description":"Το YouBeHero είναι η πρώτη πλατφόρμα στην Ελλάδα που μετατρέπει τις προμήθειες των ηλεκτρονικών σου αγορών, σε δωρεές προς κοινωφελείς σκοπούς.","url":"https://www.youbehero.com","author":"YouBeHero","updateUrl":"","AddonsFrameworkVersion":"1.4.0"});
