@@ -308,7 +308,7 @@ function checkCategorySelection() {
 }
 
 
-// loading part
+// loading part 
 var myVar;
 function myFunction() {
   myVar = setTimeout(showPage, 3000);
