@@ -46,6 +46,7 @@ $(window).on("scroll", function(){
 })
 
 
+
 //Read more button trigger
 $(document).on('click', '.readMore', function() {
     $('#charityPreviewModal .description_container').css('max-height', '100%').css('overlow', 'visible');
@@ -277,12 +278,12 @@ search.addWidget(
 
 
 // https://www.algolia.com/doc/api-reference/widgets/range-slider/js/#widget-param-cssclasses
-/*search.addWidget(
-instantsearch.widgets.rangeSlider({
-  container: '#range-slider',
-  attribute: 'percentage_completed',
-})
-);*/
+// search.addWidget(
+// instantsearch.widgets.rangeSlider({
+//   container: '#range-slider',
+//   attribute: 'percentage_completed',
+// })
+// );
 
 search.start();
 setTimeout(function() {
@@ -304,4 +305,16 @@ function checkCategorySelection() {
         $('#Category_parent_title ul li:nth-child(2) input').click();
       }, 100);
   }  
+}
+
+
+// loading part
+var myVar;
+function myFunction() {
+  myVar = setTimeout(showPage, 3000);
+}
+
+function showPage() {
+  document.getElementById("loader").style.display = "none";
+  document.getElementById("myDiv").style.display = "block";
 }

@@ -108,11 +108,63 @@
           background: transparent;
       }
 
+      /* loading section */
+      #loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 150px;
+  height: 150px;
+  margin: -75px 0 0 -75px;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+  border-top: 16px solid rgb(129, 129, 201)116, 116, 139);
+  border-right: 16px solid rgb(99, 121, 99)8, 167, 88);
+  border-bottom: 16px solid rgb(131, 82, 82);
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Add animation to "page content" */
+.animate-bottom {
+  position: relative;
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 1s;
+  animation-name: animatebottom;
+  animation-duration: 1s;
+}
+
+@-webkit-keyframes animatebottom {
+  from { bottom:-100px; opacity:0 } 
+  to { bottom:0px; opacity:1 }
+}
+
+@keyframes animatebottom { 
+  from{ bottom:-100px; opacity:0 } 
+  to{ bottom:0; opacity:1 }
+}
+
     </style>
   </head>
-  <body class="causes-page">   
+  <body onload="myFunction()" style="margin:0;"   class="causes-page">   
+    <div id="loader"></div>
+
     
-    <div class="row-fluid bg-white">
+    <div class="animate-bottom">
       <div class="container py-3 pl-md-0">
         <div class="row">
           <div class="col-sm-12 col-md-3">
@@ -219,12 +271,14 @@
       </div>
     </div>
 
-
+    
+    
 <div class="row-fluid pt-3 minHeight500">
     <div class="container px-md-0">
         <div class="row">
             <div class="col-12 col-lg-3 d-none d-lg-block returnToBase">
                 <div class="left-panel">
+                
 
                     <p class="font-weight-bold bigger-1">Κατηγορίες</p>
                     <div id="Category_parent_title"></div>
@@ -261,7 +315,7 @@
             
         </div>
     </div>
-</div>
+</di>
 
 
 <!-- Modal -->
@@ -343,7 +397,7 @@
               
               <div class="row mt-3">
                 <div class="col-12 mb-3">
-                  
+            
                   <p class="bigger-3 font-weight-bold text-truncate" id="charityPreviewModalLabel">Διαβάζω για τους άλλους</p>
                   
                   <p class="mb-1">
@@ -396,7 +450,13 @@
 
                 </div>
 
-                <p style="z-index: 777;position: relative; background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 45%);background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 45%); background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgb(255, 255, 255) 45%); filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=\'#001e5799\', endColorstr=\'#ffffff\',GradientType=0 );" class="readMoreContainer mt-n5 pt-5 pb-3"><a href="javascript:void(0);" title="Πάτησε εδώ για να διαβάσεις την πλήρη περιγραφή της οργάνωσης" class="readMore">+ Περισσότερα</a></p>
+                <p style="z-index: 777;position: relative; background: -moz-linear-gradient(top, 
+                rgba(255,255,255,0) 0%, rgba(255,255,255,1) 45%);background: -webkit-linear-gradient(top, 
+                rgba(255,255,255,0) 0%,rgba(255,255,255,1) 45%); background: linear-gradient(to bottom, 
+                rgba(255,255,255,0) 0%,rgb(255, 255, 255) 45%); 
+                filter: progid:DXImageTransform.Microsoft.gradient( 'startColorstr=\'#001e5799\',
+                'endColorstr=\'#ffffff\',GradientType=0 );" 
+                class="readMoreContainer mt-n5 pt-5 pb-3"><a href="javascript:void(0);" title="Πάτησε εδώ για να διαβάσεις την πλήρη περιγραφή της οργάνωσης" class="readMore">+ Περισσότερα</a></p>
 
 
                 </div>
@@ -1214,7 +1274,7 @@
                 <i aria-hidden="true" class="fas fa-heart mr-4 bigger-5">
                 </i>
                 <div class="media-body">
-                  <h5 class="mt-0 mb-1 bigger-3 biggerLineHeight">Θα βοηθάς δωρέαν καλούς σκοπούς με κάθε σου ηλεκτρονική αγορά
+                  <h5 class="mt-0 mb-1 bigger-3 biggerLineHeight">Θα βοηθάς δωρέαν καλούς σκοπούς με κάθε σου ηλεκτρονική αγορά 
                   </h5>
                 </div>
               </li>
@@ -1384,6 +1444,10 @@
       </div>
     </div>
   </div>
+</div>
+</div>
+
+  
 </footer>
     <script src="js/jquery.min.js" type="text/javascript"></script>    
     
