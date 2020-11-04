@@ -108,59 +108,7 @@
           background: transparent;
       }
 
-      /* loading section */
-      #preloader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 9999;
-  overflow: hidden;
-  background: #373737;
-}
-
-#preloader:before {
-  content: "";
-  position: fixed;
-  top: calc(50% - 30px);
-  left: calc(50% - 30px);
-  border: 6px solid #37517e;
-  border-right: 6px solid rgb(64, 255, 0);
-  border-left: 6px solid rgb(255, 0, 0);
-  border-top-color: #fff;
-  border-bottom-color: #fff;
-  border-radius: 50%;
-  width: 80px;
-  height: 80px;
-  -webkit-animation: animate-preloader 1s linear infinite;
-  animation: animate-preloader 1s linear infinite;
-}
-
-@-webkit-keyframes animate-preloader {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes animate-preloader {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-.loadersection {
-  text-align: center;
-  padding-top: 28%;
-  font-size: 20px;
-  color: #fff;
-  padding-left: 27px;
-}
+    
 
     </style>
   </head>
@@ -276,9 +224,7 @@
       </div>
     </div>
 
-    <div class="loadersection" id="preloader">Loading...</div>
-    
-    
+  
 <div class="row-fluid pt-3 minHeight500">
     <div class="container px-md-0">
         <div class="row">
