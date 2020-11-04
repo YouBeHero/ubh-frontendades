@@ -307,14 +307,13 @@ function checkCategorySelection() {
   }  
 }
 
-
 // loading part 
-var myVar;
-function myFunction() {
-  myVar = setTimeout(showPage, 3000);
-}
+ // Preloader
+ $(window).on('load', function() {
+  if ($('#preloader').length) {
+    $('#preloader').delay(100).fadeOut('slow', function() {
+      $(this).remove();
+    });
+  }
+});
 
-function showPage() {
-  document.getElementById("loader").style.display = "none";
-  document.getElementById("myDiv").style.display = "block";
-}
