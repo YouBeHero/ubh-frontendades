@@ -319,6 +319,60 @@
         padding: 15px;
       }
 
+        /* loading section */
+        #preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  overflow: hidden;
+  background: #373737;
+}
+
+#preloader:before {
+  content: "";
+  position: fixed;
+  top: calc(50% - 30px);
+  left: calc(50% - 30px);
+  border: 6px solid #37517e;
+  border-right: 6px solid rgb(64, 255, 0);
+  border-left: 6px solid rgb(255, 0, 0);
+  border-top-color: #fff;
+  border-bottom-color: #fff;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  -webkit-animation: animate-preloader 1s linear infinite;
+  animation: animate-preloader 1s linear infinite;
+}
+
+@-webkit-keyframes animate-preloader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes animate-preloader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.loadersection {
+  text-align: center;
+  padding-top: 28%;
+  font-size: 20px;
+  color: #fff;
+  padding-left: 27px;
+}
+
     </style>
   </head>
   <body class="causes-page">   
@@ -420,7 +474,6 @@
     </div>
 </div>
 
-
     <!-- Modal -->
     <div class="modal left fade" id="causeFiltersModal" tabindex="-1" role="dialog" aria-labelledby="causeFiltersModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-sm">
@@ -438,9 +491,9 @@
         </div>
       </div>
     </div>
+<div class="loadersection" id="preloader">Loading...</div>
     
-    <!-- Modal -->
-    <div class="modal right fade" id="ask4Eshop" tabindex="-1" role="dialog" aria-labelledby="ask4EshopLabel" aria-hidden="true">
+    <!-- Modal -->    <div class="modal right fade" id="ask4Eshop" tabindex="-1" role="dialog" aria-labelledby="ask4EshopLabel" aria-hidden="true">
       <div class="modal-dialog modal-sm">
         <div class="modal-content">
           <div class="modal-header">
@@ -603,16 +656,16 @@
       </div>
     </footer>
 
-    <script src="js/jquery.min.js" type="text/javascript"></script>
+    <script src="/js/jquery.min.js" type="text/javascript"></script>
 
-    <script src="js/popper.min.js" type="text/javascript"></script>
-    <script src="js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="js/moment.min.js" type="text/javascript"></script>
-    <script src="js/myJS.js" type="text/javascript"></script>
+    <script src="/js/popper.min.js" type="text/javascript"></script>
+    <script src="/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/js/moment.min.js" type="text/javascript"></script>
+    <script src="/js/myJS.js" type="text/javascript"></script>
 
-    <script src="js/algoliasearch-lite.umd.js"></script>
-    <script src="js/instantsearch.js"></script>
-    <script src="js/algolia-eshops.js?v=1.0"></script>
+    <script src="/js/algoliasearch-lite.umd.js"></script>
+    <script src="/js/instantsearch.js"></script>
+    <script src="/js/algolia-eshops.js?v=1.0"></script>
 
 
   </body>

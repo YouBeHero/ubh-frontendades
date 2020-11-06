@@ -1,0 +1,18 @@
+* [31m6e33581[m -[33m (HEAD -> main, murtaza)[m preloading section has been add a simple loading on algolia/causers.html/js [32m(11 minutes ago)
+[31m|[m [33m<murtazahassani>[m
+* [31m0ab0727[m -[33m[m Changes for reloading in algolia2/causes.html [32m(11 days ago)
+[31m|[m [33m<murtaza>[m
+* [31mef522be[m -[33m[m a simple loader added [32m(11 days ago)
+[31m|[m [33m<murtaza>[m
+* [31m50470b0[m -[33m (origin/main, origin/HEAD)[m Plugin files added [32m(13 days ago)
+[31m|[m [33m<Bill K>[m
+* [31m45785ec[m -[33m[m added JSON models for Algolia search. Task https://trello.com/c/o9YFjEfH/35-routing-for-algolia-causes [32m(13 days ago)
+[31m|[m [33m<Bill K>[m
+* [31m3544963[m -[33m[m ubh api v1 [32m(13 days ago)
+[31m|[m [33m<Bill K>[m
+* [31me5c75a1[m -[33m[m css [32m(3 weeks ago)
+[31m|[m [33m<Iceman>[m
+* [31mb82974c[m -[33m[m css [32m(3 weeks ago)
+[31m|[m [33m<Iceman>[m
+* [31m7aeef32[m -[33m[m Initial commit [32m(3 weeks ago)
+  [33m<Bill>[m
