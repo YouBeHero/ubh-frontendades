@@ -21,14 +21,20 @@ $(document).ready(function() {
 //end
 
 /*dynamically change the href on the charity selection button*/
-$(document).ready(function() {
-    var url = window.location.href;
-    if (url.indexOf('facebook-visitor') > -1) {
-        setTimeout(function() {
-            $("a[href='signup.html']").attr('href', 'https://youbehero.com/gr/signup2')
-        }, 1000);
-    }
-});
+$( function() {
+    let causepage = $('.cause-page')
+
+    if (causepage.length) {
+        $(document).ready(function() {
+            var url = window.location.href;
+            if (url.indexOf('facebook-visitor') > -1) {
+                setTimeout(function() {
+                    $("a[href='signup.html']").attr('href', 'https://youbehero.com/gr/signup2')
+                }, 1000);
+            }
+        }); 
+    };
+};
 /* ----- End -----*/
 
 $(window).resize(function() {
