@@ -31,6 +31,8 @@ $( function() {
                 setTimeout(function() {
                     $("a[href='signup.html']").attr('href', 'https://youbehero.com/gr/signup2')
                 }, 1000);
+
+                $("a[href='signup.html']").replaceWith("<a href='plugin.html' style='background: #3B5998;' class='btn btn-primary py-2 mb-3 border-0 btn-block'><i class='fab fa-facebook-square mx-2' aria-hidden='true'> </i> Εγγραφή με Facebook</a>")
             }
         }); 
     };
