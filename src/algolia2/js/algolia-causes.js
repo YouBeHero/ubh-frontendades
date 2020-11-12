@@ -46,7 +46,6 @@ $(window).on("scroll", function(){
 })
 
 
-
 //Read more button trigger
 $(document).on('click', '.readMore', function() {
     $('#charityPreviewModal .description_container').css('max-height', '100%').css('overlow', 'visible');
@@ -278,12 +277,12 @@ search.addWidget(
 
 
 // https://www.algolia.com/doc/api-reference/widgets/range-slider/js/#widget-param-cssclasses
-// search.addWidget(
-// instantsearch.widgets.rangeSlider({
-//   container: '#range-slider',
-//   attribute: 'percentage_completed',
-// })
-// );
+/*search.addWidget(
+instantsearch.widgets.rangeSlider({
+  container: '#range-slider',
+  attribute: 'percentage_completed',
+})
+);*/
 
 search.start();
 setTimeout(function() {
@@ -306,6 +305,7 @@ function checkCategorySelection() {
       }, 100);
   }  
 }
+<<<<<<< HEAD
 
 
 
@@ -352,3 +352,5 @@ $(() => {
 	// setInterval(toggleEffect, 4e3);
 
 });
+=======
+>>>>>>> murtaza

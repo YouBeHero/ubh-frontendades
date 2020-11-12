@@ -119,8 +119,9 @@ gulp.task('watch', ['browserSync'], function () {
    gulp.watch('./src/scss/**/*', ['sass']);
    gulp.watch('./src/algolia2/js/**/*').on('change', browserSync.reload);
    gulp.watch('./src/js/**/*').on('change', browserSync.reload);
-    gulp.watch('./src/img/**/*.svg', ['sass']);
+   gulp.watch('./src/img/**/*.svg', ['sass']);
    gulp.watch('./src/**/*.html').on('change', browserSync.reload);
+   gulp.watch('./src/algolia2/**/*.html').on('change', browserSync.reload);
 });
 
 // Gulp Clean Up Task
