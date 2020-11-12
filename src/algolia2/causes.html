@@ -108,6 +108,136 @@
           background: transparent;
       }
 
+
+.box,
+.box-placeholder {
+  display: inline-block;
+  background-color: #fff;
+  /* margin: 30px; */
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, .1);
+  max-width: 300px;
+  vertical-align: top;
+  width: 100%;
+}
+.box1,
+.box-placeholder1 {
+  display: inline-block;
+  background-color: #fff;
+  /* margin: 30px; */
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, .1);
+  max-width: 900px;
+  vertical-align: top;
+  width: 100%;
+}
+  hr {
+    margin: 0;
+    border-color: #f3f3f3;
+}
+
+.box {
+  display: none;
+}
+.box1 {
+  display: none;
+}
+  
+  .category {
+    display: block;
+    margin-bottom: 10px;
+  
+}
+
+.box-placeholder {
+  font-size: 0;
+  line-height: 0;
+}
+.box-placeholder1 {
+  font-size: 0;
+  line-height: 0;
+}
+  .text {
+    display: inline-block;
+    background-color: #444;
+    height: 12px;
+    border-radius: 100px;
+    margin: 5px 0;
+    min-width: 100px;
+    opacity: .1;
+    animation: fading 1.5s infinite;
+  }
+  .text1 {
+    display: inline-block;
+    background-color: #444;
+    height: 100px;
+    border-radius: 2px;
+    padding: 10px;
+    margin: 13px ;
+    /* min-width: 100px; */
+    width: 30%;
+    opacity: .1;
+    animation: fading 1.5s infinite;
+  }
+    
+    :first-child {
+      margin-top: 0;
+    }
+    
+    :last-child {
+      margin-bottom: 0;
+    }
+    
+  .link {
+      background-color: var(--blue);
+      opacity: .4;
+    }
+    
+    .line {
+      width: 100%;
+    }
+    
+    .category {
+      width: 100px;
+      margin-bottom: 10px;
+    }
+  
+  
+  h4.text {
+    height: 20px;
+    margin: 3px 0;
+    opacity: .2;
+  }
+  
+  .image {
+    background-color: #f9f9f9;
+  }
+  @media only screen and (max-width: 600px) {
+  .text1{
+    display: inline-block;
+    background-color: #444;
+    height: 100px;
+    border-radius: 2px;
+    padding: 15px;
+    margin: 15px ;
+    /* min-width: 100px; */
+    width: 93%;
+    opacity: .1;
+    animation: fading 1.5s infinite;
+  }
+}
+
+@keyframes fading {
+  0% {
+    opacity: .1;
+  }
+  
+  50% {
+    opacity: .2;
+  }
+  
+  100% {
+    opacity: .1;
+  }
+}
     </style>
   </head>
   <body class="causes-page">   
@@ -226,14 +356,50 @@
             <div class="col-12 col-lg-3 d-none d-lg-block returnToBase">
                 <div class="left-panel">
 
-                    <p class="font-weight-bold bigger-1">Κατηγορίες</p>
-                    <div id="Category_parent_title"></div>
-                    <div id="clear-refinements2" class="mb-3"></div>
-                    <p class="font-weight-bold bigger-1 mt-4">Υποκατηγορία</p>
+                  <div class="box-placeholder">
+                    <div class="p-4">
+                      <span class="category text link"></span>
+                      <h4 class="text line"></h4>
+                      <h4 class="text"></h4>
+                    </div>
+                    <hr>
+                    <div class="image">
+                      <div class="embed-responsive embed-responsive-16by9"></div>
+                    </div>
+                    <hr>
+                    <div class="excerpt p-4">
+                      <div class="text line"></div>
+                      <div class="text line"></div>
+                      <div class="text"></div>
+                    </div>
+                  </div>
+                  
+                  <div class="box">
+                    <div class="p-4">
+                      <p class="font-weight-bold bigger-1">Κατηγορίες</p>
+                      <div id="Category_parent_title"></div>
+                      <div id="clear-refinements2" class="mb-3"></div>
+
+                    </div>
+                    
+                    <hr>
+                    <div class="excerpt p-4">
+                      <p class="font-weight-bold bigger-1 mt-4">Υποκατηγορία</p>
                     <div id="Category_title"></div>
                     <div id="clear-refinements3" class="mb-3"></div>
                     <div id="location_title"></div>
                     <div id="clear-refinements4" class="mb-3"></div>
+                    </div>
+                  </div>
+
+                    <!-- <p class="font-weight-bold bigger-1">Κατηγορίες</p> -->
+                    <!-- <div id="Category_parent_title"></div>
+                    <div id="clear-refinements2" class="mb-3"></div> -->
+                    <!-- <p class="font-weight-bold bigger-1 mt-4">Υποκατηγορία</p>
+                    <div id="Category_title"></div>
+                    <div id="clear-refinements3" class="mb-3"></div>
+                    <div id="location_title"></div>
+                    <div id="clear-refinements4" class="mb-3"></div> -->
 
                     <!-- <p class="font-weight-bold bigger-1">Oλοκλήρωση στόχου</p>
                     <div id="clear-refinements5"></div>
@@ -251,14 +417,35 @@
                     <button class="btn btn-outline-primary" data-toggle="modal" data-target="#causeFiltersModal"><i class="fas fa-sliders-h mr-1 smaller-1"></i>Φίλτρα</button>
                   </div>
                 </div>
-
+                
                 <div class="right-panel">
-                  <div id="searchbox" class="ais-SearchBox"></div>
+                <div id="searchbox" class="ais-SearchBox"></div>
+                  <div class="box-placeholder1">
+                    <div class="p-4">
+                      <span class="category text link"></span>
+                      <h4 class="text line"></h4>
+                      <!-- <h4 class="text"></h4> -->
+                    </div>
+                    <hr>
+                    
+                    <hr>
+                    <div class="excerpt p-2">
+            <div class="ph-col-6"></div>
+                      <div class="text1"></div>
+                      
+                      <div class="text1"></div>
+                      <div class="text1"></div>
+               
+                <div class="ph-col-6"></div>
+              
+                    </div>
+                  </div>
+
+                  <div class="box1">
+                  </div>
                   <div id="hits" class="card-deck pt-3 pb-2"></div>
                 </div>
-
             </div>
-            
         </div>
     </div>
 </div>
