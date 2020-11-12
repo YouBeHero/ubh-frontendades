@@ -325,7 +325,7 @@ $(() => {
 
 	toggleEffect();
   
-
+	// setInterval(toggleEffect, 4e3);
 
 });
 
@@ -346,7 +346,7 @@ $(() => {
 
 	toggleEffect();
   
-
+	// setInterval(toggleEffect, 4e3);
 
 });
 
