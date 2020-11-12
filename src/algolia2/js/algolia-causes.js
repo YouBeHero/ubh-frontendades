@@ -305,9 +305,6 @@ function checkCategorySelection() {
       }, 100);
   }  
 }
-<<<<<<< HEAD
-
-
 
 // loading section
 
@@ -328,7 +325,7 @@ $(() => {
 
 	toggleEffect();
   
-	// setInterval(toggleEffect, 4e3);
+
 
 });
 
@@ -349,7 +346,7 @@ $(() => {
 
 	toggleEffect();
   
-	// setInterval(toggleEffect, 4e3);
+
 
 });
 
