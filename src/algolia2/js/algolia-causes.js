@@ -352,5 +352,4 @@ $(() => {
 	// setInterval(toggleEffect, 4e3);
 
 });
-=======
->>>>>>> murtaza
+
