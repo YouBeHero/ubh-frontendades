@@ -59,9 +59,9 @@
 }
 
 .tree_triangle:nth-child(4) {
-    margin-top: -2.9em;
-    border-left-width: 3.5em;
-    border-right-width: 3.5em;
+    margin-top: -3.1em;
+    border-left-width: 3.3em;
+    border-right-width: 3.3em;
     border-bottom-width: 4.5em;
 }
 
@@ -126,7 +126,7 @@
 }
 
 .orbs--6 {
-    top: 6.5em;
+    top: 6.3em;
     left: 4em;
 }
 
