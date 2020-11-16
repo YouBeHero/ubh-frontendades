@@ -710,3 +710,15 @@ search.addWidget(
 
 
 search.start();
+
+
+
+// loading section
+ $(window).on('load', function() {
+  if ($('#preloader').length) {
+    $('#preloader').delay(100).fadeOut('slow', function() {
+      $(this).remove();
+    });
+  }
+});
+

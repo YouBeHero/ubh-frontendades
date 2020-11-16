@@ -305,3 +305,48 @@ function checkCategorySelection() {
       }, 100);
   }  
 }
+
+// loading section
+
+$(() => {
+
+	const box = $('.box'),
+        ph = $('.box-placeholder');
+        
+  let toggleEffect = () => {
+  	box.hide();
+    ph.show();
+    
+    setTimeout(() => {
+	    ph.hide();
+      box.show();
+    }, 2e3);
+  };
+
+	toggleEffect();
+  
+	// setInterval(toggleEffect, 4e3);
+
+});
+
+// loading section
+$(() => {
+	const box = $('.box1'),
+        ph = $('.box-placeholder1');
+        
+  let toggleEffect = () => {
+  	box.hide();
+    ph.show();
+    
+    setTimeout(() => {
+	    ph.hide();
+      box.show();
+    }, 2e3);
+  };
+
+	toggleEffect();
+  
+	// setInterval(toggleEffect, 4e3);
+
+});
+// /
