@@ -3,12 +3,12 @@
     display: inline-block;
     width: 0;
     height: 0;
-    margin: 0 .9em 0 3em;
+    margin: 0 .9em 0 2.7em;
     margin-bottom: 1.2em;
     border-right: .3em solid transparent;
-    border-bottom: .7em solid #FC0;
+    border-bottom: .5em solid #FC0;
     border-left: .3em solid transparent;
-    font-size: 24px;
+    font-size: 23px;
 }
 
 .star:before,
@@ -18,13 +18,13 @@
     width: 0;
     height: 0;
     position: absolute;
-    top: .6em;
-    left: -1em;
-    border-right: 1em solid transparent;
+    top: .4em;
+    left: -.8em;
+    border-right: .8em solid transparent;
     border-bottom: .7em solid #FC0;
-    border-left: 1em solid transparent;
+    border-left: .8em solid transparent;
     transform: rotate(-35deg);
-    animation: animate 1s linear infinite;
+    animation: animate 2s linear infinite;
 }
 
 .star:after {
@@ -33,48 +33,50 @@
 
 .tree {
     position: fixed;
-    width: 10em;
-    height: 13em;
+    width: 8.5em;
+    height: 10.5em;
     margin: auto;
-    right: 5vw;
-    top: 70vh;
+    right: 0.5vw;
+    top: 75vh;
+    background: red;
+    border-radius: 50%;
 }
 
 .tree_triangle {
     margin: -15px auto 0;
     width: 0;
     height: 0;
-    border-left: 3.3em solid transparent;
-    border-right: 3.3em solid transparent;
-    border-bottom: 4em solid #16850c;
+    border-left: 2em solid transparent;
+    border-right: 2em solid transparent;
+    border-bottom: 2.7em solid #16850c;
 }
 
 .tree_triangle:nth-child(3) {
-    margin-top: -3em;
-    border-left-width: 4em;
-    border-right-width: 4em;
-    border-bottom-width: 5em;
+    margin-top: -1.7em;
+    border-left-width: 2.7em;
+    border-right-width: 2.7em;
+    border-bottom-width: 3em;
 }
 
 .tree_triangle:nth-child(4) {
-    margin-top: -3.5em;
-    border-left-width: 4.7em;
-    border-right-width: 4.7em;
-    border-bottom-width: 5.5em;
+    margin-top: -2.9em;
+    border-left-width: 3.5em;
+    border-right-width: 3.5em;
+    border-bottom-width: 4.5em;
 }
 
 .tree_log {
     margin: 0 auto;
-    width: 1.3em;
-    height: 1.8em;
+    width: 1.1em;
+    height: 1.5em;
     background: linear-gradient(rgb(221, 11, 11), rgb(95, 5, 5));
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
 }
 
 .orbs {
-    width: 0.5em;
-    height: 1em;
+    width: 0.4em;
+    height: 0.7em;
     background: red;
     position: absolute;
     border-radius: 50%;
@@ -85,47 +87,47 @@
 
 .tree .orbs:nth-child(3n+1) {
     background-color: orange;
-    animation: animate1 1s linear infinite;
+    animation: animate1 2s linear infinite;
 }
 
 .tree .orbs:nth-child(3n+2) {
     background-color: yellow;
-    animation: animate2 1.5s linear infinite;
+    animation: animate2 2.5s linear infinite;
 }
 
 .tree .orbs:nth-child(3n+3) {
     background-color: red;
-    animation: animate3 2s linear infinite;
+    animation: animate3 3s linear infinite;
 }
 
 .orbs--1 {
-    top: 3.5em;
-    left: 4.2em;
+    top: 3em;
+    left: 3.4em;
 }
 
 .orbs--2 {
-    top: 5em;
-    left: 6em;
+    top: 4.5em;
+    left: 5.2em;
 }
 
 .orbs--3 {
-    top: 5.7em;
-    left: 3em;
+    top: 4.7em;
+    left: 2.7em;
 }
 
 .orbs--4 {
-    top: 7em;
-    left: 7em;
+    top: 6em;
+    left: 5.9em;
 }
 
 .orbs--5 {
-    top: 8.5em;
-    left: 3em;
+    top: 6em;
+    left: 2em;
 }
 
 .orbs--6 {
-    top: 9em;
-    left: 7.8em;
+    top: 6.5em;
+    left: 4em;
 }
 
 @keyframes animate1 {
@@ -174,6 +176,6 @@
 
 @media (max-width: 768px) {
     .star {
-        margin-left: 2.7em;
+        margin-left: 2.4em;
     }
 }
