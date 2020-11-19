@@ -150,7 +150,7 @@
       .modal.left .modal-dialog,
       .modal.right .modal-dialog,
       .modal.top .modal-dialog,
-      .modal.bottom .modal-dialog {c
+      .modal.bottom .modal-dialog {
         -webkit-transform: translate3d(0%, 0, 0);
         -ms-transform: translate3d(0%, 0, 0);
         -o-transform: translate3d(0%, 0, 0);
@@ -320,58 +320,140 @@
       }
 
         /* loading section */
-        #preloader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 9999;
-  overflow: hidden;
-  background: #373737;
-}
+        .box,
+    .box-placeholder {
+      display: inline-block;
+      max-width: 300px;
+      vertical-align: top;
+      width: 100%;
+    }
 
-#preloader:before {
-  content: "";
-  position: fixed;
-  top: calc(50% - 30px);
-  left: calc(50% - 30px);
-  border: 6px solid #37517e;
-  border-right: 6px solid rgb(64, 255, 0);
-  border-left: 6px solid rgb(255, 0, 0);
-  border-top-color: #fff;
-  border-bottom-color: #fff;
-  border-radius: 50%;
-  width: 80px;
-  height: 80px;
-  -webkit-animation: animate-preloader 1s linear infinite;
-  animation: animate-preloader 1s linear infinite;
-}
+    .box1,
+    .box-placeholder1 {
+      display: inline-block;
+      max-width: 900px;
+      vertical-align: top;
+      width: 100%;
+    }
 
-@-webkit-keyframes animate-preloader {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
+    .box {
+      display: none;
+    }
 
-@keyframes animate-preloader {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-.loadersection {
-  text-align: center;
-  padding-top: 28%;
-  font-size: 20px;
-  color: #fff;
-  padding-left: 27px;
-}
+    .box1 {
+      display: none;
+    }
+
+    .category {
+      display: block;
+      margin-bottom: 10px;
+
+    }
+
+    .box-placeholder {
+      font-size: 0;
+      line-height: 0;
+    }
+
+    .box-placeholder1 {
+      font-size: 0;
+      line-height: 0;
+    }
+
+    .text {
+      display: inline-block;
+      background-color: #444;
+      height: 13px;
+      border-radius: 100px;
+      margin: 5px 0;
+      min-width: 100px;
+      opacity: .1;
+      animation: fading 2.5s infinite;
+    }
+
+    .text1 {
+      display: inline-block;
+      background-color: #444;
+      height: 100px;
+      border-radius: 2px;
+      padding: 10px;
+      margin: 13px;
+      width: 30%;
+      opacity: .1;
+      animation: fading 1.5s infinite;
+    }
+
+    :first-child {
+      margin-top: 0;
+    }
+
+    :last-child {
+      margin-bottom: 0;
+    }
+
+    .line {
+      width: 100%;
+      height: 20%;
+    }
+
+    .category {
+      width: 100px;
+      margin-bottom: 10px;
+    }
+
+
+    h4.text {
+      height: 20px;
+      margin: 3px 0;
+      opacity: .2;
+    }
+
+    .image {
+    }
+
+    @media only screen and (max-width: 600px) {
+      .text1 {
+        display: inline-block;
+        background-color: #444;
+        height: 100px;
+        border-radius: 2px;
+        padding: 15px;
+        margin: 15px;
+        /* min-width: 100px; */
+        width: 93%;
+        opacity: .1;
+        animation: fading 1.5s infinite;
+      }
+    }
+    @media only screen and (max-width: 625px) {
+      .text1 {
+        display: inline-block;
+        background-color: #444;
+        height: 100px;
+        border-radius: 2px;
+        padding: 15px;
+        margin: 15px;
+        /* min-width: 100px; */
+        width: 93%;
+        opacity: .1;
+        animation: fading 1.5s infinite;
+      }
+    }
+
+    @keyframes fading {
+      0% {
+        opacity: .1;
+      }
+
+      50% {
+        opacity: .2;
+      }
+
+      100% {
+        opacity: .1;
+      }
+    }
+
 
     </style>
   </head>
@@ -438,36 +520,80 @@
         <div class="row">
             <div class="col-12 col-lg-3 d-none d-lg-block returnToBase">
                 <div class="left-panel sticky-top bg-white p-3">
+<!------------------ Start of loading fo categoreis -------------------------------------------------------------------->
 
-                    <p class="font-weight-bold bigger-2">Κατηγορίες</p>
-                    <div id="hierarchical-menu"></div>
-                    
+                  <div class="box-placeholder">
+                    <div class="p-4">
+                      <span class="category text"></span>
+                      <h4 class="text line"></h4>
+                      <span class="category text"></span>
+                      <h4 class="text line"></h4>
+                      <span class="category text"></span>
+                      <h4 class="text line"></h4>
+                      <span class="category text"></span>
+                    </div>
+                  </div>
+
+                  <div class="box">
+                    <div class="p-4">
+                      <div id="Category_parent_title"></div>
+                      <p class="font-weight-bold bigger-2">Κατηγορίες</p>
+                      <div id="hierarchical-menu"></div>
+                      <div id="clear-refinements2" class="mb-3"></div>
+                    </div>
+                  </div>
+                  <div id="clear-refinements" class="my-3"></div>
                 </div>
             </div>
+<!------------------ End of loading categoreis-------------------------------------------------------------------------->
+
+
+<div class="col-12 col-lg-9">
+  
+  <div class="row d-lg-none mb-3">
+    <div class="col-12">
+      <button class="btn btn-outline-primary smaller-1" data-toggle="modal" data-target="#causeFiltersModal"><i class="fas fa-sliders-h mr-1 smaller-1"></i>Φίλτρα</button>
+    </div>
+  </div>
+  
+  <!------------------ Start of loading fo column -------------------------------------------------------------------->
+          <div class="right-panel">
+          <div id="searchbox" class="ais-SearchBox"></div>
+
+          <div id="searchbox" class="ais-SearchBox"></div>
+          <div class="box-placeholder1">
+            <div class="p-4">
+              <h4 class="text line"></h4>
+            </div>
+
+            <div class="excerpt p-2">
+              <div class="ph-col-6"></div>
+              <div class="text1"></div>
+              <div class="text1"></div>
+              <div class="text1"></div>
+              <div class="ph-col-6"></div>
+            </div>
+          </div>
             
-            <div class="col-12 col-lg-9">
+          <div class="box1">
+            <div id="stats"></div>
+            <div class="col-12 px-0">
+                <div id="current-refinements" class="d-inline-block mr-1 mb-1"></div><div id="clear-refinements" class="d-inline-block"></div>
+            </div>
+            <div id="hits" class="card-deck pb-2"></div>
+          
+          <nav aria-label="pagination">
+            <ul class="pagination">
+            </ul>
+          </nav>
+  <!------------------ Ending of loading fo column -------------------------------------------------------------------->
 
-              <div class="row d-lg-none mb-3">
-                  <div class="col-12">
-                    <button class="btn btn-outline-primary smaller-1" data-toggle="modal" data-target="#causeFiltersModal"><i class="fas fa-sliders-h mr-1 smaller-1"></i>Φίλτρα</button>
-                  </div>
-                </div>
+        </div>
+          </div>
 
-                <div class="right-panel">
+
+
                   
-                    <div id="searchbox" class="ais-SearchBox"></div>
-                    <div id="stats"></div>
-                    <div class="col-12 px-0">
-                        <div id="current-refinements" class="d-inline-block mr-1 mb-1"></div><div id="clear-refinements" class="d-inline-block"></div>
-                    </div>
-                    <div id="hits" class="card-deck pb-2"></div>
-                  
-                  <nav aria-label="pagination">
-                    <ul class="pagination">
-                    </ul>
-                  </nav>
-
-                </div>
 
             </div>
         </div>
@@ -667,6 +793,41 @@
     <script src="/js/instantsearch.js"></script>
     <script src="/js/algolia-eshops.js?v=1.0"></script>
 
+    <script>
 
+      
+// loading section
+$(() => {
+const box = $('.box'),
+      ph = $('.box-placeholder');
+let toggleEffect = () => {
+  box.hide();
+  ph.show();
+  
+  setTimeout(() => {
+    ph.hide();
+    box.show();
+  }, 2e3);
+};
+
+toggleEffect();
+});
+
+$(() => {
+const box = $('.box1'),
+      ph = $('.box-placeholder1');
+      
+let toggleEffect = () => {
+  box.hide();
+  ph.show();
+  
+  setTimeout(() => {
+    ph.hide();
+    box.show();
+  }, 2e3);
+};
+toggleEffect();
+});
+    </script>
   </body>
 </html>
