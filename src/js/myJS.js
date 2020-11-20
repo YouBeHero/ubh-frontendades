@@ -27,16 +27,14 @@ $( function() {
     if (causepage.length) {
         $(document).ready(function() {
             var url = window.location.href;
-            if (url.indexOf('facebook-visitor') > -1) {
+            if (url.indexOf('?facebook-visitor') > -1) {
                 setTimeout(function() {
-                    $("a[href='signup.html']").attr('href', 'https://youbehero.com/gr/signup2')
-                }, 1000);
-
-                $("a[href='signup.html']").replaceWith("<a href='plugin.html' style='background: #3B5998;' class='btn btn-primary py-2 mb-3 border-0 btn-block'><i class='fab fa-facebook-square mx-2' aria-hidden='true'> </i> Εγγραφή με Facebook</a>")
+                    $("a[href='signup.html']").replaceWith("<a href='https://youbehero.com/gr/signup2' style='background: #3B5998;' class='btn btn-primary py-2 mb-3 border-0 btn-block'><i class='fab fa-facebook-square mx-2' aria-hidden='true'> </i> Εγγραφή με Facebook</a>")
+                }, 1000);  
             }
         }); 
     };
-};
+});
 /* ----- End -----*/
 
 $(window).resize(function() {
