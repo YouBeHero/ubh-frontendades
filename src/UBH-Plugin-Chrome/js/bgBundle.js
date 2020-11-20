@@ -37,6 +37,9 @@ var MerchantDisabledIcon = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAA
 
 var MerchantDefaultIcon = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAXpJREFUeNpi5Ax/wcbAwNAJxClAzMNAGvgCxHOAuJwFakgBA3mAB6aXEeiizzCXNEXyMHCyMYJVvP/yj6Ft7Ve4DkEeJoaqYG44/+qjPwwL9n+Hu4wF2TtprlwMfFwQgx69+YtiEB8nI0O2Jxecv+XMT2SDgNZQCbAgc2bt/obiNWTw6ft/hqnbv6F4DRmAwug/NVxEG6+V+HMzqEkxw/kF8z4zfPsJcbAwLxNDewwimX3/xcCQP/cTdoNc9dkYbLXY4PzSRcCU8RMaLRyMDDH2nIgw+/YfxSC8XhPhRUhLCDIRH0a//qJKdsfzMmhIszDoyrMwtESh5p7vv/7jDqODV34xOOsivOZhyA7G2MDBq79wu2jWrm8MD1//JRhDX4ER0LTqC26DQInOp/U9w7XHf3Aa8ubTP4bQrg8M917+xUiQn9GLDyZg4nY1YGcwUmRhEIIG+GegJTee/mHYcf4nOMbQixOQQf0UFCMwMAEU2OVQDkUFG0CAAQD3d4DAAYnPVwAAAABJRU5ErkJggg==';
 
+
+var MerchantDefaultIcon = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAXpJREFUeNpi5Ax/wcbAwNAJxClAzMNAGvgCxHOAuJwFakgBA3mAB6aXEeiizzCXNEXyMHCyMYJVvP/yj6Ft7Ve4DkEeJoaqYG44/+qjPwwL9n+Hu4wF2TtprlwMfFwQgx69+YtiEB8nI0O2Jxecv+XMT2SDgNZQCbAgc2bt/obiNWTw6ft/hqnbv6F4DRmAwug/NVxEG6+V+HMzqEkxw/kF8z4zfPsJcbAwLxNDewwimX3/xcCQP/cTdoNc9dkYbLXY4PzSRcCU8RMaLRyMDDH2nIgw+/YfxSC8XhPhRUhLCDIRH0a//qJKdsfzMmhIszDoyrMwtESh5p7vv/7jDqODV34xOOsivOZhyA7G2MDBq79wu2jWrm8MD1//JRhDX4ER0LTqC26DQInOp/U9w7XHf3Aa8ubTP4bQrg8M917+xUiQn9GLDyZg4nY1YGcwUmRhEIIG+GegJTee/mHYcf4nOMbQixOQQf0UFCMwMAEU2OVQDkUFG0CAAQD3d4DAAYnPVwAAAABJRU5ErkJggg==';
+
 chrome.tabs.onActivated.addListener(function() {
 
     chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
@@ -46,7 +49,12 @@ chrome.tabs.onActivated.addListener(function() {
 
             var getMerchant = JSON.stringify(response.isMerchant);
             var isValid = response.isValid;
+            var isLoggedIn = response.isLoggedIn;
             var isMerhcant = false;
+
+            alert('asdfasfasdf' + isLoggedIn);
+
+            //Murtaza can you please take a look here? Thank you.
 
             if (getMerchant.length) {
                 isMerchant = true;
