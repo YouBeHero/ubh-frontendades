@@ -2,7 +2,7 @@
   "name": "ubhero",
   "version": "1.0.0",
   "private": true,
-  "description": "The front-end of ubh web app.",
+  "description": "The front-end of athlometrix web app.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
