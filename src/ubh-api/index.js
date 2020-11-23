@@ -12,11 +12,11 @@ $(document).ready(function () {
             
             for (var i=0;i<json.length;++i) {
                 if (json[i].category_parent == 'Για τους καλούς μας φίλους') {
-                    $('optgroup.animal').append('<option title="'+json[i].logo+'">'+json[i].name+'</option>');
+                    $('optgroup.animal').append('<option title="'+json[i].logo+'" value="'+json[i].id+'">'+json[i].name+'</option>');
                 } else if (json[i].category_parent == 'Για τον άνθρωπο') {
-                    $('optgroup.human').append('<option title="'+json[i].logo+'">'+json[i].name+'</option>');
+                    $('optgroup.human').append('<option title="'+json[i].logo+'" value="'+json[i].id+'">'+json[i].name+'</option>');
                 } else if (json[i].category_parent == 'Για το περιβάλλον') {
-                    $('optgroup.environmental').append('<option title="'+json[i].logo+'">'+json[i].name+'</option>');
+                    $('optgroup.environmental').append('<option title="'+json[i].logo+'" value="'+json[i].id+'">'+json[i].name+'</option>');
                 }
             }
             
