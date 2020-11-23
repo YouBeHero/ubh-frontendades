@@ -38,4 +38,35 @@ $(document).ready(function () {
             });
         }
     });
+    
+    // On button click, send (POST) the selection details to backend (via JSON)
+    $("#send_cause_btn").click(function () {
+        var btn = this;
+        var selectedCause = document.querySelector("#causes_dropdown").selectedOptions[0]; // 
+        if(!selectedCause.disabled) {
+            var settings = {
+                "url": "https://httpbin.org/post", // this endpoint is an echo server, it echoes the incoming POST request that it receives
+                "method": "POST",
+                "timeout": 0,
+                "headers": {
+                    "Content-Type": "application/json"
+                },
+                "data": JSON.stringify({
+                    "selected_cause_id": selectedCause.value, // cause id
+                    "selected_cause_name": selectedCause.text // cause name
+                })
+            };
+            
+            $.ajax(settings).done(function (response) {
+                console.log("SENT (request body content in JSON format):");
+                console.log(settings.data);
+                console.log("RECEIVED (the whole response object):");
+                console.log(response);
+                btn.disabled = true;
+                
+            });
+        } else {
+            console.log("ERROR: A valid cause has not been selected.");
+        }
+    });
 });
