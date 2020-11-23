@@ -33,7 +33,7 @@ $(document).ready(function () {
             $('.dropdown').on('select2:select', function (e) {
                 var data = e.params.data;
                 setTimeout(function () {
-                    $('.select2-selection__rendered').html('<span><img src="'+ data.title +'" style="max-height: 24px; margin-right: 10px;" />' + data.id + '</span>')
+                    $('.select2-selection__rendered').html('<span><img src="'+ data.title +'" style="max-height: 24px; margin-right: 10px;" />' + data.text + '</span>')
                 }, 10);
             });
         }
