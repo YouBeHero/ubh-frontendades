@@ -52,8 +52,9 @@ $(document).ready(function () {
                     "Content-Type": "application/json"
                 },
                 "data": JSON.stringify({
-                    "selected_cause_id": selectedCause.value, // cause id
-                    "selected_cause_name": selectedCause.text // cause name
+                    "selection_date": new Date().toISOString(),
+                    "selected_cause_id": selectedCause.value,
+                    "selected_cause_name": selectedCause.text
                 })
             };
             
