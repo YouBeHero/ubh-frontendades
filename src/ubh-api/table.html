@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="el" dir="ltr">
+  <head>
+   <meta charset="utf-8">
+        <META NAME="robots" CONTENT="noindex,nofollow">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>YouBeHero - Αρχική σελίδα
+        </title>
+        <meta name="description" content="Το YouBeHero είναι η πρώτη πλατφόρμα στην Ελλάδα που μετατρέπει τις προμήθειες των ηλεκτρονικών σου αγορών, σε δωρεές προς κοινωφελείς σκοπούς.">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/styles.css">
+      </head>
+    <body>
+
+      <div class="col-md-8 mx-auto" style="max-height: 90vh;overflow-y: scroll;">
+  
+<div class="box">
+    
+    
+  <div class="box-body table-responsive">
+      
+      <div id="crudTable_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="dataTables_length" id="crudTable_length">
+              <label>
+                <select name="crudTable_length" aria-controls="crudTable" class="form-control input-sm">
+                  <option value="10">10
+                  </option>
+                  <option value="25">25
+                  </option>
+                  <option value="50">50
+                  </option>
+                  <option value="100">100
+                  </option>
+                  <option value="1000">1000
+                  </option>
+                  <option value="-1">Όλα
+                  </option>
+                </select> εγγραφές ανά σελίδα
+              </label>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div id="crudTable_filter" class="dataTables_filter">
+              <label>Αναζήτηση: 
+                <input type="search" class="form-control input-sm" placeholder="" aria-controls="crudTable">
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <table id="crudTable" class="table table-striped table-hover display dataTable" role="grid" aria-describedby="crudTable_info" style="width: 1557px;">
+              <thead>
+                <tr role="row">
+                  <th data-orderable="true" class="sorting" tabindex="0" aria-controls="crudTable" rowspan="1" colspan="1" style="width: 14px;" aria-label="
+ID
+: ενεργοποίηση για αύξουσα ταξινόμηση">
+                    ID
+                  </th>
+                  <th data-orderable="true" class="sorting" tabindex="0" aria-controls="crudTable" rowspan="1" colspan="1" style="width: 78px;" aria-label="
+Transaction ID
+: ενεργοποίηση για αύξουσα ταξινόμηση">
+                    Transaction ID
+                  </th>
+                  <th data-orderable="true" class="sorting" tabindex="0" aria-controls="crudTable" rowspan="1" colspan="1" style="width: 39px;" aria-label="
+Shop
+: ενεργοποίηση για αύξουσα ταξινόμηση">
+                    Shop
+                  </th>
+                  <th data-orderable="true" class="sorting" tabindex="0" aria-controls="crudTable" rowspan="1" colspan="1" style="width: 67px;" aria-label="
+Processed
+: ενεργοποίηση για αύξουσα ταξινόμηση">
+                    Processed
+                  </th>
+                  <th data-orderable="true" class="sorting" tabindex="0" aria-controls="crudTable" rowspan="1" colspan="1" style="width: 30px;" aria-label="
+User
+: ενεργοποίηση για αύξουσα ταξινόμηση">
+                    User
+                  </th>
+                  <th data-orderable="true" class="sorting" tabindex="0" aria-controls="crudTable" rowspan="1" colspan="1" style="width: 42px;" aria-label="
+Status
+: ενεργοποίηση για αύξουσα ταξινόμηση">
+                    Status
+                  </th>
+                  <th data-orderable="true" class="sorting" tabindex="0" aria-controls="crudTable" rowspan="1" colspan="1" style="width: 53px;" aria-label="
+Sale Amount
+: ενεργοποίηση για αύξουσα ταξινόμηση">
+                    Sale Amount
+                  </th>
+                  <th data-orderable="true" class="sorting" tabindex="0" aria-controls="crudTable" rowspan="1" colspan="1" style="width: 81px;" aria-label="
+Commission
+: ενεργοποίηση για αύξουσα ταξινόμηση">
+                    Commission
+                  </th>
+                  <th data-orderable="false" class="sorting_disabled" rowspan="1" colspan="1" style="width: 40px;" aria-label="
+                                                                                                                               For Cause
+                                                                                                                               ">
+                    For Cause
+                  </th>
+                  <th data-orderable="true" class="sorting" tabindex="0" aria-controls="crudTable" rowspan="1" colspan="1" style="width: 59px;" aria-label="
+To Featured Cause
+: ενεργοποίηση για αύξουσα ταξινόμηση">
+                    To Featured Cause
+                  </th>
+                  <th data-orderable="false" class="sorting_disabled" rowspan="1" colspan="1" style="width: 79px;" aria-label="
+                                                                                                                               Cause commission
+                                                                                                                               ">
+                    Cause commission
+                  </th>
+                  <th data-orderable="false" class="sorting_disabled" rowspan="1" colspan="1" style="width: 24px;" aria-label="
+                                                                                                                               For us
+                                                                                                                               ">
+                    For us
+                  </th>
+                  <th data-orderable="true" class="sorting_asc" tabindex="0" aria-controls="crudTable" rowspan="1" colspan="1" style="width: 78px;" aria-label="
+Transaction Date
+: ενεργοποίηση για φθίνουσα ταξινόμηση" aria-sort="ascending">
+                    Transaction Date
+                  </th>
+                  <th data-orderable="true" class="sorting" tabindex="0" aria-controls="crudTable" rowspan="1" colspan="1" style="width: 57px;" aria-label="
+Status Updated Date
+: ενεργοποίηση για αύξουσα ταξινόμηση">
+                    Status Updated Date
+                  </th>
+                  <th data-orderable="false" class="sorting_disabled" rowspan="1" colspan="1" style="width: 57px;" aria-label="
+                                                                                                                               Affiliate Network
+                                                                                                                               ">
+                    Affiliate Network
+                  </th>
+                  <th data-orderable="true" class="sorting" tabindex="0" aria-controls="crudTable" rowspan="1" colspan="1" style="width: 57px;" aria-label="
+Created At
+: ενεργοποίηση για αύξουσα ταξινόμηση">
+                    Created At
+                  </th>
+                  <th data-orderable="true" class="sorting" tabindex="0" aria-controls="crudTable" rowspan="1" colspan="1" style="width: 57px;" aria-label="
+Updated At
+: ενεργοποίηση για αύξουσα ταξινόμηση">
+                    Updated At
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr role="row" class="odd">
+                  <td>3860
+                  </td>
+                  <td>277036135
+                  </td>
+                  <td>
+                    e-Fresh.gr
+                  </td>
+                  <td>
+                    Ναι
+                  </td>
+                  <td>
+                  </td>
+                  <td>pending
+                  </td>
+                  <td>59
+                  </td>
+                  <td>1.77
+                  </td>
+                  <td>
+                    Labyrinth of Senses
+                  </td>
+                  <td>
+                    Ναι
+                  </td>
+                  <td>
+                    1.3275
+                  </td>
+                  <td>
+                    0.4425
+                  </td>
+                  <td class="sorting_1">
+                    16 Δεκεμβρίου 2020 07:04
+                  </td>
+                  <td>
+                    16 Δεκεμβρίου 2020 07:04
+                  </td>
+                  <td>
+                    Own
+                  </td>
+                  <td>
+                    16 Δεκεμβρίου 2020 09:05
+                  </td>
+                  <td>
+                    16 Δεκεμβρίου 2020 18:00
+                  </td>
+                </tr>
+                <tr role="row" class="even">
+                  <td>3861
+                  </td>
+                  <td>277037527
+                  </td>
+                  <td>
+                    Dominos
+                  </td>
+                  <td>
+                    Ναι
+                  </td>
+                  <td>
+                  </td>
+                  <td>pending
+                  </td>
+                  <td>9.92
+                  </td>
+                  <td>0.16
+                  </td>
+                  <td>
+                    Make-A-Wish
+                  </td>
+                  <td>
+                    Ναι
+                  </td>
+                  <td>
+                    0.12
+                  </td>
+                  <td>
+                    0.04
+                  </td>
+                  <td class="sorting_1">
+                    16 Δεκεμβρίου 2020 07:25
+                  </td>
+                  <td>
+                    16 Δεκεμβρίου 2020 07:25
+                  </td>
+                  <td>
+                    Own
+                  </td>
+                  <td>
+                    16 Δεκεμβρίου 2020 09:26
+                  </td>
+                  <td>
+                    16 Δεκεμβρίου 2020 09:26
+                  </td>
+                </tr>
+                <tr role="row" class="odd">
+                  <td>3862
+                  </td>
+                  <td>277038178
+                  </td>
+                  <td>
+                    Celestino
+                  </td>
+                  <td>
+                    Ναι
+                  </td>
+                  <td>
+                    Niki
+                  </td>
+                  <td>pending
+                  </td>
+                  <td>22.5
+                  </td>
+                  <td>2.25
+                  </td>
+                  <td>
+                    Κιβωτός του Κόσμου
+                  </td>
+                  <td>
+                    Όχι
+                  </td>
+                  <td>
+                    1.6875
+                  </td>
+                  <td>
+                    0.5625
+                  </td>
+                  <td class="sorting_1">
+                    16 Δεκεμβρίου 2020 07:32
+                  </td>
+                  <td>
+                    16 Δεκεμβρίου 2020 07:32
+                  </td>
+                  <td>
+                    Own
+                  </td>
+                  <td>
+                    16 Δεκεμβρίου 2020 09:33
+                  </td>
+                  <td>
+                    16 Δεκεμβρίου 2020 18:00
+                  </td>
+                </tr>
+                <tr role="row" class="even">
+                  <td>3863
+                  </td>
+                  <td>277047985
+                  </td>
+                  <td>
+                    E-Shop.gr
+                  </td>
+                  <td>
+                    Ναι
+                  </td>
+                  <td>
+                  </td>
+                  <td>pending
+                  </td>
+                  <td>99.99
+                  </td>
+                  <td>1.6
+                  </td>
+                  <td>
+                    Πνοή Αγάπης
+                  </td>
+                  <td>
+                    Ναι
+                  </td>
+                  <td>
+                    1.2
+                  </td>
+                  <td>
+                    0.4
+                  </td>
+                  <td class="sorting_1">
+                    16 Δεκεμβρίου 2020 09:00
+                  </td>
+                  <td>
+                    16 Δεκεμβρίου 2020 09:00
+                  </td>
+                  <td>
+                    Own
+                  </td>
+                  <td>
+                    16 Δεκεμβρίου 2020 11:01
+                  </td>
+                  <td>
+                    16 Δεκεμβρίου 2020 18:00
+                  </td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th rowspan="1" colspan="1">ID
+                  </th>
+                  <th rowspan="1" colspan="1">Transaction ID
+                  </th>
+                  <th rowspan="1" colspan="1">Shop
+                  </th>
+                  <th rowspan="1" colspan="1">Processed
+                  </th>
+                  <th rowspan="1" colspan="1">User
+                  </th>
+                  <th rowspan="1" colspan="1">Status
+                  </th>
+                  <th rowspan="1" colspan="1">Sale Amount
+                  </th>
+                  <th rowspan="1" colspan="1">Commission
+                  </th>
+                  <th rowspan="1" colspan="1">For Cause
+                  </th>
+                  <th rowspan="1" colspan="1">To Featured Cause
+                  </th>
+                  <th rowspan="1" colspan="1">Cause commission
+                  </th>
+                  <th rowspan="1" colspan="1">For us
+                  </th>
+                  <th rowspan="1" colspan="1">Transaction Date
+                  </th>
+                  <th rowspan="1" colspan="1">Status Updated Date
+                  </th>
+                  <th rowspan="1" colspan="1">Affiliate Network
+                  </th>
+                  <th rowspan="1" colspan="1">Created At
+                  </th>
+                  <th rowspan="1" colspan="1">Updated At
+                  </th>
+                </tr>
+              </tfoot>
+            </table>
+            <div id="crudTable_processing" class="dataTables_processing panel panel-default" style="display: none;">
+              <img src="https://youbehero.com/vendor/backpack/crud/img/ajax-loader.gif" alt="Processing...">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="dataTables_info" id="crudTable_info" role="status" aria-live="polite">Εμφάνιση 1 έως 19 από 19 εγγραφές
+            </div>
+          </div>
+          <div class="col-sm-4">
+          </div>
+          <div class="col-sm-4">
+            <div class="dataTables_paginate paging_simple_numbers" id="crudTable_paginate">
+              <ul class="pagination">
+                <li class="paginate_button previous disabled" id="crudTable_previous">
+                  <a href="#" aria-controls="crudTable" data-dt-idx="0" tabindex="0">Προηγούμενη
+                  </a>
+                </li>
+                <li class="paginate_button active">
+                  <a href="#" aria-controls="crudTable" data-dt-idx="1" tabindex="0">1
+                  </a>
+                </li>
+                <li class="paginate_button next disabled" id="crudTable_next">
+                  <a href="#" aria-controls="crudTable" data-dt-idx="2" tabindex="0">Επόμενη
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div></div></div>
+       
+
+
+          
+
+
+      
+
+
+      
+
+
+      
+      
+
+      
+
+
+      
+      
+      
+
+      
+
+
+      
+      
+      
+
+      <script src="js/jquery.min.js">
+      </script>
+      <script src="js/popper.min.js">
+      </script>
+      <script src="js/bootstrap.min.js">
+      </script>
+      <script src="js/myJS.js">
+      </script>
+    </body>
+    </html>
