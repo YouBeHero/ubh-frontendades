@@ -15,13 +15,18 @@
     <meta property="og:site_name" content="YouBeHero.com" />
     <meta property="og:type" content="website" />
     <link rel="icon" type="image/png" sizes="192x192" href="https://youbehero.com/img/favicon/xandroid-icon-192x192.png.pagespeed.ic.8_kvkxCjpZ.png">
-    <meta property="og:image" content="http://ubehero.org/beta/img/various/youbehero-og.jpg" />
+    <meta property="og:image" content="http://youbehero.org/beta/img/various/youbehero-og.jpg" />
     <!-- <meta property="fb:app_id" content="98245333589" /> -->
     <meta property="og:url" content="http://ubehero.org/beta/index.html" />
-    <link rel="canonical" href="http://ubehero.org/beta/index.html" />
+    <link rel="canonical" href="http://youbehero.org/beta/index.html" />
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="https://www.youbehero.com/css/styles.css">
+    <!-- <link rel="stylesheet" href="https://www.youbehero.com/css/styles.css"> -->
     <link rel="dns-prefetch" href="//www.googletagmanager.com">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css" integrity="sha512-UTNP5BXLIptsaj5WdKFrkFov94lDx+eBvbKyoe1YAfjeRPC+gT5kyZ10kOHCfNZqEui1sxmqvodNUx3KbuYI/A==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous"
+    />
 
 </head>
 
@@ -51,19 +56,13 @@
         <div class="row-fluid pt-3">
             <div class="container py-lg-5 text-white">
                 <div class="row pb-md-4">
-
                     <div class="col-12 col-lg-7 text-left px-md-0">
                         <h1 class="superstrong pb-3">Στήριξε μια οργάνωση με κάθε σου ηλεκτρονική αγορά, χωρίς κανένα επιπλέον κόστος.</h1>
-
-
-
                         <p class="pt-3 mb-0">
                             <a href="/register" class="btn btn-success btn-lg shadow vertical" title="Πάτησε εδώ για να ξεκινήσεις">Επιλογή οργάνωσης
                             </a>
                         </p>
-
                     </div>
-
                     <div class="col-12 col-lg-4 ml-auto pr-md-0 pt-4">
                         <a href="javascript:void(0);" data-toggle="modal" data-target="#videoModal" class="text-white" title="Πάτησε εδώ για να ξεκινήσει το βίντεο">
                             <img src="https://www.youbehero.com/img/various/video-player.png" alt="" class="img-fluid float shadow">
@@ -74,10 +73,6 @@
                             </a>
                         </p>
                     </div>
-
-
-
-
                 </div>
             </div>
         </div>
@@ -86,20 +81,44 @@
     <div class="row-fluid bg-white pb-5 charity-logos mt-5">
         <div class="container px-md-0">
             <div class="row">
-
-                <div class="owl-carousel">
-
-
-                    <div class="item col text-center">
-                        <a href="/cause/{{$confirmed_cause->alias}}" target="_blank">
-                        <img src="https://www.youbehero.com/images/cause/94/l/xaspida-logo.jpg.pagespeed.ic.dIcpHcLvga.webp" class="rounded img-fluid" alt="{{$confirmed_cause->name}} - Λογότυπο" title="{{$confirmed_cause->name}} - {{$confirmed_cause->quote}}" />
-                      </a>
+                <div class="owl-carousel owl-theme">
+                    <div class="col text-center">
+                        <a href="#" target="_blank">
+                            <img src="https://www.youbehero.com/images/cause/94/l/xaspida-logo.jpg.pagespeed.ic.dIcpHcLvga.webp" class="rounded img-fluid" alt="Λογότυπο" title="Logo" />
+                        </a>
                     </div>
 
+                    <div class="col text-center">
+                        <a href="#" target="_blank">
+                            <img src="https://www.youbehero.com//images/cause/43/l/xnosileia_logo.png.pagespeed.ic.90w65ujmRL.png" class="rounded img-fluid" alt="Λογότυπο" title="Logo" />
+                        </a>
+                    </div>
 
+                    <div class="col text-center">
+                        <a href="#" target="_blank">
+                            <img src="https://www.youbehero.com/images/cause/45/l/xseanamoni_logo.jpeg.pagespeed.ic.7XX2IyIJQA.webp" class="rounded img-fluid" alt="Λογότυπο" title="Logo" />
+                        </a>
+                    </div>
+
+                    <div class="col text-center">
+                        <a href="#" target="_blank">
+                            <img src="https://www.youbehero.com/images/cause/48/l/xbe-visible-be-you.png.pagespeed.ic.IVpFal1iH6.png" class="rounded img-fluid" alt="Λογότυπο" title="Logo" />
+                        </a>
+                    </div>
+
+                    <div class="col text-center">
+                        <a href="#" target="_blank">
+                            <img src="https://www.youbehero.com/images/cause/30/l/xKyma_project_logo.jpeg.pagespeed.ic.GsfMZ72cRA.webp" class="rounded img-fluid" alt="Λογότυπο" title="Logo" />
+                        </a>
+                    </div>
+
+                    <div class="col text-center">
+                        <a href="#" target="_blank">
+                            <img src="https://www.youbehero.com/images/cause/77/l/xisea_com_gr_logo.png.pagespeed.ic.ZGBgzb6CLn.png" class="rounded img-fluid" alt="Λογότυπο" title="Logo" />
+                        </a>
+                    </div>
                 </div>
             </div>
-
         </div>
     </div>
 
@@ -137,9 +156,9 @@
 
                 <div class="col-12 col-lg-6 text-center text-lg-right d-lg-none py-5">
                     <video width="100%" preload="auto" autoplay loop muted playsinline title="Δεύτερο βήμα: Εγγραφή">
-                <source src="img/various/registration-02.mp4" type="video/mp4">
-                <source src="img/various/registration-02.webm" type="video/webm">
-                <source src="img/various/registration-02.ogv" type="video/ogv">
+                <source src="https://www.youbehero.com/img/various/registration-02.mp4" type="video/mp4">
+                <source src="https://www.youbehero.com/img/various/registration-02.webm" type="video/webm">
+                <source src="https://www.youbehero.com/img/various/registration-02.ogv" type="video/ogv">
                 Δεν υποστηρίζεται το βίντεο από τον browser
             </video>
                 </div>
@@ -198,12 +217,42 @@
                     <div class="row-fluid pt-4">
                         <div class="container px-md-0">
                             <div class="row featured-shops">
-                                <div class="owl-carousel">
-                                    @foreach($featured_shops as $featured_shop)
-                                    <div class="item col text-center">
-                                        <img src="{{$featured_shop->logo}}" class="rounded img-fluid" alt="{{$featured_shop->name}}" title="{{$featured_shop->name}}" />
+                                <div class="owl-carousel owl-theme carousel1">
+                                    <div class="col text-center">
+                                        <a href="#" target="_blank">
+                                            <img src="https://www.youbehero.com/images/cause/94/l/xaspida-logo.jpg.pagespeed.ic.dIcpHcLvga.webp" class="rounded img-fluid" alt="Λογότυπο" title="Logo" />
+                                        </a>
                                     </div>
-                                    @endforeach
+
+                                    <div class="col text-center">
+                                        <a href="#" target="_blank">
+                                            <img src="https://www.youbehero.com//images/cause/43/l/xnosileia_logo.png.pagespeed.ic.90w65ujmRL.png" class="rounded img-fluid" alt="Λογότυπο" title="Logo" />
+                                        </a>
+                                    </div>
+
+                                    <div class="col text-center">
+                                        <a href="#" target="_blank">
+                                            <img src="https://www.youbehero.com/images/cause/45/l/xseanamoni_logo.jpeg.pagespeed.ic.7XX2IyIJQA.webp" class="rounded img-fluid" alt="Λογότυπο" title="Logo" />
+                                        </a>
+                                    </div>
+
+                                    <div class="col text-center">
+                                        <a href="#" target="_blank">
+                                            <img src="https://www.youbehero.com/images/cause/48/l/xbe-visible-be-you.png.pagespeed.ic.IVpFal1iH6.png" class="rounded img-fluid" alt="Λογότυπο" title="Logo" />
+                                        </a>
+                                    </div>
+
+                                    <div class="col text-center">
+                                        <a href="#" target="_blank">
+                                            <img src="https://www.youbehero.com/images/cause/30/l/xKyma_project_logo.jpeg.pagespeed.ic.GsfMZ72cRA.webp" class="rounded img-fluid" alt="Λογότυπο" title="Logo" />
+                                        </a>
+                                    </div>
+
+                                    <div class="col text-center">
+                                        <a href="#" target="_blank">
+                                            <img src="https://www.youbehero.com/images/cause/77/l/xisea_com_gr_logo.png.pagespeed.ic.ZGBgzb6CLn.png" class="rounded img-fluid" alt="Λογότυπο" title="Logo" />
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -225,9 +274,9 @@
 
                 <div class="col-12 col-lg-6 text-center text-lg-right d-lg-none py-5">
                     <video width="100%" preload="auto" autoplay loop muted playsinline title="Συγχαρητήρια: Η δωρεά σου έχει καταγραφεί!">
-                        <source src="img/various/registration-04.mp4" type="video/mp4">
-                        <source src="img/various/registration-04.webm" type="video/webm">
-                        <source src="img/various/registration-04.ogv" type="video/ogv">
+                        <source src="https://www.youbehero.com/img/various/registration-04.mp4" type="video/mp4">
+                        <source src="https://www.youbehero.com/img/various/registration-04.webm" type="video/webm">
+                        <source src="https://www.youbehero.com/img/various/registration-04.ogv" type="video/ogv">
                         Δεν υποστηρίζεται το βίντεο από τον browser
                     </video>
                 </div>
@@ -261,42 +310,42 @@
         <div class="container pt-lg-5">
             <div class="row">
 
-                <div class="owl-carousel">
-
-
-                    <div class="item col text-center">
-                        <a href="https://www.insomnia.gr/articles/various/advertorial/new-way-for-your-favorite-donations-by-youbehero/" target="_blank" title="Ανοίγει τον σύνδεσμο σε νέα καρτέλα" rel="nofollow"><img src="/img/various/media/insomnia.jpg" alt="Πρώτο ΘΕΜΑ logo" class="img-fluid" /></a>
+                <div class="owl-carousel owl-theme">
+                    <div class="col text-center">
+                        <a href="#" target="_blank">
+                            <img src="https://www.youbehero.com/images/cause/94/l/xaspida-logo.jpg.pagespeed.ic.dIcpHcLvga.webp" class="rounded img-fluid" alt="Λογότυπο" title="Logo" />
+                        </a>
                     </div>
 
-                    <div class="item col text-center">
-                        <a href="https://www.youtube.com/watch?v=QhvmHIlX9AE" title="Ανοίγει τον σύνδεσμο σε νέα καρτέλα" rel="nofollow" target="_blank"><img src="/img/various/media/proto-thema-radio.jpg" alt="Πρώτο ΘΕΜΑ logo" class="img-fluid" /></a>
+                    <div class="col text-center">
+                        <a href="#" target="_blank">
+                            <img src="https://www.youbehero.com//images/cause/43/l/xnosileia_logo.png.pagespeed.ic.90w65ujmRL.png" class="rounded img-fluid" alt="Λογότυπο" title="Logo" />
+                        </a>
                     </div>
 
-                    <div class="item col text-center">
-                        <a href="https://www.madeingreece.news/hompostsec/made-in-greepse-to-youbehero-gine-ki-esy-hrwas-prosferontas" target="_blank" title="Ανοίγει τον σύνδεσμο σε νέα καρτέλα" rel="nofollow"><img src="/img/various/media/madeingreece-logo.jpg" alt="Made in Greece logo" class="img-fluid" /></a>
+                    <div class="col text-center">
+                        <a href="#" target="_blank">
+                            <img src="https://www.youbehero.com/images/cause/45/l/xseanamoni_logo.jpeg.pagespeed.ic.7XX2IyIJQA.webp" class="rounded img-fluid" alt="Λογότυπο" title="Logo" />
+                        </a>
                     </div>
 
-                    <div class="item col text-center">
-                        <a href="http://www.pragmatikotita.gr/article/1995-youbehero-kane-tis-ilektronikes-agores-soy-praxeis-allileggyis-kai-gine-o-iroas-mias" target="_blank" title="Ανοίγει τον σύνδεσμο σε νέα καρτέλα" rel="nofollow"><img src="/img/various/media/pragmatikotita.jpg" alt="Πραγματικότητα logo" class="img-fluid" /></a>
+                    <div class="col text-center">
+                        <a href="#" target="_blank">
+                            <img src="https://www.youbehero.com/images/cause/48/l/xbe-visible-be-you.png.pagespeed.ic.IVpFal1iH6.png" class="rounded img-fluid" alt="Λογότυπο" title="Logo" />
+                        </a>
                     </div>
 
-                    <div class="item col text-center">
-                        <a href="https://www.ert.gr/eidiseis/mono-sto-ertgr/youbehero-iroas-eno-kaneis-tis-agores-soy-online/" target="_blank" title="Ανοίγει τον σύνδεσμο σε νέα καρτέλα" rel="nofollow"><img src="/img/various/media/ert.jpg" alt="ΕΡΤ logo" class="img-fluid" /></a>
+                    <div class="col text-center">
+                        <a href="#" target="_blank">
+                            <img src="https://www.youbehero.com/images/cause/30/l/xKyma_project_logo.jpeg.pagespeed.ic.GsfMZ72cRA.webp" class="rounded img-fluid" alt="Λογότυπο" title="Logo" />
+                        </a>
                     </div>
 
-                    <div class="item col text-center">
-                        <a href="https://www.mixcloud.com/dastaduth/220219-%CE%B2%CE%B1%CF%83%CE%AF%CE%BB%CE%B5%CE%B9%CE%BF%CF%82-%CE%BA%CE%B1%CE%BB%CE%AF%CF%80/" target="_blank" title="Ανοίγει τον σύνδεσμο σε νέα καρτέλα" rel="nofollow"><img src="/img/various/media/omorfi-poli.jpg" alt="Ράδιο Ξάνθη - Όμορφη Πόλη logo" class="img-fluid" /></a>
+                    <div class="col text-center">
+                        <a href="#" target="_blank">
+                            <img src="https://www.youbehero.com/images/cause/77/l/xisea_com_gr_logo.png.pagespeed.ic.ZGBgzb6CLn.png" class="rounded img-fluid" alt="Λογότυπο" title="Logo" />
+                        </a>
                     </div>
-
-                    <div class="item col text-center">
-                        <a href="https://www.businessnews.gr/article/135776/youbehero-h-proti-elliniki-platforma-poy-metatrepei-kathe-ilektroniki-soy-agora-se" title="Ανοίγει τον σύνδεσμο σε νέα καρτέλα" rel="nofollow" target="_blank"><img src="/img/various/media/businessnews.jpg" alt="BusinesNews logo" class="img-fluid" /></a>
-                    </div>
-
-                    <div class="item col text-center">
-                        <a href="https://startupper.gr/vipnews/46612/youbehero-%ce%bd%ce%ad%ce%b1-%cf%80%ce%bb%ce%b1%cf%84%cf%86%cf%8c%cf%81%ce%bc%ce%b1-%ce%b1%ce%b3%ce%bf%cf%81%cf%8e%ce%bd-online-%ce%bc%ce%b5-%ce%ba%ce%bf%ce%b9%ce%bd%cf%89%ce%bd%ce%b9%ce%ba%cf%8c/" target="_blank"
-                            title="Ανοίγει τον σύνδεσμο σε νέα καρτέλα" rel="nofollow"><img src="/img/various/media/startupper.jpg" alt="StartUpper logo" class="img-fluid" /></a>
-                    </div>
-
                 </div>
             </div>
         </div>
@@ -332,6 +381,43 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/myJS.js"></script>
     <!-- <script src="js/showads.js"></script> -->
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js" integrity="sha512-gY25nC63ddE0LcLPhxUJGFxa2GoIyA5FLym4UJqHDEMHjp8RET6Zn/SHo1sltt3WuVtqfyxECP38/daUc/WVEA==" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function() {
+            $(".carousel1").owlCarousel({
+                loop: true,
+                autoplay: true,
+                autoplayTimeout: 1000,
+                dots: false,
+                responsive: {
+                    0: {
+                        items: 5
+                    }
+
+                }
+            });
+            $(".owl-carousel").owlCarousel({
+                loop: true,
+                autoplay: true,
+                autoplayTimeout: 1000,
+                dots: false,
+                responsive: {
+                    0: {
+                        items: 3
+                    },
+                    992: {
+                        items: 5
+                    }
+
+                }
+            });
+
+        });
+    </script>
 </body>
 
 </html>
