@@ -73,10 +73,345 @@ const searchClient = algoliasearch(
   'd3191a6f8232cbedb18b93ba922b71af'
 );
 
+const encodedCategories = {
+  anthrwpo: 'Για τον άνθρωπο'
+}
+
+const encodedKathgories = {
+  anthrwpos: 'Για τον άνθρωπο',
+  perivallon: 'Για το περιβάλλον',
+  zwa: 'Για τους καλούς μας φίλους'
+}
+
+const encodedYpokathgories = {
+  agriafush: 'Άγρια φύση',
+  atoma_me_anapiria: 'Άτομα με Αναπηρία',
+  adespota: 'Αδέσποτα',
+  anakuklwsh: 'Ανακύκλωση',
+  anthrwpistikh_voitheia: 'Ανθρωπιστική βοήθεια',
+  astegia: 'Αστεγία',
+  giaperivallon: 'Για το περιβάλλον',
+  anthrwpos: 'Για τον άνθρωπο',
+  zwa: 'Για τους καλούς μας φίλους',
+  ekpaideusi: 'Εκπαίδευση',
+  koinwnia: 'Κοινωνία',
+  koinwnikh_allhlegguh: 'Κοινωνική Αλληλεγγύη',
+  koinwnikh_epanedaxh: 'Κοινωνική Επανένταξη',
+  paidia_neoi: 'Παιδιά και νέοι',
+  perivallon: 'Περιβάλλον',
+  texnes: 'Τέχνες',
+  trith_hlikia: 'Τρίτη ηλικία',
+  ygeia: 'Υγεία',
+  ygeia_proneia: 'Υγεία & Πρόνοια'
+
+}
+
+const encodedTopothesies = {
+  athina: 'Αθήνα',
+  ellhniko: 'Ελληνικό',
+  metaxourgeio : 'Μεταξουργείο',
+  votanikos : 'Votanikos',
+  agios_iwannhs_renth: 'Άγιος Ιωάννης Ρέντη',
+  anw_pathsia: 'Άνω Πατήσια',
+  anw_pathsia_athina: 'Άνω Πατήσια, Αθήνα',
+  galatas: 'Γαλατάς',
+  dafni: 'Δάφνη',
+  drama: 'Δράμα',
+  thessaloniki_athina: 'Θεσσαλονίκη & Αθήνα',
+  katw_patisia: 'Κάτω Πατήσια',
+  kallithea: 'Καλλιθέα',
+  katerinh: 'Κατερίνη',
+  kifisia: 'Κηφισιά',
+  larisa: 'Λάρισα',
+  mosxato: 'ΜΟΣΧΑΤΟ',
+  neamakri: 'ΝΕΑ ΜΑΚΡΗ',
+  nikaia: 'Νίκαια',
+  pagkrati: 'Παγκράτι'
+}
+
+const decodedCategories = Object.keys(encodedCategories).reduce((acc, key) => {
+  const newKey = encodedCategories[key];
+  const newValue = key;
+
+  return {
+    ...acc,
+    [newKey]: newValue,
+  };
+}, {});
+
+const decodedKathgories = Object.keys(encodedKathgories).reduce((acc, key) => {
+  const newKey = encodedKathgories[key];
+  const newValue = key;
+
+  return {
+    ...acc,
+    [newKey]: newValue,
+  };
+}, {});
+
+const decodedYpokathgories = Object.keys(encodedYpokathgories).reduce((acc, key) => {
+  const newKey = encodedYpokathgories[key];
+  const newValue = key;
+
+  return {
+    ...acc,
+    [newKey]: newValue,
+  };
+}, {});
+
+const decodedTopothesies = Object.keys(encodedTopothesies).reduce((acc, key) => {
+  const newKey = encodedTopothesies[key];
+  const newValue = key;
+
+  return {
+    ...acc,
+    [newKey]: newValue,
+  };
+}, {});
+
+
+
+function getKathgoriaSlug(name) {
+  const encodedName = decodedKathgories[name] || name;
+
+  return encodedName
+    .split(' ')
+    .map(encodeURIComponent)
+    .join('+');
+}
+
+function getKathgoriaName(slug) {
+  const decodedSlug = encodedKathgories[slug] || slug;
+
+  return decodedSlug
+    .split('+')
+    .map(decodeURIComponent)
+    .join(' ');
+}
+
+function getYpokathgoriaSlug(name) {
+  const encodedName = decodedYpokathgories[name] || name;
+
+  return encodedName
+    .split(' ')
+    .map(encodeURIComponent)
+    .join('+');
+}
+
+function getYpokathgoriaName(slug) {
+  const decodedSlug = encodedYpokathgories[slug] || slug;
+
+  return decodedSlug
+    .split('+')
+    .map(decodeURIComponent)
+    .join(' ');
+}
+
+function getTopothesiaSlug(name) {
+  const encodedName = decodedTopothesies[name] || name;
+
+  return encodedName
+    .split(' ')
+    .map(encodeURIComponent)
+    .join('+');
+}
+
+function getTopothesiaName(slug) {
+  const decodedSlug = encodedTopothesies[slug] || slug;
+
+  return decodedSlug
+    .split('+')
+    .map(decodeURIComponent)
+    .join(' ');
+}
+
+
+function getCategorySlug(name) {
+  const encodedName = decodedCategories[name] || name;
+
+  return encodedName
+    .split(' ')
+    .map(encodeURIComponent)
+    .join('+');
+}
+
+// Returns a name from the category slug.
+// The "+" are replaced by spaces and other
+// characters are decoded.
+function getCategoryName(slug) {
+  const decodedSlug = encodedTopothesies[slug] || slug;
+
+  return decodedSlug
+    .split('+')
+    .map(decodeURIComponent)
+    .join(' ');
+}
+
+
+const routing = {
+  router: instantsearch.routers.history({
+    windowTitle({ category, query }) {
+      const queryTitle = query ? `Αποτελέσματα για "${query}" - YouBeHero` : 'Όλες οι οργανώσεις - YouBeHero';
+
+      if (category) {
+        return `${category} - ${queryTitle}`;
+      }
+
+      return queryTitle;
+
+    },
+
+    createURL({ qsModule, routeState, location }) {
+      // const urlParts = location.href.match(/^(.*?)\/gr\/cause-category\/filanthropikoi/);
+      const urlParts = location.href.match(/^(.*?)\/causes.html/);
+      const baseUrl = `${urlParts ? urlParts[1] : ''}/`;
+      
+      const categoryPath = routeState.category
+      ? routeState.category
+            .map((category) => getCategorySlug(category))
+            .join('/') + '/'
+        : '';
+
+      const queryParameters = {};
+
+      if (routeState.query) {
+        queryParameters.query = encodeURIComponent(routeState.query);
+      }
+      if (routeState.page !== 1) {
+        queryParameters.page = routeState.page;
+      }
+
+      // if (routeState.kathgoria) {
+      //   queryParameters.kathgoria = routeState.kathgoria.map(encodeURIComponent);
+      // }
+
+            // if (routeState.topothesia) {
+      //   queryParameters.topothesia = routeState.topothesia.map(encodeURIComponent);
+      // }
+
+      // if (routeState.ypokathgoria) {
+      //   queryParameters.ypokathgoria = routeState.ypokathgoria.map(encodeURIComponent);
+      // }
+
+      if (routeState.kathgoria) {
+        queryParameters.kathgoria = routeState.kathgoria ? routeState.kathgoria.map((kathgoria)=> getKathgoriaSlug(kathgoria)): '';
+      }
+
+      if (routeState.ypokathgoria) {
+        queryParameters.ypokathgoria = routeState.ypokathgoria ? routeState.ypokathgoria.map((ypokathgoria)=> getYpokathgoriaSlug(ypokathgoria)): '';
+      }
+
+      if (routeState.topothesia) {
+        queryParameters.topothesia = routeState.topothesia ? routeState.topothesia.map((topothesia)=> getTopothesiaSlug(topothesia)): '';
+      }
+
+      const queryString = qsModule.stringify(queryParameters, {
+        addQueryPrefix: true,
+        arrayFormat: 'repeat'
+      });
+
+      // return `${baseUrl}gr/cause-category/filanthropikoi/${categoryPath}${queryString}`;
+      return `${baseUrl}causes.html${categoryPath}${queryString}`;
+    },
+
+    parseURL({ qsModule, location }) {
+      // const pathnameMatches = location.href.match(/^(.*?)\/gr\/cause-category\/filanthropikoi/);
+      const pathnameMatches = location.href.match(/^(.*?)\/causes.html\/(.*?)\/?$/);
+      const category = ((pathnameMatches && pathnameMatches[1]) || '')
+        .split('/')
+        .map((path) => getCategoryName(path));
+
+      const { query = '', page  } = qsModule.parse(
+        location.search.slice(1)
+      );
+
+      const kathgoria = ((pathnameMatches && pathnameMatches[1]) || '')
+      .split('/')
+      .map((path) => getKathgoriaName(path));
+
+      const ypokathgoria = ((pathnameMatches && pathnameMatches[1]) || '')
+      .split('/')
+      .map((path) => getYpokathgoriaName(path));
+
+      const topothesia = ((pathnameMatches && pathnameMatches[1]) || '')
+      .split('/')
+      .map((path) => getTopothesiaName(path));
+
+      // const { query = '', page , kathgoria=[] ,  ypokathgoria = [], topothesia = [] } = qsModule.parse(
+      //   location.search.slice(1)
+      // );
+      // `qs` does not return an array when there's a single value.
+      // const allkathgoria = Array.isArray(kathgoria)
+      // ? kathgoria
+      // : [kathgoria].filter(Boolean);
+
+      // const allypokathgoria = Array.isArray(ypokathgoria)
+      // ? ypokathgoria
+      // : [ypokathgoria].filter(Boolean);
+
+      // const alltopothesia = Array.isArray(topothesia)
+      //   ? topothesia
+      //   : [topothesia].filter(Boolean);
+
+        
+      return {
+        query: decodeURIComponent(query),
+        page,
+        // kathgoria : allkathgoria.map(decodeURIComponent),
+        // ypokathgoria : allypokathgoria.map(decodeURIComponent),
+        // topothesia: alltopothesia.map(decodeURIComponent),
+        kathgoria,
+        ypokathgoria,
+        topothesia,
+        category,
+      };
+    },
+  }),
+
+  stateMapping: {
+    stateToRoute(uiState) {
+      const indexUiState = uiState['causes-registration'] || {};
+
+      return {
+        query: indexUiState.query,
+        page: indexUiState.page,
+        kathgoria: indexUiState.refinementList 
+        && indexUiState.refinementList['category_parent'],
+        ypokathgoria: indexUiState.refinementList 
+        && indexUiState.refinementList['category'],
+        topothesia: indexUiState.refinementList 
+        && indexUiState.refinementList['location'],
+        category: indexUiState.menu && indexUiState.menu.categories
+      };
+    },
+
+    routeToState(routeState) {
+      return {
+        causes_registration: {
+          query: routeState.query,
+          page: routeState.page,
+          menu: {
+            categories: routeState.category
+          },
+          refinementList: {
+            'category_parent': routeState.ykathgoria
+          },
+          refinementList: {
+            'category': routeState.ypokathgoria
+          },
+          refinementList: {
+            'location': routeState.topothesia
+          },
+        },
+      };
+    },
+  },
+};
 
 const search = instantsearch({
   indexName: 'causes-registration',
   searchClient,
+  routing
 });
 
 search.addWidgets([
