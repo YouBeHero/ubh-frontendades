@@ -325,6 +325,7 @@ const routing = {
         location.search.slice(1)
       );
 
+      
       const kathgoria = ((pathnameMatches && pathnameMatches[1]) || '')
       .split('/')
       .map((path) => getKathgoriaName(path));
