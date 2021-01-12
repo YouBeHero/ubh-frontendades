@@ -272,7 +272,8 @@ const routing = {
             .join('/') + '/'
         : '';
 
-      const queryParameters = {};
+      // const queryParameters = {};
+      let queryParameters = {};
 
       if (routeState.query) {
         queryParameters.query = encodeURIComponent(routeState.query);
@@ -292,23 +293,105 @@ const routing = {
       // if (routeState.ypokathgoria) {
       //   queryParameters.ypokathgoria = routeState.ypokathgoria.map(encodeURIComponent);
       // }
+      let queryString = '';
+      let kathgoriesrest = []; 
+      let kathgoriesurl = '';
+      let kathgoriastring='';
 
       if (routeState.kathgoria) {
         queryParameters.kathgoria = routeState.kathgoria ? routeState.kathgoria.map((kathgoria)=> getKathgoriaSlug(kathgoria)): '';
+        
+        let kathgorialen= queryParameters.kathgoria.length;
+        if (kathgorialen>1){
+          for (i=0; i<kathgorialen-1; i++) {
+            kathgoriesrest.push( queryParameters.kathgoria.pop());
+          }
+          kathgoriesrest.reverse();
+          if (kathgoriesrest.length >1){
+            kathgoriesurl = kathgoriesrest.join("-");
+            kathgoriesurl = "-"+ kathgoriesurl;  
+          } else {
+            kathgoriesurl = "-"+ kathgoriesrest[0];
+          }
+          
+        }
+        kathgoriastring = qsModule.stringify(queryParameters, {
+          addQueryPrefix: true,
+          arrayFormat: 'repeat'
+        });
+        if (kathgoriesurl){
+          kathgoriastring = kathgoriastring + kathgoriesurl;
+        }
+        queryParameters.kathgoria.pop()
       }
+      
+      let ypokathgoriesrest = []; 
+      let ypokathgoriesurl = '';
+      let ypokathgoriastring='';
 
       if (routeState.ypokathgoria) {
         queryParameters.ypokathgoria = routeState.ypokathgoria ? routeState.ypokathgoria.map((ypokathgoria)=> getYpokathgoriaSlug(ypokathgoria)): '';
+
+        let ypokathgorialen= queryParameters.ypokathgoria.length;
+        if (ypokathgorialen>1){
+          for (i=0; i<ypokathgorialen-1; i++) {
+            ypokathgoriesrest.push( queryParameters.ypokathgoria.pop());
+          }
+          ypokathgoriesrest.reverse();
+          if (ypokathgoriesrest.length >1){
+            ypokathgoriesurl = ypokathgoriesrest.join("-");
+            ypokathgoriesurl = "-"+ ypokathgoriesurl;  
+          } else {
+            ypokathgoriesurl = "-"+ ypokathgoriesrest[0];
+          }
+          
+        }
+        ypokathgoriastring = qsModule.stringify(queryParameters, {
+          addQueryPrefix: true,
+          arrayFormat: 'repeat'
+        });
+        if (ypokathgoriesurl){
+          ypokathgoriastring = ypokathgoriastring + ypokathgoriesurl;
+        }
+        queryParameters.ypokathgoria.pop()
       }
 
+      let topothesiarest = []; 
+      let topothesiaurl = '';
+      let topothesiastring='';
+      
       if (routeState.topothesia) {
         queryParameters.topothesia = routeState.topothesia ? routeState.topothesia.map((topothesia)=> getTopothesiaSlug(topothesia)): '';
+
+        let topothesialen= queryParameters.topothesia.length;
+        if (topothesialen>1){
+          for (i=0; i<topothesialen-1; i++) {
+            topothesiarest.push( queryParameters.topothesia.pop());
+          }
+          topothesiarest.reverse();
+          if (topothesiarest.length >1){
+            topothesiaurl = topothesiarest.join("-");
+            topothesiaurl = "-"+ topothesiaurl;  
+          } else {
+            topothesiaurl = "-"+ topothesiarest[0];
+          }
+          
+        }
+        topothesiastring = qsModule.stringify(queryParameters, {
+          addQueryPrefix: true,
+          arrayFormat: 'repeat'
+        });
+        if (topothesiaurl){
+          topothesiastring = topothesiastring + topothesiaurl;
+        }
+        queryParameters.topothesia.pop()
       }
 
-      const queryString = qsModule.stringify(queryParameters, {
-        addQueryPrefix: true,
-        arrayFormat: 'repeat'
-      });
+      queryString=  kathgoriastring + ypokathgoriastring + topothesiastring
+      // const queryString = qsModule.stringify(queryParameters, {
+      //   addQueryPrefix: true,
+      //   arrayFormat: 'repeat'
+      // });
 
       // return `${baseUrl}gr/cause-category/filanthropikoi/${categoryPath}${queryString}`;
       return `${baseUrl}causes.html${categoryPath}${queryString}`;
@@ -611,6 +694,90 @@ search.addWidget(
   })
 );
 
+search.addWidget(
+  instantsearch.widgets.stats({
+   container: '#stats',
+   cssClasses: {
+    text: 'text-secondary smaller-2',
+    },
+    templates: {
+      text: `
+        <p class="mb-0">
+          {{#hasNoResults}}{{/hasNoResults}}
+          {{#hasOneResult}}1 αποτέλεσμα για την αναζήτηση «{{query}}» βρέθηκαν σε {{processingTimeMS}}ms. <span class="float-right">
+            <a href="https://www.algolia.com" target="_blank" title="Search powered by Algolia."><i class="fab fa-algolia mr-1"></i></a>
+          </span>{{/hasOneResult}}
+          {{#hasManyResults}}{{#helpers.formatNumber}}{{nbHits}}{{/helpers.formatNumber}} αποτελέσματα βρέθηκαν σε {{processingTimeMS}}ms. <span class="float-right">
+            <a href="https://www.algolia.com" target="_blank" title="Search powered by Algolia."><i class="fab fa-algolia mr-1"></i></a>
+          </span> {{/hasManyResults}}
+        </p>
+      `,
+    },
+  })
+);
+
+const createDataAttribtues = refinement =>
+  Object.keys(refinement)
+    .map(key => `data-${key}="${refinement[key]}"`)
+    .join(' ');
+
+const renderListItem = item => `
+  ${item.refinements
+    .map(
+      refinement =>
+        `<div class="ais-ClearRefinements" style="display:inline">
+          <button class="ais-ClearRefinements-button" ${createDataAttribtues(refinement)} style="border: 0;">
+            <a href="javascript:void(0);" class="badge badge-primary">${refinement.label} (${refinement.count})<i class="fas fa-times ml-2"></i>
+            </a>
+          </button>
+        </div>`
+    )
+    .join('')}
+`;
+
+const renderCurrentRefinements = (renderOptions, isFirstRender) => {
+  const { items, refine, widgetParams } = renderOptions;
+
+  widgetParams.container.innerHTML = `
+    ${items.map(renderListItem).join('')}
+  `;
+
+  [...widgetParams.container.querySelectorAll('button')].forEach(element => {
+    element.addEventListener('click', event => {
+      const item = Object.keys(event.currentTarget.dataset).reduce(
+        (acc, key) => ({
+          ...acc,
+          [key]: event.currentTarget.dataset[key],
+        }),
+        {}
+      );
+
+      refine(item);
+    });
+  });
+};
+
+// Create the custom widget
+const customCurrentRefinements = instantsearch.connectors.connectCurrentRefinements(
+  renderCurrentRefinements
+);
+
+// Instantiate the custom widget
+search.addWidgets([
+  customCurrentRefinements({
+    container: document.querySelector('#current-refinements')
+  })
+]);
+
+search.addWidget(
+  instantsearch.widgets.clearRefinements({
+    container: '#clear-refinements-new',
+    includedAttributes: ["query","category_parent","category","location"],
+    templates: {
+      resetLabel: '<a href="javascript:void(0);" class="badge badge-primary">Καθαρισμός αναζήτησης<i class="fas fa-times ml-2"></i></a>'
+    }
+  })
+);
 
 // https://www.algolia.com/doc/api-reference/widgets/range-slider/js/#widget-param-cssclasses
 /*search.addWidget(

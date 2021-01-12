@@ -35,6 +35,9 @@
           border-radius: .25rem;
           transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
       }
+      #clear-refinements-new .ais-ClearRefinements{
+        display: inline;
+      }
 
       .ais-ClearRefinements-button {
           background: none;
@@ -255,6 +258,13 @@
 
                 <div class="right-panel">
                   <div id="searchbox" class="ais-SearchBox"></div>
+                  <div id="stats"></div>
+                  <div class="col-12 px-0">
+                    <!-- <div id="current-refinements" class="d-inline-block mr-1 mb-1"></div> -->
+                    <div id="current-refinements" class="d-inline-block mb-1"></div>
+                    <!-- <div id="clear-refinements-new" class="d-inline-block"></div> -->
+                    <div id="clear-refinements-new" style="display:inline"></div>
+                  </div>
                   <div id="hits" class="card-deck pt-3 pb-2"></div>
                 </div>
 
