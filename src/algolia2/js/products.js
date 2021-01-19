@@ -27,9 +27,8 @@ const produc = products.filter(element => {
         return element
     }   
 });
-console.log(produc.length)
 //  Then push the data on Algolia
 index.replaceAllObjects(produc, { autoGenerateObjectIDIfNotExist: true }).then(({ objectIDs }) => {
-    // console.log(objectIDs);
+    console.log(objectIDs);
 })
 .catch(err => console.error(err));
