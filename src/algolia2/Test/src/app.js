@@ -2,7 +2,7 @@
 
 const search = instantsearch({
     indexName: 'ybh_index',
-    searchClient: algoliasearch("3CUMU7CU6Q", "9b7885176dc700e465237047fce8057a"),
+    searchClient: algoliasearch("BFIHYR57MA", "881465747d181cdb11789d76b044aa08"),
 });
 
 search.addWidgets([
