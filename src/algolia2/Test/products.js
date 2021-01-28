@@ -3,7 +3,7 @@
 
 const algoliaSearch = require("algoliasearch");
 const client = algoliaSearch("BFIHYR57MA", "881465747d181cdb11789d76b044aa08"); //(AppID, AdminAPIKey)
-const index = client.initIndex("ybh_index");
+const index = client.initIndex("ybhIndex");
 
 function prepareData(){
     //  Local Json file.

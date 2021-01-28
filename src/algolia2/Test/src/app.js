@@ -1,7 +1,7 @@
 /* global instantsearch algoliasearch */
 
 const search = instantsearch({
-    indexName: 'ybh_index',
+    indexName: 'ybhIndex',
     searchClient: algoliasearch("BFIHYR57MA", "881465747d181cdb11789d76b044aa08"),
 });
 
