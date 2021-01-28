@@ -42,7 +42,7 @@ search.addWidgets([
 
     instantsearch.widgets.hierarchicalMenu({
         container: '#hierarchical-menu',
-        attributes: ['category']
+        attributes: ['hierarchicalCategories.lvl0','hierarchicalCategories.lvl1', 'hierarchicalCategories.lvl2']
     }),
 
     instantsearch.widgets.hitsPerPage({

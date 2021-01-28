@@ -1,8 +1,7 @@
-// To run this file you need to install 'npm install algoliasearch instantsearch.js' and the 'node setUp.js'
 const algoliaSearch = require("algoliasearch");
 
 const client = algoliaSearch("3CUMU7CU6Q", "9b7885176dc700e465237047fce8057a");
-const index = client.initIndex('ybh-index');
+const index = client.initIndex('ybh_index');
 
 index.setSettings({
     searchableAttributes: ["orded(brand_name)", "orded(product_name)", "category"]
@@ -14,24 +13,25 @@ index.setSettings({
 
 index.setSettings({
     attributesForFaceting: [
-        'brand_name',
+        'searchable(brand_name)',
         'category',
         'price',
-        'size'
+        'size',
+        'hierarchicalCategories'
     ]
 });
 
 index.setSettings({
     replicas: [
-        'price-desc',
-        'price-asc'
+        'prices_desc',
+        'prices_asc'
     ]
 }).then(() => {
         console.log("It's done")
 }).catch(err => console.error(err));
 
 //  Update the replicat
-const replicaAsc = client.initIndex('price-asc');
+const replicaAsc = client.initIndex('prices_asc');
 
 replicaAsc.setSettings({
     ranking: [
@@ -49,7 +49,7 @@ replicaAsc.setSettings({
     console.log("It's done for asc")
 });
 
-const replicaDesc = client.initIndex('price-desc');
+const replicaDesc = client.initIndex('prices_desc');
 
 replicaDesc.setSettings({
     ranking: [
