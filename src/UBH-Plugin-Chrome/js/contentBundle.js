@@ -2,6 +2,7 @@ var cause_name = "";
 var cause_logo = "";
 var charityLogoVisibility = "";
 var charityText = "";
+var isLoggedIn = "";
 
 framework.extension.fireEvent('fetchUser', {}, function (user) {
   cause_name = user.cause_name;
@@ -11,9 +12,13 @@ framework.extension.fireEvent('fetchUser', {}, function (user) {
 setTimeout(function() {
   if (!!cause_logo) {
       charityLogoVisibility = 'inline-block';
+      isLoggedIn = true;
+      alert('einai mesa');
   } else {
       charityLogoVisibility = 'none';
       charityText = "της εβδομάδας";
+      isLoggedIn = false;
+      alert('einai ekso');
   }  
 }, 400);
 
@@ -24712,9 +24717,11 @@ function check(merchant) {
     if (request.greeting == "hello")
       sendResponse({
         isValid: isVisitingSiteCookieValid,
-        isMerchant: merchant
+        isMerchant: merchant,
+        isLoggedIn: isLoggedIn
       });
   });
+        alert('to esteila');
 
   if ( merchant.suspended || isVisitingSiteCookieValid == true ) {
     //console.log('b2222ika sto pouthena', isVisitingSiteCookieValid);
