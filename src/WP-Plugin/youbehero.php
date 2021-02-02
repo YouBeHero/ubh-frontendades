@@ -455,7 +455,7 @@ if (in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_
         $donation = 2.5;
 
         $ybhDonation = ($donation / 100) * $total;
-
+        $ybhDonation = number_format($ybhDonation,2);
 
 
     ?>
