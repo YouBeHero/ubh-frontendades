@@ -82,3 +82,6 @@ typings/
 
 # Yarn Integrity file
 .yarn-integrity
+package.json
+package.json~f3a9952b418f7485a00660d5c3e28dde75c9282f
+package-lock.json
