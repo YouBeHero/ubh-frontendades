@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Test Eshop</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+</head>
+<body>
+	
+	<section class="hero is-info is-small">
+		<div class="hero-body">
+			<div class="container is-max-desktop">
+				<h1 class="title">
+					<a href="../">Test Eshop</a>
+				</h1>
+			</div>
+		</div>
+	</section>
+	
+	<section class="section">
+		
+		<div class="container is-max-desktop content">
+			
+			<h2>
+				Checkout
+			</h2>
+			
+			<h3>Order Details:</h3>
+			
+			<div class="notification py-4 px-5">
+				<div class="columns notification p-0 m-0">
+					<div class="column is-four-fifths py-1">
+					</div>
+					<div class="column py-1">
+						Price
+					</div>
+				</div>
+				<div class="columns notification is-info is-light p-0 mt-1 ml-0 mb-0 mr-0">
+					<div class="column is-four-fifths py-2">
+						Παπούτσια "Expensivo"
+					</div>
+					<div class="column price py-2">
+						433€
+					</div>
+				</div>
+				<div class="columns notification is-info is-light p-0 mt-1 ml-0 mb-0 mr-0">
+					<div class="column is-four-fifths py-2">
+						Γαλότσες "Sasquatch"
+					</div>
+					<div class="price column py-2">
+						66€
+					</div>
+				</div>
+				<div class="columns notification p-0 mt-1 ml-0 mb-0 mr-0">
+					<div class="column is-three-fifths py-2">
+					</div>
+					<div class="column">
+						<div class="columns notification is-info is-light p-0">
+							<div class="column py-2 has-text-right mb-0 has-text-weight-semibold">
+								Total:
+							</div>
+							<div class="total-price column is-dark py-2 has-text-weight-semibold">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="content">
+				<div class="has-text-right mt-5 mb-3 pt-2">
+					<a href="../completed/" class="finalize-purchase button is-danger has-text-weight-semibold">Finalize Purchase<i class="fas fa-check pl-2"></i></a>
+				</div>
+			</div>
+			
+		</div>
+		
+		<div class="container is-max-desktop">
+			<div class="card is-shadowless">
+				
+				<header class="card-header is-shadowless">
+					<a class="card-header-icon card-toggle"><i class="fas fa-angle-down"></i></a>
+					<p class="card-header-title pl-0">More Info (ybh-api development)</p>
+					<p class="card-header-title pl-0 is-hidden">Less Info</p>
+				</header>
+				
+				<div class="card-content pt-0 is-hidden">
+					<div class="content notification">
+						<div class="columns mt-2 mb-4">
+							<div class="column"></div>
+							<div class="column is-narrow">
+								<article class="message">
+									<div id="ybh-ref-msg" class="message-body px-5 py-3 has-text-centered is-size-5 has-text-weight-semibold"></div>
+								</article>
+							</div>
+							<div class="column"></div>
+						</div>
+						<p>The tricky bits on this page have to do with the fact that every eshop will have a different design, i.e.:
+							<ol>
+								<li>hooking on to the correct html element that contains the proper price (i.e. without shipping & handling and that stuff) from which we will calculate the commission</li>
+								<li>making a general "all-around" card element that can be injected into most eshop designs, so that the user is informed that part of their purchase will go towards supporting their cause</li>
+								<li>finding some way to place this card element somewhere that fits most sites' UX layout.</li>
+							</ol>
+						</p>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+		
+	</section>
+	
+	<!-- page's main script -->
+	<script>
+		document.addEventListener( "DOMContentLoaded" , function() {
+			
+			const itemPriceElements = document.querySelectorAll( ".price" ) ;
+			const totalPriceElement = document.querySelector( ".total-price" ) ;
+			let totalPrice = 0 ;
+			itemPriceElements.forEach( element => {
+				totalPrice += ( parseInt( element.textContent ) ) ;
+			});
+			totalPriceElement.textContent = totalPrice + "€" ;
+			
+		} ) ;
+	</script>
+	
+	<!-- ybh referral & tracking client side script -->
+	<script src="../../ybh-client.js"></script>
+	
+	<!-- script for "ybh-api" development section -->
+	<script>
+		
+		document.addEventListener( "DOMContentLoaded" , function() {
+			
+			const ybhRefMsg = document.querySelector( "#ybh-ref-msg" ) ;
+			const cardToggles = document.querySelectorAll( ".card-toggle" ) ;
+			
+			if ( localStorage.getItem( "ybh-referral" ) ) {
+				ybhRefMsg.textContent = "(YouBeHero Referral Data Detected)" ;
+				ybhRefMsg.parentElement.classList.add( "is-success" ) ;
+			} else {
+				ybhRefMsg.textContent = "(No YouBeHero Referral Data Detected)" ;
+				ybhRefMsg.parentElement.classList.add( "is-danger" ) ;
+			}
+			
+			for ( let i = 0 ; i < cardToggles.length ; i++ ) {
+				cardToggles[ i ].addEventListener( "click" , e => {
+					e.currentTarget.parentElement.parentElement.children[ 1 ].classList.toggle( "is-hidden" ) ;
+					e.currentTarget.children[ 0 ].classList.toggle( "fa-angle-down" ) ;
+					e.currentTarget.children[ 0 ].classList.toggle( "fa-angle-up" ) ;
+					e.currentTarget.parentElement.children[ 1 ].classList.toggle( "is-hidden" ) ;
+					e.currentTarget.parentElement.children[ 2 ].classList.toggle( "is-hidden" ) ;
+				} ) ;
+			}
+			
+		} ) ;
+	</script>
+	
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Test Eshop</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+</head>
+<body>
+	
+	<section class="hero is-info is-small">
+		<div class="hero-body">
+			<div class="container is-max-desktop">
+				<h1 class="title">
+					<a href="./">Test Eshop</a>
+				</h1>
+			</div>
+		</div>
+	</section>
+	
+	<section class="section">
+		
+		<div class="container is-max-desktop content">
+			
+			<h2>
+				Welcome!
+			</h2>
+			
+			<h3>This is a mock entrypoint "eshop-landing-page" to test shopping through a YouBeHero referral.<span id="inform-span" class="has-text-weight-light is-italic"></span></h3>
+			
+			<div class="content">
+				<div class="has-text-right mt-5 mb-3 pt-2">
+					<a href="./cart/" class="button is-info has-text-weight-semibold">View Cart<i class="fas fa-shopping-cart pl-2"></i></a>
+					<a href="./checkout/" class="button is-link ml-2 has-text-weight-semibold">Proceed to Checkout<i class="fas fa-chevron-right pl-2"></i><i class="fas fa-chevron-right"></i></a>
+				</div>
+			</div>
+			
+		</div>
+		
+		<div class="container is-max-desktop">
+			<div class="card is-shadowless">
+				
+				<header class="card-header is-shadowless">
+					<a class="card-header-icon card-toggle"><i class="fas fa-angle-down"></i></a>
+					<p class="card-header-title pl-0">More Info (ybh-api development)</p>
+					<p class="card-header-title pl-0 is-hidden">Less Info</p>
+				</header>
+				
+				<div class="card-content pt-0 is-hidden">
+					<div class="content notification">
+						<div class="columns mt-2 mb-4	">
+							<div class="column"></div>
+							<div class="column is-narrow">
+								<article class="message">
+									<div id="ybh-ref-msg" class="message-body px-5 py-3 has-text-centered is-size-5 has-text-weight-semibold"></div>
+								</article>
+							</div>
+							<div class="column"></div>
+						</div>
+						<p>The general idea is that on the YouBeHero site, all shop affiliate links will have these 5 queryString parameters added to them (either server-side or client-side - to-be-determined) on a per-user basis):</p>
+						<ul>
+							<li>youbehero-user-id</li>
+							<li>youbehero-user-name</li>
+							<li>youbehero-cause-id</li>
+							<li>youbehero-cause-name</li>
+							<li>youbehero-cause-logo-url</li>
+						</ul>
+						<p>So, if someone comes to this landing page from the shop links on the YouBeHero website, the url should contain (valid) values for these 5 parameters.</p>
+						<p>To check it out, <strong><a class="has-text-link" href="./?youbehero-user-id=11223344&youbehero-user-name=%CE%9A%CE%B1%CE%BA%CE%BF%CE%BC%CE%BF%CE%AF%CF%81%CE%B7%CF%82%20%CE%9A%CE%B1%CE%BA%CE%BF%CE%BC%CE%BF%CE%AF%CF%81%CE%BF%CE%B3%CE%BB%CE%BF%CF%85&youbehero-cause-id=41&youbehero-cause-name=%CE%9A%CE%B9%CE%B2%CF%89%CF%84%CF%8C%CF%82%20%CF%84%CE%BF%CF%85%20%CE%9A%CF%8C%CF%83%CE%BC%CE%BF%CF%85&youbehero-cause-logo-url=https://www.youbehero.com/images/cause/29/l/make_a_wish_logo.png">try using these sample values</a></strong><span class="has-text-danger"> (Notice: The data here is purposefully set to be garbage - this highlights that this system can be abused: the user-id might not be tied to the given user-name or it might not even exist, and the cause parameters can also be total garbage: here the cause-id 41 actually belongs to ActionAid and the logo url is from Make-A-Wish!) </span>:</p>
+						<pre>
+youbehero-user-id:        11223344
+youbehero-user-name:      Κακομοίρης Κακομοίρογλου
+youbehero-cause-id:       41 <!-- ΑctionAid -->
+youbehero-cause-name:     Κιβωτός του Κόσμου <!-- (id: 26) -->
+youbehero-cause-logo-url: https://youbehero.com/images/cause/29/l/make_a_wish_logo.png</pre> <!-- Make-A-Wish (id: 29) -->
+						<p>If this info is present, it will be stored in localStorage for later use, along with:</p>
+						<ul>
+							<li>a unique transaction ID</li>
+							<li>the eshop name (or url)</li>
+							<li>a timestamp</li>
+						</ul>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+		
+	</section>
+	
+	<!-- page's main script -->
+	<script>
+		document.addEventListener( "DOMContentLoaded" , function() {
+			
+		const queryString= new URLSearchParams( window.location.search ) ;
+		const keys = [ "youbehero-user-id" , "youbehero-user-name" , "youbehero-cause-id" , "youbehero-cause-name" , "youbehero-cause-logo-url" ] ;
+		const informSpan = document.querySelector( "#inform-span" ) ;
+		
+		if ( hasArrivedFromYbh() ) {
+			informSpan.textContent = " (It looks like you came here through YouBeHero - Cool!)" ;
+			informSpan.classList.add( "has-text-success" ) ;
+		} else {
+			informSpan.textContent = " (It looks like you haven't come through YouBeHero...No fun!)" ;
+			informSpan.classList.add( "has-text-danger" ) ;
+		}
+		
+		function hasArrivedFromYbh() {
+			const hasAllKeys = keys.every( key => queryString.has( key ) ) ;
+			if ( hasAllKeys ) {
+				const values = keys.map( key => queryString.get( key ) ) ;
+				const hasAllValues = values.every( value => value ) ;
+				if ( hasAllValues ) {
+					return true ;
+				}
+			}
+			return false ;
+		}
+			
+		} ) ;
+	</script>
+	
+	<!-- ybh referral & tracking client side script -->
+	<script src="../ybh-client.js"></script>
+	
+	<!-- script for "ybh-api" development section -->
+	<script>
+		document.addEventListener( "DOMContentLoaded" , function() {
+			
+			const ybhRefMsg = document.querySelector( "#ybh-ref-msg" ) ;
+			const cardToggles = document.querySelectorAll( ".card-toggle" ) ;
+			
+			if ( localStorage.getItem( "ybh-referral" ) ) {
+				ybhRefMsg.textContent = "(YouBeHero Referral Data Detected)" ;
+				ybhRefMsg.parentElement.classList.add( "is-success" ) ;
+			} else {
+				ybhRefMsg.textContent = "(No YouBeHero Referral Data Detected)" ;
+				ybhRefMsg.parentElement.classList.add( "is-danger" ) ;
+			}
+			
+			for ( let i = 0 ; i < cardToggles.length ; i++ ) {
+				cardToggles[ i ].addEventListener( "click" , e => {
+					e.currentTarget.parentElement.parentElement.children[ 1 ].classList.toggle( "is-hidden" ) ;
+					e.currentTarget.children[ 0 ].classList.toggle( "fa-angle-down" ) ;
+					e.currentTarget.children[ 0 ].classList.toggle( "fa-angle-up" ) ;
+					e.currentTarget.parentElement.children[ 1 ].classList.toggle( "is-hidden" ) ;
+					e.currentTarget.parentElement.children[ 2 ].classList.toggle( "is-hidden" ) ;
+				} ) ;
+			}
+			
+		} ) ;
+	</script>
+	
+</body>
+</html>
