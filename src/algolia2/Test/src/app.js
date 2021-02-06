@@ -25,7 +25,7 @@ const search = instantsearch({
               const queryTitle = query ? `Results for "${query}"` : 'Search';
 
               if (category) {
-                return `${category}  ${queryTitle}`;
+                return `${category} ${queryTitle}`;
               }
       
               return queryTitle;
@@ -66,7 +66,7 @@ const search = instantsearch({
 
           parseURL({ qsModule, location }) {
               
-              const pathnameMatches = location.pathname.match(/category\/(.*?)\/?$/);
+              const pathnameMatches = location.pathname.match(/search\/(.*?)\/?$/);
               const category = ((pathnameMatches && pathnameMatches[1]) || '').split('/').map((path) => getCategoryName(path));
               
 
