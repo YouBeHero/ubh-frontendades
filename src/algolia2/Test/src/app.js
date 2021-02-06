@@ -1,8 +1,123 @@
 /* global instantsearch algoliasearch */
 
+function getCategorySlug(name) {
+  return name
+    .split(' ')
+    .map(encodeURIComponent)
+    .join('+');
+}
+
+function getCategoryName(slug) {
+  return slug
+    .split('+')
+    .map(decodeURIComponent)
+    .join(' ');
+}
+
+
 const search = instantsearch({
     indexName: 'ybhIndex',
     searchClient: algoliasearch("BFIHYR57MA", "881465747d181cdb11789d76b044aa08"),
+    routing: {
+      
+      router: instantsearch.routers.history({
+          windowTitle(routeState) {
+              
+              const search = routeState.ybhIndex
+              const queryTitle = search!==undefined ? `Results for "${search.query}"` : 'YBH Search';  
+
+              if(search!==undefined && search.hierarchicalMenu!==undefined){
+                  return `${search.hierarchicalMenu['hierarchicalCategories.lvl0']} – ${queryTitle}`;
+              }
+              return queryTitle;
+          },
+
+          createURL({ qsModule, routeState, location }) {
+              const { pathname } = location;
+              const urlParts = location.href.match(/^(.*?)\/search/);
+              let baseUrl = `${urlParts ? urlParts[1] : pathname}`;
+              
+              const categoryPath = routeState.category  ? routeState.category.map((category) => getCategorySlug(category)).join('/') + '/' : '';
+
+              const queryParameters = {};
+
+            if (routeState.query) {
+              queryParameters.query = encodeURIComponent(routeState.query);
+            }
+
+            if (routeState.page !== 1) {
+              queryParameters.page = routeState.page;
+            }
+
+            if (routeState.brands) {
+              queryParameters.brands = routeState.brands.map(encodeURIComponent);
+            }
+
+            const queryString = qsModule.stringify(queryParameters, {
+              addQueryPrefix: true,
+              arrayFormat: 'repeat'
+            });
+            
+            if(routeState.query || routeState.brands || routeState.category){
+              return `${baseUrl}/search/${categoryPath}${queryString}`;
+            }else{
+              return `${baseUrl}`
+            }  
+                
+          },
+
+          parseURL({ qsModule, location }) {
+              const pathnameMatches = location.pathname.match(/category\/(.*?)\/?$/);
+              const category = ((pathnameMatches && pathnameMatches[1]) || '')
+                .split('/')
+                .map((path) => getCategoryName(path));
+
+              const { query = '', page, brands = [] } = qsModule.parse(
+                location.search.slice(1)
+              );
+              // `qs` does not return an array when there's a single value.
+              const allBrands = Array.isArray(brands)
+                ? brands
+                : [brands].filter(Boolean);
+
+              return {
+                query: decodeURIComponent(query),
+                page,
+                brands: allBrands.map(decodeURIComponent),
+                category,
+              };
+          }   
+      }),
+      stateMapping: {
+        
+        stateToRoute(uiState) {
+          const indexUiState = uiState['ybhIndex'] || {};
+          
+          return {
+            query: indexUiState.query,
+            page: indexUiState.page,
+            brands: indexUiState.refinementList && indexUiState.refinementList.brand_name,
+            category: indexUiState.hierarchicalMenu && indexUiState.hierarchicalMenu['hierarchicalCategories.lvl0']
+          };
+        },
+        routeToState(routeState) {
+          console.log(routeState)
+          return {
+            ybhIndex: {
+              query: routeState.query,
+              page: routeState.page,
+              hierarchicalMenu: {
+                'hierarchicalCategories.lvl0': routeState.category
+              },
+              refinementList: {
+                brands: routeState.brand_name
+              }
+            }
+          };
+        }
+      },
+     
+    }
 });
 
 search.addWidgets([
