@@ -21,14 +21,13 @@ const search = instantsearch({
     routing: {
       
       router: instantsearch.routers.history({
-          windowTitle(routeState) {
-              
-              const search = routeState.ybhIndex
-              const queryTitle = search!==undefined ? `Results for "${search.query}"` : 'YBH Search';  
+          windowTitle({ category, query  }) {
+              const queryTitle = query ? `Results for "${query}"` : 'Search';
 
-              if(search!==undefined && search.hierarchicalMenu!==undefined){
-                  return `${search.hierarchicalMenu['hierarchicalCategories.lvl0']} – ${queryTitle}`;
+              if (category) {
+                return `${category}  ${queryTitle}`;
               }
+      
               return queryTitle;
           },
 
@@ -36,7 +35,6 @@ const search = instantsearch({
               const { pathname } = location;
               const urlParts = location.href.match(/^(.*?)\/search/);
               let baseUrl = `${urlParts ? urlParts[1] : pathname}`;
-              
               const categoryPath = routeState.category  ? routeState.category.map((category) => getCategorySlug(category)).join('/') + '/' : '';
 
               const queryParameters = {};
@@ -67,18 +65,16 @@ const search = instantsearch({
           },
 
           parseURL({ qsModule, location }) {
+              
               const pathnameMatches = location.pathname.match(/category\/(.*?)\/?$/);
-              const category = ((pathnameMatches && pathnameMatches[1]) || '')
-                .split('/')
-                .map((path) => getCategoryName(path));
+              const category = ((pathnameMatches && pathnameMatches[1]) || '').split('/').map((path) => getCategoryName(path));
+              
 
               const { query = '', page, brands = [] } = qsModule.parse(
                 location.search.slice(1)
               );
               // `qs` does not return an array when there's a single value.
-              const allBrands = Array.isArray(brands)
-                ? brands
-                : [brands].filter(Boolean);
+              const allBrands = Array.isArray(brands) ? brands : [brands].filter(Boolean);
 
               return {
                 query: decodeURIComponent(query),
@@ -101,7 +97,7 @@ const search = instantsearch({
           };
         },
         routeToState(routeState) {
-          console.log(routeState)
+          
           return {
             ybhIndex: {
               query: routeState.query,
