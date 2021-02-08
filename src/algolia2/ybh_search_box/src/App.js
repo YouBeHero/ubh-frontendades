@@ -33,8 +33,8 @@ import './widgets/Pagination.css';
 
 
 const searchClient = algoliasearch(
-  '1VWWQEFS9L',
-  '09da229b366b4e16f36388091f0c0d3f'
+  'X2MVJT0RPL',
+  'd86c6cf29516e133171169eee4fe4bf4'
 );
 
 const Hit = ({ hit }) => (
@@ -43,9 +43,8 @@ const Hit = ({ hit }) => (
       <img src={hit.image_url} alt={hit.product_name} className="hit-image" />
     </header>
 
-    <div className="hit-info-container">
-      {/* <p className="hit-category">{hit.category[0]}</p> */}
-      {/* <p className="hit-category">{hit.availability[0]}</p> */}  <h1>
+    <div className="hit-info-container">      
+      <h1>
         <Highlight attribute="product_name" tagName="mark" hit={hit} />
       </h1>
       <p className="hit-category">{hit.colour}</p>
@@ -256,11 +255,11 @@ const App = props => {
           <header className="container-header container-options">
             <SortBy
               className="container-option"
-              defaultRefinement="youbehero"
+              defaultRefinement="product"
               items={[
                 {
                   label: 'Sort by featured',
-                  value: 'youbehero',
+                  value: 'product',
                 },
                 {
                   label: 'Price ascending',

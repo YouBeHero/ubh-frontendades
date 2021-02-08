@@ -1,5 +1,8 @@
 
 import React, { Component } from 'react';
+import {useLocation } from 'react-router-dom';
+
+
 import qs from 'qs';
 
 const updateAfter = 700;
@@ -12,7 +15,7 @@ const routeStateDefaultValues = {
   rating: '',
   price: '',
   free_shipping: 'false',
-  sortBy: 'youbehero',
+  sortBy: 'instant_search',
   hitsPerPage: '20',
 };
 
@@ -85,12 +88,12 @@ const searchStateToURL = searchState => {
       (searchState.hitsPerPage && String(searchState.hitsPerPage)) || undefined,
   };
 
-  const { protocol, pathname, port = '', hash } = pathname;
+  const { protocol, hostname, port = '', pathname, hash } = useLocation;
   const portWithPrefix = port === '' ? '' : `:${port}`;
-  const urlParts = pathname.href.match(/^(.*?)\/search/);
+  const urlParts = useLocation.href.match(/^(.*?)\/search/);
   const baseUrl =
     (urlParts && urlParts[0]) ||
-    `${protocol}//${pathname}${portWithPrefix}${pathname}search`;
+    `${protocol}//${hostname}${portWithPrefix}${pathname}search`;
 
   const categoryPath = routeState.category
     ? `${getCategorySlug(routeState.category)}/`
@@ -145,12 +148,12 @@ const searchStateToURL = searchState => {
   return `${baseUrl}/${categoryPath}${queryString}${hash}`;
 };
 
-const urlToSearchState = location => {
-  const pathnameMatches = location.pathname.match(/search\/(.*?)\/?$/);
+const urlToSearchState = useLocation => {
+  const pathnameMatches = useLocation.pathname.match(/search\/(.*?)\/?$/);
   const category = getCategoryName(
     (pathnameMatches && pathnameMatches[1]) || ''
   );
-  const queryParameters = qs.parse(location.search.slice(1));
+  const queryParameters = qs.parse(useLocation.search.slice(1));
   const {
     query = '',
     page = 1,
@@ -213,7 +216,7 @@ const urlToSearchState = location => {
 const withURLSync = App =>
   class WithURLSync extends Component {
     state = {
-      searchState: urlToSearchState(window.location),
+      searchState: urlToSearchState(window.useLocation),
     };
 
     componentDidMount() {
