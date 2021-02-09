@@ -1,35 +1,33 @@
-<?php //===================================== HTML Starting ===================================================  ?>
-<!doctype html>
-<html lang="en">
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-
-    <title>Hello, world!</title>
-
-    <script>
-        (function($) {
-
-        })( jQuery );
-    </script>
-
-</head>
-<body>
-<?php //===================================== Main Page Starting ===================================================  ?>
-
-
-
-
-
-<?php
-/*
-*===================================== Content ===================================================
-*=================================================================================================
- */
+<?php //===================================== HTML Starting ===================================================  ?>
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+
+    <script>
+        (function($) {
+
+        })( jQuery );
+    </script>
+
+</head>
+<body>
+<?php //===================================== Main Page Starting ===================================================  ?>
+
+
+
+
+
+<?php
+/*
+*===================================== Content ===================================================
+*=================================================================================================
+ */
 ?>
