@@ -102,12 +102,12 @@
                   <p>Αρχική</p>
                   <p><a href="business-transactions-table.html" class="d-block" title="Κάποια πληροφορία.">Πίνακας συναλλαγών</a></p>
                   <p><a href="javascript:void(0);" class="d-block" title="Κάποια πληροφορία.">Συνδρομή</a></p>
-                  <p><a href="javascript:void(0);" class="d-block" title="Κάποια πληροφορία.">Στοιχεία καταστήματος</a></p>
-                  <p><a href="javascript:void(0);" class="d-block" title="Κάποια πληροφορία.">Προσαρμογή widget</a></p>
-                  <p><a href="javascript:void(0);" class="d-block" title="Κάποια πληροφορία.">Στατιστικά</a></p>
-                  <p><a href="javascript:void(0);" class="d-block" title="Κάποια πληροφορία.">Υποστήριξη</a></p>
-                  <p><a href="javascript:void(0);" class="d-block" title="Κάποια πληροφορία.">Ρυθμίσεις</a></p>
-                  <p><a href="javascript:void(0);" class="d-block" title="Κάποια πληροφορία.">Βοήθεια</a></p>
+                  <p><a href="javascript:void(0);" class="d-block" title="Κάποια πληροφορία." style="cursor: no-drop;">Στοιχεία καταστήματος</a></p>
+                  <p><a href="javascript:void(0);" class="d-block" title="Κάποια πληροφορία." style="cursor: no-drop;">Προσαρμογή widget</a></p>
+                  <p><a href="javascript:void(0);" class="d-block" title="Κάποια πληροφορία." style="cursor: no-drop;">Στατιστικά</a></p>
+                  <p><a href="javascript:void(0);" class="d-block" title="Κάποια πληροφορία." style="cursor: no-drop;">Υποστήριξη</a></p>
+                  <p><a href="javascript:void(0);" class="d-block" title="Κάποια πληροφορία." style="cursor: no-drop;">Ρυθμίσεις</a></p>
+                  <p><a href="javascript:void(0);" class="d-block" title="Κάποια πληροφορία." style="cursor: no-drop;">Βοήθεια</a></p>
                   
                 </div>
               
@@ -121,7 +121,7 @@
                   <h1 class="bigger-2 font-weight-bold">Συνδρομή</h1>
                 </div>
 
-                <div class="col-12 col-sm-6 col-lg-3 mb-3">
+                <div class="col-12 col-sm-6 col-lg-3 mt-2 mb-3">
                   <div class="card rounded-0" data-toggle="tooltip" data-placement="top" title="Κάποια πληροφορία.">
                     <div class="card-body">
                       <h5 class="card-title text-uppercase font-weight-bold my-1 smaller-1">Υπολοιπο λογαριασμου
@@ -133,7 +133,7 @@
                   </div>
                 </div>
 
-                <div class="col-12 col-lg-8 mb-3">
+                <div class="col-12 col-lg-8 mt-2 mb-3">
                   <p><i class="far fa-bell mr-2"></i>Όταν το υπόλοιπο επαρκεί για λιγότερο από 7 ημέρες με βάση το ιστορικό σας, θα σας σταλεί ενημερωτικό e-mail.
                   </p>
 
@@ -144,20 +144,21 @@
                   
                   <div class="card">
                     <div class="card-header">
-                      <span class="float-left">Πληρωμή με κάρτα</span>
+                      <span class="font-weight-bold">Πληρωμή με κάρτα</span>
                       <span class="float-right"><img src="../img/various/accepted-payment-cards.png" alt="Τρόποι πληρωμής." class="img-fluid"></span>
                     </div>
                     <div class="card-body">
-                      <h5 class="card-title">Ποσό</h5>
+                      <p class="card-title bigger-1">Ποσό</p>
                         
                         <form>
-                          <div class="form-row align-items-center">
-                            <div class="col-auto">
+                          <div class="form-row align-items-top">
+                            <div class="form-group">
                               <label class="sr-only" for="inlineFormInput">Ποσό</label>
-                              <input type="number" class="form-control mb-2" id="inlineFormInput" placeholder="Πχ 50€">
+                              <input type="number" class="form-control mb-2" id="inlineFormInput" placeholder="Π.χ. 50" min="50">
+                               <small id="emailHelp" class="form-text text-muted"><i class="fas fa-info-circle mr-1"></i>Το ελάχιστο ποσό πληρωμής είναι 50€</small>
                             </div>
 
-                            <div class="col-auto">
+                            <div class="col-auto ml-2">
                               <button type="submit" class="btn btn-success mb-2 shadow">Συνέχεια</button>
                             </div>
                           </div>
@@ -169,7 +170,7 @@
                 </div>
 
 
-                <div class="col-12 mb-4">
+                <div class="col-12 my-4">
                   <div class="card rounded-0">
                     <div class="card-header bg-white">
                          <span class="font-weight-bold" data-toggle="tooltip" data-placement="top" title="Κάποια πληροφορία.">Ιστορικό τιμολογήσεων</span>
