@@ -133,9 +133,8 @@ function main_admin_page_contents() {
 
               <div class="row">
 
-                <div class="col-12">    
+                <div class="col-12 mt-3">    
                   <p class="bigger-2 font-weight-bold mb-1">Πίνακας συναλλαγών</p>
-                  <p class="mb-1">Καλησπέρα <strong>Σίσσυ</strong> 👋, από εδώ μπορείς να δεις μια γενική εικόνα των αριθμών σας.</p>
                 </div>
 
                 <div class="col-12 mt-4">
@@ -145,7 +144,7 @@ function main_admin_page_contents() {
                         <div class="col-12 col-md mb-1">
                           <div class="row">
                             <div class="col-12">
-                              <p class="smaller-1 font-weight-bold mb-0">Ρύθμιση περιόδου</p>
+                              <p class="smaller-1 mb-0">Ρύθμιση περιόδου</p>
                             </div>
                           </div>
                           <div class="row">
@@ -166,7 +165,7 @@ function main_admin_page_contents() {
                         <div class="col-12 col-md mb-1 periodpicker">
                           <div class="row">
                             <div class="col-12">
-                              <p class="smaller-1 font-weight-bold mb-0">Από</p>
+                              <p class="smaller-1 mb-0">Από</p>
                             </div>
                           </div>
                           <div class="row">
@@ -181,7 +180,7 @@ function main_admin_page_contents() {
                         <div class="col-12 col-md mb-1 periodpicker">
                           <div class="row">
                             <div class="col-12">
-                              <p class="smaller-1 font-weight-bold mb-0">Εως</p>
+                              <p class="smaller-1 mb-0">Εως</p>
                             </div>
                           </div>
                           <div class="row">
@@ -217,7 +216,7 @@ function main_admin_page_contents() {
                 <div class="col-12 col-sm-6 col-lg-3 mb-3">
                   <div class="card rounded shadow-sm" data-toggle="tooltip" data-placement="top" title="Κάποια πληροφορία.">
                     <div class="card-body px-0 py-2">
-                      <h5 class="card-title text-uppercase font-weight-bold my-1 smaller-1">Συνολικες δωρεες
+                      <h5 class="card-title text-uppercase my-1 smaller-1">Συνολικες δωρεες
                       </h5>
                        <p class="bigger-4 font-weight-bold mb-0 card-text">
                        845€
@@ -229,7 +228,7 @@ function main_admin_page_contents() {
                 <div class="col-12 col-sm-6 col-lg-3 mb-3">
                   <div class="card rounded shadow-sm" data-toggle="tooltip" data-placement="top" title="Κάποια πληροφορία.">
                     <div class="card-body px-0 py-2">
-                      <h5 class="card-title text-uppercase font-weight-bold my-1 smaller-1">Τζιρος επισκεπτων
+                      <h5 class="card-title text-uppercase my-1 smaller-1">Τζιρος επισκεπτων
                       </h5>
                       <p class="bigger-4 font-weight-bold mb-0 card-text">17.540€
                       </p>
@@ -240,7 +239,7 @@ function main_admin_page_contents() {
                 <div class="col-12 col-sm-6 col-lg-3 mb-3">
                   <div class="card rounded shadow-sm" data-toggle="tooltip" data-placement="top" title="Κάποια πληροφορία.">
                     <div class="card-body px-0 py-2">
-                      <h5 class="card-title text-uppercase font-weight-bold my-1 smaller-1">Μεσος όρος αξιας καλαθιου
+                      <h5 class="card-title text-uppercase my-1 smaller-1">Μεσος όρος αξιας καλαθιου
                       </h5>
                        <p class="bigger-4 font-weight-bold mb-0 card-text">44€
                       </p>
@@ -252,7 +251,7 @@ function main_admin_page_contents() {
                 <div class="col-12 col-sm-6 col-lg-3 mb-3">
                   <div class="card rounded shadow-sm" data-toggle="tooltip" data-placement="top" title="Κάποια πληροφορία.">
                     <div class="card-body px-0 py-2">
-                      <h5 class="card-title text-uppercase font-weight-bold my-1 smaller-1">Παραγγελιες με δωρεα
+                      <h5 class="card-title text-uppercase my-1 smaller-1">Παραγγελιες με δωρεα
                       </h5>
                       <p class="bigger-4 font-weight-bold mb-0 card-text">398
                       </p>
