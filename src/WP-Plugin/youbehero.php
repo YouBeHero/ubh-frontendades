@@ -26,6 +26,7 @@ if (in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_
     include "includes/js-css-includes.php";
     // include testing banner
     include "dev-banner.php";
+    //Sessions
     function session_init_ed()
     {
         if (!session_id()) {
@@ -41,9 +42,11 @@ if (in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_
             $ybh_user_id = htmlspecialchars($_GET["ubhTr"]);
             $ybh_user_org_name = htmlspecialchars($_GET["cause_name"]);
             $ybh_user_org_picture = htmlspecialchars($_GET["cause_logo_url"]);
+            $ybh_shop_commission = htmlspecialchars($_GET["commission_percentage"]);
             $_SESSION['ybh-user-id'] = $ybh_user_id;
             $_SESSION['ybh-user-org-name'] = $ybh_user_org_name;
             $_SESSION['ybh-user-org-picture'] = 'https://www.youbehero.com' . $ybh_user_org_picture;
+            $_SESSION['ybh_shop_commission'] = $ybh_shop_commission;
         } else {
             if (!isset($_SESSION['ybh'])) {
                 $_SESSION['ybh'] =  'No Parameter was passed!';
@@ -96,40 +99,19 @@ if (in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_
         //Checkout Page Bottom Banner End==============================
 
 
-        //Cart Page after checkout info Start
-        //===================================================================================
-        add_action('woocommerce_after_cart_totals', 'ybh_after_cart_submit', 10);
-        function ybh_after_cart_submit()
-        {
-            $total = WC()->cart->subtotal;
-            $donation = 2.5;
-            $ybhDonation = ($donation / 100) * $total;
-            $ybhDonation = number_format($ybhDonation, 2);
-            if (isset($_SESSION['ybh-user-id'])) { // Check if user comes from youbehero start
-            ?>
-                <div style="border: 1px solid #dbdbdb; padding: 10px; border-radius: 3px; margin-top: 15px; margin-bottom: 15px; color: #000;">
-                    <div class="row">
-                        <div style="-webkit-box-flex: 0; -ms-flex: 0 0 16.66667%; flex: 0 0 16.66667%; max-width: 16.66667%; position: relative; width: 100%; padding-left: 15px;">
-                            <img src="<?php echo $_SESSION['ybh-user-org-picture']; ?>" alt="Logo onoma organosis" style="max-width: 100%; height: auto; vertical-align: middle; border-style: none; padding-top: 4px;">
-                        </div>
-                        <div style="-webkit-box-flex: 0; -ms-flex: 0 0 83.33333%; flex: 0 0 83.33333%; max-width: 83.33333%; position: relative; width: 100%; padding-right: 15px; padding-left: 15px;">
-                            <p style="font-size: 12px;">Χάρη σε αυτή την αγορά θα προσφέρεις <strong id="ybh-amount"><?php echo $ybhDonation; ?>€</strong> προς την/τον <strong id="ybh-organization"><?php echo $_SESSION['ybh-user-org-name']; ?></strong> χωρίς κανένα κόστος!</p>
-                            <p style="font-size: 10px;">Υποστηρίζεται από το <a href="https://youbehero.com" title="Ανοίγει την σελίδα YouBeHero σε νέα καρτέλα" target="_blank"><img class="img-fluid" src="https://www.youbehero.com/img/various/logo.svg" style="max-width: 60px;" /></a></p>
-                        </div>
-                    </div>
-                </div>
-<?php
-            } // Check if user comes from youbehero end
-        };
 
         //===================================================================================
-        //Checkout Page after checkout info Start
+        //Checkout and Cart Page after checkout info Start
         //===================================================================================
-        add_action('woocommerce_checkout_after_order_review', 'ybh_after_submit', 10);
+        add_action('woocommerce_after_cart', 'ybh_after_submit', 10); //Cart Page
+        add_action('woocommerce_cart_coupon', 'ybh_after_submit', 10); //Cart Page
+        add_action('woocommerce_after_cart_contents', 'ybh_after_submit', 10); //Cart Page
+        add_action('woocommerce_after_cart_table', 'ybh_after_submit', 10); //Cart Page
+        add_action('woocommerce_checkout_after_order_review', 'ybh_after_submit', 10); //Checkout Page
         function ybh_after_submit()
-        {
-            $total = WC()->cart->subtotal_ex_tax;
-            $donation = 2.5; //edo kanonika prepei na bei kati tetoio $_SESSION['ybh-eshop-commission-percentage']
+        {   global $woocommerce;
+            $total = $woocommerce->cart->subtotal_ex_tax;
+            $donation = 2.5; //edo kanonika prepei na bei kati tetoio $_SESSION['ybh-eshop-donation-amount']
             $ybhDonation = ($donation / 100) * $total;
             $ybhDonation = number_format($ybhDonation, 2);
             if (isset($_SESSION['ybh-user-id'])) { // Check if user comes from youbehero start
@@ -138,7 +120,7 @@ if (in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_
                 <div style="border: 1px solid #dbdbdb; padding: 10px; border-radius: 3px; margin-top: 15px; margin-bottom: 15px; color: #000;">
                     <div class="row">
                         <div style="-webkit-box-flex: 0; -ms-flex: 0 0 16.66667%; flex: 0 0 16.66667%; max-width: 16.66667%; position: relative; width: 100%; padding-left: 15px;">
-                            <img src="<?php echo $_SESSION['ybh-user-org-picture']; ?>" alt="Logo onoma organosis" style="max-width: 100%; height: auto; vertical-align: middle; border-style: none; padding-top: 4px;">
+                            <img src="<?php echo $_SESSION['ybh-user-org-picture']; ?>" alt="<?php echo $_SESSION['ybh-user-org-name']; ?> logo" style="max-width: 100%; height: auto; vertical-align: middle; border-style: none; padding-top: 4px;">
                         </div>
                         <div style="-webkit-box-flex: 0; -ms-flex: 0 0 83.33333%; flex: 0 0 83.33333%; max-width: 83.33333%; position: relative; width: 100%; padding-right: 15px; padding-left: 15px;">
                             <p style="font-size: 12px;">Χάρη σε αυτή την αγορά θα προσφέρεις <strong id="ybh-amount"><?php echo $ybhDonation; ?>€</strong> προς την/τον <strong id="ybh-organization"><?php echo $_SESSION['ybh-user-org-name']; ?></strong> χωρίς κανένα κόστος!</p>
@@ -152,25 +134,21 @@ if (in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_
         //Checkout Page after checout info End================================
         //===================================================================================
         
-        add_action('woocommerce_thankyou', 'ybh_successful_checkout', 1);
         /*
          * Do something after WooCommerce set an order status as completed
          */
+        add_action('woocommerce_thankyou', 'ybh_successful_checkout', 1);
         function ybh_successful_checkout($order_id) {            
             
-            $order = new WC_Order( $order_id );
-            $total = WC()->cart->subtotal_ex_tax;
+            $order = wc_get_order( $order_id ); 
+                       
             if (isset($_SESSION['ybh-user-id'])) { // Check if user comes from youbehero start
-                
-            ?> 
 
-                <script>
-
-                    jQuery('body').prepend('<img src="https://youbehero.com/gr/test/trackTransaction?ubhTr=<?php echo $_SESSION["ybh-user-id"]; ?>&sale_amount=<?php echo $total ?>&transaction_id=<?php echo $order_id ?>"/> ');
-
-                </script>
-
+            $total_without_tax = $order->total - $order->total_tax;              
             
+        echo '<img src="https://youbehero.com/gr/test/trackTransaction?ubhTr='. $_SESSION["ybh-user-id"] . '&sale_amount='.  $total_without_tax .'&transaction_id='.  $order->id .'"/>';
+            
+            ?>             
             <?php   
             } // Check if user comes from youbehero end
 
