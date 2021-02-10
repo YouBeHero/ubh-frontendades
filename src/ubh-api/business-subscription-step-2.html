@@ -148,20 +148,50 @@
                       <span class="float-right"><img src="../img/various/accepted-payment-cards.png" alt="Τρόποι πληρωμής." class="img-fluid"></span>
                     </div>
                     <div class="card-body">
-                      <p class="card-title bigger-1">Ποσό</p>                   
-                        
-                        <form onsubmit="window.location = 'business-subscription-step-2.html'; return false;">
-                          <div class="form-row align-items-top">
-                            <div class="form-group">
-                              <label class="sr-only" for="inlineFormInput">Ποσό</label>
-                              <input type="number" autocomplete="off" class="form-control mb-2" id="inlineFormInput" placeholder="Π.χ. 50" min="50">
-                               <small id="emailHelp" class="form-text text-muted"><i class="fas fa-info-circle mr-1"></i>Το ελάχιστο ποσό πληρωμής είναι 50€</small>
-                            </div>
+                      <p class="card-title pb-4 border border-top-0 border-left-0 border-right-0">Έχετε επιλέξει πληρωμή <strong>666,00€</strong></p>                          
+                        <form role="form" class="mt-4" onsubmit="window.location = 'business-subscription.html'; return false;">
 
-                            <div class="col-auto ml-2">
-                              <button type="submit" class="btn btn-success mb-2 shadow px-4" data-sc-key="sbpb_OTZlMzhhZjctYWZiMy00MDBiLWE0ODctMGZkZWMyMjExZmNl" data-name="Jasmine Green Tea" data-description="Smooth tea with a rich jasmine bouquet" data-reference="99999" data-amount="3000">Συνέχεια</button>
+                          <div class="form-group">
+                            <label for="cardNumber">Αριθμός πιστωτικής</label>
+                            <div class="input-group">
+                              <input type="text" autocomplete="off" name="cardNumber" placeholder="" class="form-control" required="">
+                              <div class="input-group-append">
+                                <span class="input-group-text text-muted">
+                                    <i class="fab fa-cc-visa mx-1"></i>
+                                    <i class="fab fa-cc-mastercard mx-1"></i>
+                                </span>
+                              </div>
                             </div>
                           </div>
+
+                          <div class="row">
+                            <div class="col-sm-8">
+                              <div class="form-group">
+                                <label><span class="hidden-xs">Ημερομηνία λήξης</span></label>
+                                <div class="input-group">
+                                  <input type="number" autocomplete="off" maxlength="2" placeholder="ΜΜ" name="" class="form-control" required="">
+                                  <input type="number" autocomplete="off" maxlength="2" placeholder="ΕΕ" name="" class="form-control" required="">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-sm-4">
+                              <div class="form-group mb-4">
+                                <label data-toggle="tooltip" title="" data-original-title="Τα τρία ψηφία στο πίσω μέρος της κάρτας σας.">CVV
+                                    <i class="fa fa-question-circle"></i>
+                                </label>
+                                <input type="text" required="" class="form-control">
+                              </div>
+                            </div>
+
+                          </div>
+
+                          <div class="form-group">
+                            <label for="name">Ονοματεπώνυμο</label>
+                            <input type="text" autocomplete="off" name="name" placeholder="Όπως στην κάρτα" required="" class="form-control" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABHklEQVQ4EaVTO26DQBD1ohQWaS2lg9JybZ+AK7hNwx2oIoVf4UPQ0Lj1FdKktevIpel8AKNUkDcWMxpgSaIEaTVv3sx7uztiTdu2s/98DywOw3Dued4Who/M2aIx5lZV1aEsy0+qiwHELyi+Ytl0PQ69SxAxkWIA4RMRTdNsKE59juMcuZd6xIAFeZ6fGCdJ8kY4y7KAuTRNGd7jyEBXsdOPE3a0QGPsniOnnYMO67LgSQN9T41F2QGrQRRFCwyzoIF2qyBuKKbcOgPXdVeY9rMWgNsjf9ccYesJhk3f5dYT1HX9gR0LLQR30TnjkUEcx2uIuS4RnI+aj6sJR0AM8AaumPaM/rRehyWhXqbFAA9kh3/8/NvHxAYGAsZ/il8IalkCLBfNVAAAAABJRU5ErkJggg==&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;">
+                          </div>
+
+                          <button type="submit" class="subscribe btn btn-success shadow-sm mt-2 px-4">Ολοκλήρωση</button>
+
                         </form>
 
                     </div>
@@ -169,93 +199,11 @@
 
                 </div>
 
-                <div class="col-12 col-lg-4 my-4 smaller-1">
-
-                  <p>Tο ωράριο λειτουργίας της εταιρίας μας είναι <strong>Δευτέρα έως Παρασκευή, 09:00 – 17:00</strong>.</p>
-
-                  <p>Ως εκ τούτου, oι πληρωμές - καταθέσεις που πραγματοποιούνται εκτός ωραρίου, Σάββατο, Κυριακή ή ημέρες αργίας, θα εμφανίζονται στο λογαριασμό του καταστήματός σας από την επόμενη εργάσιμη ημέρα.</p>
-
-                  <p>Για άμεση πίστωση αποθέματος, ενδείκνυται η συναλλαγή με πιστωτική κάρτα.</p>
-
-                </div>
-
-
-                <div class="col-12 col-lg-6 my-4">
-                  
-                  <div class="card">
-                    <div class="card-header">
-                      <span class="font-weight-bold">Τραπεζική κατάθεση</span>
-                    </div>
-                    <div class="card-body">                        
-                        <p><img src="img/nbg-logo.png" alt="NBG logo" class="img-fluid" style="max-width: 126px;" /></p>
-                        <p class="text-muted mb-0">Αριθμός λογαριασμού</p>
-                        <p>803002330000021</p>
-
-                        <p class="text-muted mb-0">IBAN</p>
-                        <p>GR59 0140 8030 8030 0233 0000 021</p>
-
-                        <p class="text-muted mb-0">Δικαιούχος</p>
-                        <p class="font-weight-bold">YouBeHero</p>
-
-                    </div>
-                  </div>
-
-                </div>
-
-
-                <div class="col-12 my-4">
-                  <div class="card rounded-0">
-                    <div class="card-header bg-white">
-                         <span class="font-weight-bold" data-toggle="tooltip" data-placement="top" title="Κάποια πληροφορία.">Ιστορικό τιμολογήσεων</span>
-                    </div>
-                    <div class="card-body">
-
-                      <div class="row">
-                        <div class="container-fluid">
-                          <table class="table table-responsive-md table-striped">
-                          <thead>
-                            <tr>
-                              <th class="border-top-0" scope="col">#</th>
-                              <th class="border-top-0" scope="col">Ημερομηνία</th>
-                              <th class="border-top-0" scope="col">Ποσό</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <th scope="row">1</th>
-                              <td>21 Ιανουαρίου 2021 09:08</td>
-                              <td>300.00€</td>
-                              <td><a href="javascript:void(0);"><i class="far fa-save mr-2"></i>Κατέβασμα</a></td>
-                              
-                            </tr>
-                            <tr>
-                              <th scope="row">2</th>
-                              <td>12 Ιανουαρίου 2021 09:31</td>
-                              <td>250.00€</td>
-                              <td><a href="javascript:void(0);"><i class="far fa-save mr-2"></i>Κατέβασμα</a></td>
-                              
-                            </tr>
-                            <tr>
-                              <th scope="row">3</th>
-                              <td>31 Δεκεμβρίου 2020 13:22</td>
-                              <td>250.00€</td>
-                              <td><a href="javascript:void(0);"><i class="far fa-save mr-2"></i>Κατέβασμα</a></td>
-                            </tr>
-                          </tbody>
-                        </table>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
             </div>      
           </div>
         </div>
       </div>
     </div>
-
-
-
 
 
 <footer class="row-fluid footer bg-white border border-left-0 border-right-0 border-bottom-0 fixed-bottom">
