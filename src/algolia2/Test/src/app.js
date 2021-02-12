@@ -116,6 +116,21 @@ const search = instantsearch({
     }
 });
 
+// // size section
+// const data = {
+//   sizes: '36,37,38,39,40',
+// }
+
+// // Here our sizes split by the (,)
+// const sizes = data.sizes.split(',')
+
+// // and then inside the (span) it's gonna display in the browser 
+// const sizesList = sizes.map(size => `<span class="item">${size}</span>`)
+
+// // this is the last part that i'm using querySelector to join the sizes. 
+// document.querySelector('#main').innerHTML = sizesList.join('')
+
+
 search.addWidgets([
     instantsearch.widgets.searchBox({
         container: '#searchbox',
@@ -150,7 +165,8 @@ search.addWidgets([
         attribute: 'size',
         showMore: true,
     }),
-
+    
+  
     instantsearch.widgets.hierarchicalMenu({
         container: '#hierarchical-menu',
         attributes: ['hierarchicalCategories.lvl0','hierarchicalCategories.lvl1', 'hierarchicalCategories.lvl2']
@@ -188,6 +204,7 @@ search.addWidgets([
           </div>
           <div class="hit-price">\${{price}}</div>
           <div class="hit-size">{{size}}</div>
+          <div class="hit-size">{{product_name}}</div>
         </div>
       `,
         empty: "<h1>No results... Please consider another query</h1>"

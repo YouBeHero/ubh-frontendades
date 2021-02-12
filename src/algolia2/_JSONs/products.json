@@ -13397,26 +13397,7 @@
         "colour": "ΚΑΦΕ",
         "quantity": "17"
     },
-    {
-        "product_id": "test-product",
-        "product_name": "- Test Product -",
-        "site_url": "https://www.voi-noi.gr/uncategorised/-test-product-test-product.html",
-        "tracking_url": "https://go.linkwi.se/z/12689-0/CD21857/?lnkurl=https%3A%2F%2Fwww.voi-noi.gr%2Funcategorised%2F-test-product-test-product.html",
-        "image_url": "https://voinoiv5-sf.cdn.edgeport.net/pub/media/catalog/product/cache/8872124951f387c8ded3f228faa55bea/c/o/cover_6.jpg?1608516013",
-        "extra_images": [{
-            "extra_image_url": "https://voinoiv5-sf.cdn.edgeport.net/pub/media/catalog/product/c/o/cover_6.jpg"
-        }],
-        "in_stock": "Y",
-        "availability": "Άμεσο διαθέσιμο",
-        "price": "0,50",
-        "full_price": "0,50",
-        "discount": "0",
-        "program": {
-            "id": "12689",
-            "name": "Voi &amp; Noi"
-        },
-        "quantity": "998"
-    },
+
     {
         "product_id": "219-172-006",
         "product_name": "VOI NOI - Γυναικείο Sneaker - ΡΟΖ",
