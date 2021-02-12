@@ -1,7 +1,7 @@
 const algoliaSearch = require("algoliasearch");
 
-const client = algoliaSearch("BFIHYR57MA", "881465747d181cdb11789d76b044aa08");
-const index = client.initIndex('ybhIndex');
+const client = algoliaSearch("CDVLYZ0OBK", "19bf2fa29216a348b9fbf90c7434a90d");
+const index = client.initIndex('products');
 
 index.setSettings({
     searchableAttributes: ["orded(brand_name)", "orded(product_name)", "category"]

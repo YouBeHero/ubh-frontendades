@@ -16,8 +16,8 @@ function getCategoryName(slug) {
 
 
 const search = instantsearch({
-    indexName: 'ybhIndex',
-    searchClient: algoliasearch("BFIHYR57MA", "881465747d181cdb11789d76b044aa08"),
+    indexName: 'products',
+    searchClient: algoliasearch("CDVLYZ0OBK", "19bf2fa29216a348b9fbf90c7434a90d"),
     routing: {
       
       router: instantsearch.routers.history({
@@ -68,14 +68,13 @@ const search = instantsearch({
               
               const pathnameMatches = location.pathname.match(/search\/(.*?)\/?$/);
               const category = ((pathnameMatches && pathnameMatches[1]) || '').split('/').map((path) => getCategoryName(path));
-              
 
               const { query = '', page, brands = [] } = qsModule.parse(
                 location.search.slice(1)
               );
               // `qs` does not return an array when there's a single value.
               const allBrands = Array.isArray(brands) ? brands : [brands].filter(Boolean);
-
+                
               return {
                 query: decodeURIComponent(query),
                 page,
@@ -87,7 +86,7 @@ const search = instantsearch({
       stateMapping: {
         
         stateToRoute(uiState) {
-          const indexUiState = uiState['ybhIndex'] || {};
+          const indexUiState = uiState['products'] || {};
           
           return {
             query: indexUiState.query,
@@ -99,7 +98,7 @@ const search = instantsearch({
         routeToState(routeState) {
           
           return {
-            ybhIndex: {
+            products: {
               query: routeState.query,
               page: routeState.page,
               hierarchicalMenu: {
