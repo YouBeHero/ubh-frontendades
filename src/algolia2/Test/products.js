@@ -2,8 +2,8 @@
 // Right now i added algoliasearch as package and this is specific for shoes but there is anothers products with number as sizes
 
 const algoliaSearch = require("algoliasearch");
-const client = algoliaSearch("BFIHYR57MA", "881465747d181cdb11789d76b044aa08"); //(AppID, AdminAPIKey)
-const index = client.initIndex("ybhIndex");
+const client = algoliaSearch("CDVLYZ0OBK", "19bf2fa29216a348b9fbf90c7434a90d"); //(AppID, AdminAPIKey)
+const index = client.initIndex("products");
 
 function prepareData(){
     //  Local Json file.
