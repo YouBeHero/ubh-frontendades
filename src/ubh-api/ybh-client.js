@@ -49,7 +49,7 @@ function ybhScript() {
 	function landingPageScript() {
 	
 		const queryString= new URLSearchParams( window.location.search ) ;
-		const keys = [ "youbehero-user-id" , "youbehero-user-name" , "youbehero-cause-id" , "youbehero-cause-name" , "youbehero-cause-logo-url" ] ;
+		const keys = [ "ubhTr" , "commission_percentage" , "cause_name" , "cause_logo_url" ] ;
 		let values = [] ;
 		
 		if ( hasArrivedFromYbh() ) {
