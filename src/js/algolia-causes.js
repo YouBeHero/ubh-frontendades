@@ -386,8 +386,17 @@ const routing = {
         }
         queryParameters.topothesia.pop()
       }
-
-      queryString=  kathgoriastring + ypokathgoriastring + topothesiastring
+      
+      if (kathgoriastring=="" && ypokathgoriastring=="" && topothesiastring==""){
+          
+          queryString = qsModule.stringify(queryParameters, {
+          addQueryPrefix: true,
+          arrayFormat: 'repeat'
+        });
+      }else {
+        queryString=  kathgoriastring + ypokathgoriastring + topothesiastring
+      }
+      
       // const queryString = qsModule.stringify(queryParameters, {
       //   addQueryPrefix: true,
       //   arrayFormat: 'repeat'
@@ -399,34 +408,59 @@ const routing = {
 
     parseURL({ qsModule, location }) {
       // const pathnameMatches = location.href.match(/^(.*?)\/gr\/cause-category\/filanthropikoi/);
-      const pathnameMatches = location.href.match(/^(.*?)\/causes.html\/(.*?)\/?$/);
-      const category = ((pathnameMatches && pathnameMatches[1]) || '')
-        .split('/')
-        .map((path) => getCategoryName(path));
+      // const pathnameMatches = location.pathname.match(/^(.*?)\/causes.html\/(.*?)\/?$/);
+      // const pathnameMatches = location.href.match(/^(.*?)\/causes.html\/(.*?)\/?$/);
+      // const category = ((pathnameMatches && pathnameMatches[1]) || '')
+      //   .split('/')
+      //   .map((path) => getCategoryName(path));
 
-      const { query = '', page  } = qsModule.parse(
+      const { query = '', kathgoria = [], ypokathgoria=[], topothesia= [] } = qsModule.parse(
         location.search.slice(1)
       );
-
       
-      const kathgoria = ((pathnameMatches && pathnameMatches[1]) || '')
-      .split('/')
-      .map((path) => getKathgoriaName(path));
+      // kathgoria_array = [kathgoria].filter(Boolean);
+      neakathgoria=[]
 
-      const ypokathgoria = ((pathnameMatches && pathnameMatches[1]) || '')
-      .split('/')
-      .map((path) => getYpokathgoriaName(path));
+      if (!Array.isArray(kathgoria)){
+        if (kathgoria.includes('-')){
+          allkathgoria = kathgoria.split('-')
+          allkathgoria.forEach(allkathgoria =>
+          neakathgoria.push([allkathgoria].filter(Boolean).map((allkathgoria)=> getKathgoriaName(allkathgoria))))
+        }else {
+          kathgoria_array = [kathgoria].filter(Boolean);
+          neakathgoria = kathgoria_array.map((kathgoria_array)=> getKathgoriaName(kathgoria_array))
+        }
+      }
 
-      const topothesia = ((pathnameMatches && pathnameMatches[1]) || '')
-      .split('/')
-      .map((path) => getTopothesiaName(path));
+      //ypokathgoria_array = [kathgoria].filter(Boolean);
+      neaypokathgoria = []
 
-      // const { query = '', page , kathgoria=[] ,  ypokathgoria = [], topothesia = [] } = qsModule.parse(
-      //   location.search.slice(1)
-      // );
-      // `qs` does not return an array when there's a single value.
+      if (!Array.isArray(ypokathgoria)){
+        if (ypokathgoria.includes('-')){
+          allypokathgoria = ypokathgoria.split('-')
+          allypokathgoria.forEach(allypokathgoria =>
+          neaypokathgoria.push( [allypokathgoria].filter(Boolean).map((allypokathgoria)=> getYpokathgoriaName(allypokathgoria))))
+        }else {
+          ypokathgoria_array = [ypokathgoria].filter(Boolean);
+          neaypokathgoria = ypokathgoria_array.map((ypokathgoria_array)=> getYpokathgoriaName(ypokathgoria_array))
+        }
+      }
+
+      //topothesia_array = [kathgoria].filter(Boolean);
+      neatopothesia = []
+
+      if (!Array.isArray(topothesia)){
+        if (topothesia.includes('-')){
+          alltopothesia = topothesia.split('-')
+          alltopothesia.forEach(alltopothesia => 
+          neatopothesia.push( [alltopothesia].filter(Boolean).map((alltopothesia)=> getTopothesiaName(alltopothesia))))
+        }else {
+          topothesia_array = [topothesia].filter(Boolean);
+          neatopothesia = topothesia_array.map((topothesia_array)=> getTopothesiaName(topothesia_array))
+        }
+      }
       // const allkathgoria = Array.isArray(kathgoria)
-      // ? kathgoria
+      // ? kathgoria 
       // : [kathgoria].filter(Boolean);
 
       // const allypokathgoria = Array.isArray(ypokathgoria)
@@ -440,14 +474,14 @@ const routing = {
         
       return {
         query: decodeURIComponent(query),
-        page,
-        // kathgoria : allkathgoria.map(decodeURIComponent),
-        // ypokathgoria : allypokathgoria.map(decodeURIComponent),
-        // topothesia: alltopothesia.map(decodeURIComponent),
-        kathgoria,
-        ypokathgoria,
-        topothesia,
-        category,
+        // page,
+        kathgoria : neakathgoria.map(decodeURIComponent),
+        ypokathgoria : neaypokathgoria.map(decodeURIComponent),
+        topothesia: neatopothesia.map(decodeURIComponent),
+        // kathgoria,
+        // ypokathgoria,
+        // topothesia,
+        // category,
       };
     },
   }),
@@ -471,7 +505,7 @@ const routing = {
 
     routeToState(routeState) {
       return {
-        causes_registration: {
+        indexName: {
           query: routeState.query,
           page: routeState.page,
           menu: {
@@ -492,8 +526,9 @@ const routing = {
   },
 };
 
+let indexName = 'causes-registration'
 const search = instantsearch({
-  indexName: 'causes-registration',
+  indexName: indexName,
   searchClient,
   routing
 });
