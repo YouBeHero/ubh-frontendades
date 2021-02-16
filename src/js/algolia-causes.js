@@ -6,10 +6,6 @@ var url = window.location.href;
 
 $(document).ready(function() {
 
-  /* setTimeout(function() {
-    $('#charityPreviewModal').modal('show');
-  }, 1000);*/
-
   filtersCheck();
 
 });
@@ -73,71 +69,65 @@ const searchClient = algoliasearch(
   'd3191a6f8232cbedb18b93ba922b71af'
 );
 
-const encodedCategories = {
-  anthrwpo: 'Για τον άνθρωπο'
-}
-
 const encodedKathgories = {
-  anthrwpos: 'Για τον άνθρωπο',
-  perivallon: 'Για το περιβάλλον',
-  zwa: 'Για τους καλούς μας φίλους'
+  filanthropikoi: 'Για τον άνθρωπο',
+  perivallontiki: 'Για το περιβάλλον',
+  filozoiki: 'Για τους καλούς μας φίλους'
 }
 
 const encodedYpokathgories = {
-  agriafush: 'Άγρια φύση',
+  agria_fisi: 'Άγρια φύση',
   atoma_me_anapiria: 'Άτομα με Αναπηρία',
   adespota: 'Αδέσποτα',
-  anakuklwsh: 'Ανακύκλωση',
-  anthrwpistikh_voitheia: 'Ανθρωπιστική βοήθεια',
+  anakiklosi: 'Ανακύκλωση',
+  anthropistiki_voithia: 'Ανθρωπιστική βοήθεια',
   astegia: 'Αστεγία',
-  giaperivallon: 'Για το περιβάλλον',
-  anthrwpos: 'Για τον άνθρωπο',
-  zwa: 'Για τους καλούς μας φίλους',
+  perivallontiki: 'Για το περιβάλλον',
+  filanthropikoi: 'Για τον άνθρωπο',
+  filozoiki: 'Για τους καλούς μας φίλους',
   ekpaideusi: 'Εκπαίδευση',
-  koinwnia: 'Κοινωνία',
-  koinwnikh_allhlegguh: 'Κοινωνική Αλληλεγγύη',
-  koinwnikh_epanedaxh: 'Κοινωνική Επανένταξη',
+  koinonia: 'Κοινωνία',
+  koinonikh_allhleggii: 'Κοινωνική Αλληλεγγύη',
+  koinoonikh_epanedaksi: 'Κοινωνική Επανένταξη',
   paidia_neoi: 'Παιδιά και νέοι',
   perivallon: 'Περιβάλλον',
   texnes: 'Τέχνες',
-  trith_hlikia: 'Τρίτη ηλικία',
+  trith_ilikia: 'Τρίτη ηλικία',
   ygeia: 'Υγεία',
-  ygeia_proneia: 'Υγεία & Πρόνοια'
-
+  zoa: 'Ζώα',
+  ygeia_pronia: 'Υγεία & Πρόνοια'
 }
 
 const encodedTopothesies = {
   athina: 'Αθήνα',
-  ellhniko: 'Ελληνικό',
-  metaxourgeio : 'Μεταξουργείο',
+  elliniko: 'Ελληνικό',
+  metaxourgio : 'Μεταξουργείο',
   votanikos : 'Votanikos',
-  agios_iwannhs_renth: 'Άγιος Ιωάννης Ρέντη',
-  anw_pathsia: 'Άνω Πατήσια',
-  anw_pathsia_athina: 'Άνω Πατήσια, Αθήνα',
+  agios_ioannhs_renti: 'Άγιος Ιωάννης Ρέντη',
+  ano_patisia: 'Άνω Πατήσια',
   galatas: 'Γαλατάς',
   dafni: 'Δάφνη',
   drama: 'Δράμα',
   thessaloniki_athina: 'Θεσσαλονίκη & Αθήνα',
-  katw_patisia: 'Κάτω Πατήσια',
+  kato_patisia: 'Κάτω Πατήσια',
   kallithea: 'Καλλιθέα',
-  katerinh: 'Κατερίνη',
+  katerini: 'Κατερίνη',
   kifisia: 'Κηφισιά',
   larisa: 'Λάρισα',
   mosxato: 'ΜΟΣΧΑΤΟ',
-  neamakri: 'ΝΕΑ ΜΑΚΡΗ',
+  nea_makri: 'ΝΕΑ ΜΑΚΡΗ',
   nikaia: 'Νίκαια',
-  pagkrati: 'Παγκράτι'
+  pagkrati: 'Παγκράτι',
+  abelokipi: 'Αμπελόκηποι',
+  grevena: 'ΓΡΕΒΕΝΑ',
+  irakleio: 'ΗΡΑΚΛΕΙΟ',
+  irakleio_kritis: 'Ηράκλειο, Κρήτης',
+  limani_fix: 'Λιμανι, ΦΙΞ',
+  argos: 'Άργος',
+  aleksandria: 'Αλεξάνδρεια',
+  alifanta: 'Αλυφαντά',
+  peristeri: 'Περιστέρι'
 }
-
-const decodedCategories = Object.keys(encodedCategories).reduce((acc, key) => {
-  const newKey = encodedCategories[key];
-  const newValue = key;
-
-  return {
-    ...acc,
-    [newKey]: newValue,
-  };
-}, {});
 
 const decodedKathgories = Object.keys(encodedKathgories).reduce((acc, key) => {
   const newKey = encodedKathgories[key];
@@ -168,7 +158,6 @@ const decodedTopothesies = Object.keys(encodedTopothesies).reduce((acc, key) => 
     [newKey]: newValue,
   };
 }, {});
-
 
 
 function getKathgoriaSlug(name) {
@@ -225,16 +214,6 @@ function getTopothesiaName(slug) {
     .join(' ');
 }
 
-
-function getCategorySlug(name) {
-  const encodedName = decodedCategories[name] || name;
-
-  return encodedName
-    .split(' ')
-    .map(encodeURIComponent)
-    .join('+');
-}
-
 // Returns a name from the category slug.
 // The "+" are replaced by spaces and other
 // characters are decoded.
@@ -247,14 +226,13 @@ function getCategoryName(slug) {
     .join(' ');
 }
 
-
 const routing = {
   router: instantsearch.routers.history({
-    windowTitle({ category, query }) {
-      const queryTitle = query ? `Αποτελέσματα για "${query}" - YouBeHero` : 'Όλες οι οργανώσεις - YouBeHero';
+    windowTitle({ kathgoria, query }) {
+      const queryTitle = query ? `Αποτελέσματα για "${query}" - YouBeHero` : 'Όλες οι οργανώσεις';
 
-      if (category) {
-        return `${category} - ${queryTitle}`;
+      if (kathgoria) {
+        return `${kathgoria} - ${queryTitle}`;
       }
 
       return queryTitle;
@@ -262,17 +240,16 @@ const routing = {
     },
 
     createURL({ qsModule, routeState, location }) {
-      // const urlParts = location.href.match(/^(.*?)\/gr\/cause-category\/filanthropikoi/);
       const urlParts = location.href.match(/^(.*?)\/causes.html/);
       const baseUrl = `${urlParts ? urlParts[1] : ''}/`;
+      //console.log(baseUrl)
       
       const categoryPath = routeState.category
-      ? routeState.category
-            .map((category) => getCategorySlug(category))
+      ? routeState.kathgoria
+            .map((kathgoria) => getCategorySlug(kathgoria))
             .join('/') + '/'
         : '';
 
-      // const queryParameters = {};
       let queryParameters = {};
 
       if (routeState.query) {
@@ -282,17 +259,6 @@ const routing = {
         queryParameters.page = routeState.page;
       }
 
-      // if (routeState.kathgoria) {
-      //   queryParameters.kathgoria = routeState.kathgoria.map(encodeURIComponent);
-      // }
-
-            // if (routeState.topothesia) {
-      //   queryParameters.topothesia = routeState.topothesia.map(encodeURIComponent);
-      // }
-
-      // if (routeState.ypokathgoria) {
-      //   queryParameters.ypokathgoria = routeState.ypokathgoria.map(encodeURIComponent);
-      // }
       let queryString = '';
       let kathgoriesrest = []; 
       let kathgoriesurl = '';
@@ -308,13 +274,14 @@ const routing = {
           }
           kathgoriesrest.reverse();
           if (kathgoriesrest.length >1){
-            kathgoriesurl = kathgoriesrest.join("-");
-            kathgoriesurl = "-"+ kathgoriesurl;  
+            kathgoriesurl = kathgoriesrest.join("&");
+            kathgoriesurl = "&"+ kathgoriesurl;  
           } else {
-            kathgoriesurl = "-"+ kathgoriesrest[0];
+            kathgoriesurl = "&"+ kathgoriesrest[0];
           }
           
         }
+
         kathgoriastring = qsModule.stringify(queryParameters, {
           addQueryPrefix: true,
           arrayFormat: 'repeat'
@@ -339,10 +306,10 @@ const routing = {
           }
           ypokathgoriesrest.reverse();
           if (ypokathgoriesrest.length >1){
-            ypokathgoriesurl = ypokathgoriesrest.join("-");
-            ypokathgoriesurl = "-"+ ypokathgoriesurl;  
+            ypokathgoriesurl = ypokathgoriesrest.join("&");
+            ypokathgoriesurl = "&"+ ypokathgoriesurl;  
           } else {
-            ypokathgoriesurl = "-"+ ypokathgoriesrest[0];
+            ypokathgoriesurl = "&"+ ypokathgoriesrest[0];
           }
           
         }
@@ -370,10 +337,10 @@ const routing = {
           }
           topothesiarest.reverse();
           if (topothesiarest.length >1){
-            topothesiaurl = topothesiarest.join("-");
-            topothesiaurl = "-"+ topothesiaurl;  
+            topothesiaurl = topothesiarest.join("&");
+            topothesiaurl = "&"+ topothesiaurl;  
           } else {
-            topothesiaurl = "-"+ topothesiarest[0];
+            topothesiaurl = "&"+ topothesiarest[0];
           }
           
         }
@@ -394,36 +361,23 @@ const routing = {
           arrayFormat: 'repeat'
         });
       }else {
-        queryString=  kathgoriastring + ypokathgoriastring + topothesiastring
+        queryString =  kathgoriastring + ypokathgoriastring + topothesiastring
       }
       
-      // const queryString = qsModule.stringify(queryParameters, {
-      //   addQueryPrefix: true,
-      //   arrayFormat: 'repeat'
-      // });
-
-      // return `${baseUrl}gr/cause-category/filanthropikoi/${categoryPath}${queryString}`;
-      return `${baseUrl}causes.html${categoryPath}${queryString}`;
+      return `${baseUrl}causes.html${queryString}`;
     },
 
     parseURL({ qsModule, location }) {
-      // const pathnameMatches = location.href.match(/^(.*?)\/gr\/cause-category\/filanthropikoi/);
-      // const pathnameMatches = location.pathname.match(/^(.*?)\/causes.html\/(.*?)\/?$/);
-      // const pathnameMatches = location.href.match(/^(.*?)\/causes.html\/(.*?)\/?$/);
-      // const category = ((pathnameMatches && pathnameMatches[1]) || '')
-      //   .split('/')
-      //   .map((path) => getCategoryName(path));
 
       const { query = '', kathgoria = [], ypokathgoria=[], topothesia= [] } = qsModule.parse(
         location.search.slice(1)
       );
       
-      // kathgoria_array = [kathgoria].filter(Boolean);
       neakathgoria=[]
 
       if (!Array.isArray(kathgoria)){
-        if (kathgoria.includes('-')){
-          allkathgoria = kathgoria.split('-')
+        if (kathgoria.includes('&')){
+          allkathgoria = kathgoria.split('&')
           allkathgoria.forEach(allkathgoria =>
           neakathgoria.push([allkathgoria].filter(Boolean).map((allkathgoria)=> getKathgoriaName(allkathgoria))))
         }else {
@@ -436,8 +390,8 @@ const routing = {
       neaypokathgoria = []
 
       if (!Array.isArray(ypokathgoria)){
-        if (ypokathgoria.includes('-')){
-          allypokathgoria = ypokathgoria.split('-')
+        if (ypokathgoria.includes('&')){
+          allypokathgoria = ypokathgoria.split('&')
           allypokathgoria.forEach(allypokathgoria =>
           neaypokathgoria.push( [allypokathgoria].filter(Boolean).map((allypokathgoria)=> getYpokathgoriaName(allypokathgoria))))
         }else {
@@ -446,12 +400,12 @@ const routing = {
         }
       }
 
-      //topothesia_array = [kathgoria].filter(Boolean);
+    
       neatopothesia = []
 
       if (!Array.isArray(topothesia)){
-        if (topothesia.includes('-')){
-          alltopothesia = topothesia.split('-')
+        if (topothesia.includes('&')){
+          alltopothesia = topothesia.split('&')
           alltopothesia.forEach(alltopothesia => 
           neatopothesia.push( [alltopothesia].filter(Boolean).map((alltopothesia)=> getTopothesiaName(alltopothesia))))
         }else {
@@ -459,37 +413,26 @@ const routing = {
           neatopothesia = topothesia_array.map((topothesia_array)=> getTopothesiaName(topothesia_array))
         }
       }
-      // const allkathgoria = Array.isArray(kathgoria)
-      // ? kathgoria 
-      // : [kathgoria].filter(Boolean);
 
-      // const allypokathgoria = Array.isArray(ypokathgoria)
-      // ? ypokathgoria
-      // : [ypokathgoria].filter(Boolean);
-
-      // const alltopothesia = Array.isArray(topothesia)
-      //   ? topothesia
-      //   : [topothesia].filter(Boolean);
-
+      console.log('neakathgoria', neakathgoria);
+      console.log('neaypokathgoria', neaypokathgoria);
+      console.log('neatopothesia', neatopothesia);
+      //console.log('query', query);
         
       return {
         query: decodeURIComponent(query),
-        // page,
         kathgoria : neakathgoria.map(decodeURIComponent),
         ypokathgoria : neaypokathgoria.map(decodeURIComponent),
-        topothesia: neatopothesia.map(decodeURIComponent),
-        // kathgoria,
-        // ypokathgoria,
-        // topothesia,
-        // category,
+        topothesia: neatopothesia.map(decodeURIComponent)
       };
-    },
+        
+    }
   }),
 
   stateMapping: {
     stateToRoute(uiState) {
-      const indexUiState = uiState['causes-registration'] || {};
-
+      console.log('etreksa1');
+      const indexUiState = uiState[indexName] || {};        
       return {
         query: indexUiState.query,
         page: indexUiState.page,
@@ -498,21 +441,18 @@ const routing = {
         ypokathgoria: indexUiState.refinementList 
         && indexUiState.refinementList['category'],
         topothesia: indexUiState.refinementList 
-        && indexUiState.refinementList['location'],
-        category: indexUiState.menu && indexUiState.menu.categories
+        && indexUiState.refinementList['location']
       };
     },
 
     routeToState(routeState) {
+      console.log('etreksa', routeState)
       return {
         indexName: {
           query: routeState.query,
           page: routeState.page,
-          menu: {
-            categories: routeState.category
-          },
           refinementList: {
-            'category_parent': routeState.ykathgoria
+            'category_parent': routeState.kathgoria
           },
           refinementList: {
             'category': routeState.ypokathgoria
@@ -525,6 +465,7 @@ const routing = {
     },
   },
 };
+
 
 let indexName = 'causes-registration'
 const search = instantsearch({
@@ -679,13 +620,6 @@ search.addWidget(
   })
 );
 
-/*search.addWidget(
-  instantsearch.widgets.clearRefinements({
-    container: '#clear-refinements5',
-    includedAttributes: ["percentage_completed"],
-  })
-);*/
-
 search.addWidget(
   instantsearch.widgets.refinementList({
     container: '#Category_parent_title',
@@ -814,32 +748,4 @@ search.addWidget(
   })
 );
 
-// https://www.algolia.com/doc/api-reference/widgets/range-slider/js/#widget-param-cssclasses
-/*search.addWidget(
-instantsearch.widgets.rangeSlider({
-  container: '#range-slider',
-  attribute: 'percentage_completed',
-})
-);*/
-
 search.start();
-setTimeout(function() {
-  checkCategorySelection();
-  $('.ais-SearchBox-input').focus();
-}, 1200);
-
-function checkCategorySelection() {
-  if(url.indexOf('filanthropikoi') > -1) {
-       setTimeout(function() {
-         $('#Category_parent_title ul li:first-child input').click();
-       }, 100);
-  } else if(url.indexOf('filozoiki') > -1) {
-      setTimeout(function() {
-         $('#Category_parent_title ul li:nth-child(3) input').click();
-       }, 100);
-  } else if(url.indexOf('perivallontiki') > -1) {
-      setTimeout(function() {
-        $('#Category_parent_title ul li:nth-child(2) input').click();
-      }, 100);
-  }  
-}
