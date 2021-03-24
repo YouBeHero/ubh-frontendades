@@ -61,7 +61,7 @@ if (in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_
     function youbehero_action_links($links)
     {
         $links = array_merge(array(
-            '<a href="' . esc_url(admin_url('/admin.php?page=you-be-hero')) . '">' . __('Settings', 'textdomain') . '</a>'
+            '<a href="' . esc_url(admin_url('/admin.php?page=youbehero')) . '">' . __('Settings', 'textdomain') . '</a>'
         ), $links);
         return $links;
     }

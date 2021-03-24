@@ -135,7 +135,7 @@ function main_admin_page_contents() {
 
                 <div class="col-12">
 
-                  <iframe src="https://youbehero.com/gr/stats/eshop/aromaselena" width="100%" height="600"></iframe>
+                  <iframe src="https://youbehero.com/gr/stats/eshop/aromaselena" width="100%" height="800"></iframe>
 
                   
                   <div class="d-none">
