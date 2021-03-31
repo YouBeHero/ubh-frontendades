@@ -275,10 +275,11 @@ function ubh_admin_page_contents() {  ?>
   }
   </style>
   <div class="wrap">  
-    <h1><strong>YouBeHero </strong><?php echo __('για την επιχείρηση' , 'youbehero' ); ?></h1>
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#shopURL">
+    <h1><strong>YouBeHero </strong><?php echo __('για την επιχείρηση' , 'youbehero' ); ?>
+      <button type="button" class="btn btn-sm btn-outline-primary mb-1 ml-2" data-toggle="modal" data-target="#shopURL">
           <?php _e('Διαμόρφωση Πίνακα', 'youbehero' ); ?>
-        </button>   
+      </button>   
+      </h1>     
       <!-- Button trigger modal -->
       
         <!-- Modal -->

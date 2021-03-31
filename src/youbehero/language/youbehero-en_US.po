@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: YouBeHero - Donation tracker\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-03-26 13:46+0000\n"
-"PO-Revision-Date: 2021-03-26 13:49+0000\n"
+"PO-Revision-Date: 2021-03-26 17:09+0000\n"
 "Last-Translator: \n"
 "Language-Team: English (United States)\n"
 "Language: en_US\n"
@@ -19,6 +19,26 @@ msgstr ""
 msgid " χωρίς κανένα κόστος για εσένα!"
 msgstr "with no cost to you!"
 
+#. Author URI of the plugin
+msgid "https://youbehero.com/"
+msgstr ""
+
+#. Author of the plugin
+#: youbehero.php:156 includes/admin-pages/admin-page.php:5
+#: includes/admin-pages/admin-page.php:5
+msgid "YouBeHero"
+msgstr ""
+
+#. Name of the plugin
+msgid "YouBeHero - Donation tracker"
+msgstr ""
+
+#. Description of the plugin
+msgid ""
+"YouBeHero - Donation tracker is a plugin that helps eshop's show social "
+"responsibility by sharing a percentage of the cart value with user's "
+"selected charity."
+msgstr ""
 
 #: youbehero.php:110 youbehero.php:129
 msgid "Ανοίγει την σελίδα YouBeHero σε νέα καρτέλα "
@@ -26,7 +46,7 @@ msgstr "Opens YouBeHero page in new tab"
 
 #: youbehero.php:281 youbehero.php:289 includes/admin-pages/admin-page.php:130
 #: includes/admin-pages/admin-page.php:140
-msgid "Διαμόρφωση πίνακα"
+msgid "Διαμόρφωση Πίνακα"
 msgstr "Edit board"
 
 #: youbehero.php:69
@@ -39,7 +59,7 @@ msgstr "Close"
 
 #: youbehero.php:128
 msgid "Μαζί θα προσφέρουμε"
-msgstr "Together we will offer "
+msgstr "Together we will offer"
 
 #: youbehero.php:109
 msgid "Ολοκλήρωσε την αγορά σου και μαζί θα προσφέρουμε"
@@ -55,7 +75,7 @@ msgstr "for business"
 
 #: youbehero.php:109 youbehero.php:128
 msgid "στην οργάνωση "
-msgstr "to the organization "
+msgstr "to the organization"
 
 #: youbehero.php:109
 msgid "χωρίς κανένα κόστος για εσένα!"
