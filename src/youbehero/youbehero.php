@@ -95,18 +95,18 @@ if (in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_
     function ybh_after_submit()
     {   global $woocommerce;
         $total = $woocommerce->cart->subtotal_ex_tax;
-        $donation = $_SESSION['ybh_shop_commission']; //edo kanonika prepei na bei kati tetoio $_SESSION['ybh-eshop-donation-amount']
+        $donation = $_SESSION['ybh_shop_commission'];
         $ybhDonation = ($donation / 100) * $total;
         $ybhDonation = number_format($ybhDonation, 2);
         if (isset($_SESSION['ybh-user-id'])) { // Check if user comes from youbehero start
         ?>
             <div style="border: 1px solid #dbdbdb; padding: 10px; border-radius: 3px; margin-top: 15px; margin-bottom: 15px; color: #000;">
                 <div class="row">
-                    <div style="-webkit-box-flex: 0; -ms-flex: 0 0 16.66667%; flex: 0 0 16.66667%; max-width: 16.66667%; position: relative; width: 100%; padding-left: 15px;">
+                    <div style="-webkit-box-flex: 0; -ms-flex: 0 0 16.66667%; flex: 0 0 16.66667%; max-width: 7.66667%; position: relative; width: 100%; padding-left: 15px; display: inline-block;">
                         <img src="<?php echo $_SESSION['ybh-user-org-picture']; ?>" alt="<?php echo $_SESSION['ybh-user-org-name']; ?> logo" style="max-width: 100%; height: auto; vertical-align: middle; border-style: none; padding-top: 4px;">
                     </div>
-                    <div style="-webkit-box-flex: 0; -ms-flex: 0 0 83.33333%; flex: 0 0 83.33333%; max-width: 83.33333%; position: relative; width: 100%; padding-right: 15px; padding-left: 15px;">              
-                        <p style="font-size: 12px;"><?php  _e( 'Ολοκλήρωσε την αγορά σου και μαζί θα προσφέρουμε', 'youbehero' ); ?><strong id="ybh-amount"><?php echo " " . $ybhDonation; ?>€ </strong><?php  _e( 'στην οργάνωση ', 'youbehero' ); ?> <strong id="ybh-organization"><?php echo $_SESSION['ybh-user-org-name']; ?></strong> <?php  _e( 'χωρίς κανένα κόστος για εσένα!', 'youbehero' ); ?>  </p>
+                    <div style="-webkit-box-flex: 0; -ms-flex: 0 0 83.33333%; flex: 0 0 83.33333%; max-width: 83.33333%; position: relative; width: 100%; padding-right: 15px; padding-left: 15px; display: inline-block; vertical-align: top;">              
+                        <p style="font-size: 14px; margin-bottom: 10px;"><?php  _e( 'Ολοκλήρωσε την αγορά σου και μαζί θα προσφέρουμε', 'youbehero' ); ?><strong id="ybh-amount"><?php echo " " . $ybhDonation; ?>€ </strong><?php  _e( 'στην οργάνωση ', 'youbehero' ); ?> <strong id="ybh-organization"><?php echo $_SESSION['ybh-user-org-name']; ?></strong> <?php  _e( 'χωρίς κανένα κόστος για εσένα!', 'youbehero' ); ?>  </p>
                         <p style="font-size: 10px;"><?php  _e( 'Υποστηρίζεται από το ', 'youbehero' ); ?><a href="https://youbehero.com" title="<?php   _e( 'Ανοίγει την σελίδα YouBeHero σε νέα καρτέλα ', 'youbehero' ); ?>" target="_blank"><img class="img-fluid" src="https://www.youbehero.com/img/various/logo.svg" style="max-width: 60px;" /></a></p>
                     </div> 
                 </div>
@@ -117,7 +117,7 @@ if (in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_
     function email_notification()
     {   global $woocommerce;
         $total = $woocommerce->cart->subtotal_ex_tax;
-        $donation = $_SESSION['ybh_shop_commission']; //edo kanonika prepei na bei kati tetoio $_SESSION['ybh-eshop-donation-amount']
+        $donation = $_SESSION['ybh_shop_commission'];
         $ybhDonation = ($donation / 100) * $total;
         $ybhDonation = number_format($ybhDonation, 2);
         if (isset($_SESSION['ybh-user-id'])) { // Check if user comes from youbehero start
@@ -139,14 +139,21 @@ if (in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_
          * Do something after WooCommerce set an order status as completed
          */
         add_action('woocommerce_thankyou', 'ybh_successful_checkout', 1);
+        add_action('woocommerce_thankyou_', 'ybh_successful_checkout', 1);
+        add_action('woocommerce_before_thankyou', 'ybh_successful_checkout', 1);
+
+	
+	    //add_action('woocommerce_order_status_processing', 'ybh_successful_checkout', 1);
+
         function ybh_successful_checkout($order_id) {            
-            $order = wc_get_order( $order_id ); 
+            $order = wc_get_order( $order_id );
             if (isset($_SESSION['ybh-user-id'])) { // Check if user comes from youbehero start
             $total_without_tax = $order->total - $order->total_tax;              
         echo '<img src="https://youbehero.com/gr/test/trackTransaction?ubhTr='. $_SESSION["ybh-user-id"] . '&sale_amount='.  $total_without_tax .'&transaction_id='.  $order->id .'"/>';
             ?>             
             <?php   
             } // Check if user comes from youbehero end
+			
         };
         //Cart Page after checout info End================================
 } //Check if WooCommerce is active End=======================
@@ -276,9 +283,12 @@ function ubh_admin_page_contents() {  ?>
   </style>
   <div class="wrap">  
     <h1><strong>YouBeHero </strong><?php echo __('για την επιχείρηση' , 'youbehero' ); ?>
+       <?php if( get_option('ubh-iframe-url') != ""){ ?>
       <button type="button" class="btn btn-sm btn-outline-primary mb-1 ml-2" data-toggle="modal" data-target="#shopURL">
           <?php _e('Διαμόρφωση Πίνακα', 'youbehero' ); ?>
       </button>   
+		          <?php } ?>
+
       </h1>     
       <!-- Button trigger modal -->
       
@@ -308,6 +318,7 @@ function ubh_admin_page_contents() {  ?>
             </div>
           </div>
         </div>
+       <?php if( get_option('ubh-iframe-url') != ""){ ?>
       <div class="row-fluid mb-5">
           <div class="row">
               <div class="col-12">
@@ -319,6 +330,25 @@ function ubh_admin_page_contents() {  ?>
             </div>
           </div>          
       </div>
+      <?php } else { ?>
+        <div class="row-fluid mb-5">
+          <div class="row">
+              <div class="col-12">
+                <div class="row">
+                  <div class="col-12 align-middle text-center">
+					  <div style="border:2px dashed grey; padding:10%; ">
+						  
+					  
+                    <button type="button" class="btn btn-sm btn-outline-primary mb-1 ml-2" data-toggle="modal" data-target="#shopURL" style="width:200px;padding:30px; font-size:20px; font-weight:700;">
+          <?php _e('Διαμόρφωση Πίνακα', 'youbehero' ); ?>
+      </button>
+					  </div>
+                  </div>
+              </div>      
+            </div>
+          </div>          
+      </div>
+      <?php } ?>
   </div>
   <?php//=================================Footer==========================?>
 
