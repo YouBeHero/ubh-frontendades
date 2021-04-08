@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="el" dir="ltr">
+    <head>
+    <meta charset="utf-8">
+    <META NAME="robots" CONTENT="noindex,nofollow">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <title>YouBeHero - Για ΜΚΟ
+      </title>
+       <meta name="description" content="Το YouBeHero είναι η πρώτη πλατφόρμα στην Ελλάδα που μετατρέπει τις προμήθειες των ηλεκτρονικών σου αγορών, σε δωρεές προς κοινωφελείς σκοπούς.">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+      <link rel="stylesheet" href="css/styles.css">
+    </head>
+    <body class="charitylp bgColor bg-white">
+        <div class="container pt-3 px-md-0 pb-1">
+          <div class="row">
+            <div class="col-5 col-md-4">
+              <a href="index.html" class="navbar-brand font-weight-bold text-dark mx-0 py-0">
+                  <img src="img/various/logo.svg" class="headerlogo" alt="Λογότυπο YouBeHero" style="max-width: 150px;">
+              </a>
+            </div>
+            <div class="col col-md-4 d-lg-block">
+                <form action="/gr/search/shops">
+                    <div class="typeahead__container">
+                        <div class="typeahead__field thisGoes">
+                            <div class="typeahead__query">
+                                <input type="hidden" name="loose_type" value="1">
+                                <span class="typeahead__cancel-button">×</span><input class="js-typeahead" name="term" type="search" autofocus="" autocomplete="off" placeholder=" Αναζήτηση  " aria-label="Search" value="">
+                            </div>
+                            <div class="typeahead__button">
+                                <button type="submit">
+                                <span class="typeahead__search-icon"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col col-md-4 text-right">
+                <div class="btn-group" role="group" id="notificationsDropdownContainer">
+                    <button id="notificationsDropdown" type="button" class="btn btn-link rounded-0 px-1 px-md-2" title="Μενού ειδοποιήσεων" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i aria-hidden="true" class="fas fa-bell"></i>
+                        <span class="smaller-5 position-absolute badge badge-danger ml-minus-5 total_unread_notifications"></span>
+                        <span class="heartbeat" id="heartBeat" style="display:none;"></span>
+                    </button>
+                    <div class="dropdown-menu-right dropdown-menu py-0 dropdown-menu-right notifications dropdown-shadow" aria-labelledby="notificationsDropdown">
+                        <div class="card-header py-1 text-center bg-white">
+                            <small>Ειδοποιήσεις<span class="badge badge-danger ml-1 align-text-top total_unread_notifications"></span></small>
+                        </div>
+                        <div id="notificationsContainer">
+                            <div class="media px-3 pt-3 pb-2 dropdown-item notification_container text-center" id="empty_notifications" style="display:none">
+                                <p class="mx-auto smaller-2 text-muted pt-2"><i class="fas fa-info-circle mr-1 smaller-3"></i>Δεν υπάρχουν νέες ειδοποιήσεις</p>
+                            </div>
+                            <div class="media px-3 pt-3 pb-2 dropdown-item" id="loading_notifications" style="display:none;">
+                                <p class="smaller-2 text-muted mx-auto"><i class="fas fa-sync-alt fa-spin mr-1"></i>Φορτώνει...</p>
+                            </div>
+                        </div>
+                        <div class="card-footer text-center py-2">
+                            <p class="mb-0 pb-1">
+                                <a href="https://youbehero.com/gr/notifications" class="d-block" title="Πάτησε εδώ για να δεις όλες τις ειδοποιήσεις που έχεις λάβει στο παρελθόν.">
+                                    <small>Προβολή όλων</small>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div> 
+                <div class="btn-group d-none d-md-inline-block" role="group">
+                    <button id="userNameDropdown" type="button" class="btn btn-link rounded-0 px-1 px-md-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Μενού χρήστη - Πάτησε εδώ για να δεις τις επιλογές.">
+                        <i aria-hidden="true" class="fas fa-user-circle"></i>
+                    </button>
+                    <div class="dropdown-menu-right dropdown-menu py-0 dropdown-menu-right" aria-labelledby="userNameDropdown">
+                        <div class="card-header py-1 text-center">
+                            <p class="mb-0 text-truncate"><small>Μενού χρήστη</small></p>
+                        </div>
+                        <a href=" # " class="dropdown-item smaller-1 py-2" title="Από εδώ μπορείς να δεις συγκεντρωμένες όλες τις πληροφορίες για τον λογαριασμό σου">
+                            <i class="fas fa-home mr-2" aria-hidden="true">
+                            </i>Αρχική σελίδα χρήστη
+                        </a>
+                        <div class="dropdown-divider my-0"></div>
+                        <a href="https://youbehero.com/gr/user/panpan" class="dropdown-item smaller-1 py-2" title="Ο κάθε χρήστης έχει μια δημόσια σελίδα που μπορεί να μοιράζεται με φίλους. Αν δεν την θέλεις, μπορείς πάντα να την κρύψεις από την σελίδα των ρυθμίσεων.">
+                        <i aria-hidden="true" class="fas fa-share-alt mr-2"></i>Δημόσια σελίδα χρήστη
+                        </a>
+                        <div class="dropdown-divider my-0"></div>
+                        <a href="/gr/create-team" class="dropdown-item smaller-1 py-2" title="Δημιούργησε την δική σου ομάδα!">
+                        <i class="fas fa-plus-circle mr-2" aria-hidden="true"></i>Δημιουργία ομάδας
+                        </a>
+                        <div class="dropdown-divider my-0"></div>
+                        <div class="dropdown-divider my-0"></div>
+                        <a href=" https://youbehero.com/gr/user-settings/profile  " class="dropdown-item smaller-1 py-2" title="Πάτα εδώ για να αλλάξεις τις ρυθμίσεις του λογαριασμού σου.">
+                        <i class="fas fa-cog mr-2" aria-hidden="true"></i>Ρυθμίσεις χρήστη
+                        </a>
+                        <div class="dropdown-divider my-0"></div>
+                        <a href="https://youbehero.com/gr/logout" class="dropdown-item smaller-1 py-2" onclick="if (!window.__cfRLUnblockHandlers) return false; event.preventDefault(); document.getElementById('logout-form').submit();" title="Πάτησε εδώ για να κάνεις log-out.">
+                        <i class="fas fa-power-off mr-2" aria-hidden="true"></i>Αποσύνδεση
+                        </a>
+                            <form id="logout-form" action="https://youbehero.com/gr/logout" method="POST" style="display: none;">
+                                <input type="hidden" name="_token" value="ca9KcPoiAHFMD58NIIcJbdq9U4FXyikJJu0qFPUu">
+                            </form>
+                    </div>
+                </div>
+                    <button class="btn btn-outline-primary btn-sm menu-btn" type="button" aria-label="Μενού πλοήγησης" title="Μενού πλοήγησης">
+                        <i aria-hidden="true" class="fas fa-bars smaller-2 mr-1"></i> Πλοήγηση
+                    </button>
+            </div>
+          </div>
+        </div>
+        <div id="hero-section" class="hero-section">
+            <div class="row pt-5">
+                <div class="col-12 col-md-10 col-lg-8 mx-auto text-center">
+                    <p class="pt-2 text-white bigger-4">Αύξησε το customer loyalty & <br>τον μέσο όρο του καλαθιού του e-shop σου <br>μέσα από δωρεές σε 70+ κοινωφελείς οργανώσεις</p>
+                </div>
+                <div class="col-12 col-md-12 col-lg-7 mx-auto text-center">
+                    <form class="form-inline d-flex justify-content-center">
+                        <a href="charity-dashboard-main.html" class="btn btn-primary my-2 my-sm-0 w-50">Εγγραφή</a>
+                    </form>
+                </div>
+            </div>
+        </div> 
+      
+      <div class="font-weight-bold pt-3 text-center bigger-2"> Πώς λειτουργεί</div>
+      
+      <div class="row mb-5">
+        <div class="col-md-6 text-center position-relative" >
+          <div class="position-absolute top-50 start-50 translate-middle">
+            <div class="row">
+              <div class="col-md-2"><span class="fs-1">1</span></div>
+              <div class="col-md-10 text-left"> 
+                <span class="font-weight-bold pr-3">SIGN UP FOR FREE </span>
+                <p >Κάνε την εγγραφή σου</p>
+              </div>
+            </div>  
+          </div>
+        </div>
+        <div class="col-md-6">
+          <img src="img/merchands-landing-page/youbehero-business-signup.png" class="img-fluid">
+        </div>
+      </div>
+
+      <div class="row mb-5">
+        <div class="col-md-6">
+          <img src="img/merchands-landing-page/youbehero-business-widget.png" class="img-fluid">
+        </div>
+        <div class="col-md-6 text-center position-relative" >
+            <div class="position-absolute top-50 start-50 translate-middle">
+              <div class="row">
+                <div class="col-md-2"><span class="fs-1">2</span></div>
+                <div class="col-md-10 text-left"> 
+              <span>Ξεκινάμε εγκατάσταση </span>
+              <span>(προσθήκη snipet)</span>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mb-5">
+        <div class="col-md-6 text-center position-relative" >
+          <div class="position-absolute top-50 start-50 translate-middle">
+            <div class="row">
+              <div class="col-md-2"><span class="fs-1">3</span></div>
+              <div class="col-md-10 text-left"> 
+                <span class="font-weight-bold">GET MORE VISITORS </span>
+                <p class ="text-wrap">Αρχίζεις να δέχεσαι επισκέπτες από το YouBeHero</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <img src="img/merchands-landing-page/youbeher-business-statistics.png" class="img-fluid">
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <img src="img/merchands-landing-page/youbehero-for-business-csr.png" class="img-fluid">
+        </div>
+        <div class="col-md-6 text-center position-relative" >
+            <div class="position-absolute top-50 start-50 translate-middle">
+              <div class="row">
+                <div class="col-md-2"><span class="fs-1">4</span></div>
+                <div class="col-md-10 text-left"> 
+                  <span class="text-wrap">Προβάλλεις με περηφάνεια τα αποτελέσματα σε όλα σου τα μέσα και ανεβάζεις τον δείκτη εταιρικής υπευθυνότητας</span>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+
+      <div class="row mb-5">
+        <div class="col-md-6 position-relative">
+          <div class="top-50 translate-middle start-50 position-absolute">
+            <div class="row pl-5">
+              <div class="col-md-10 text-left"> 
+                <span class="font-weight-bold bigger-3 text-nowrap">Ανέβασε τον μέσο όρο της αξίας </span>
+                <span class="font-weight-bold bigger-3 text-nowrap">του καλαθιού και την φήμη του </span>
+                <span class="font-weight-bold bigger-3 text-nowrap">e-shop σου</span>
+                <span class ="d-block text-wrap">YouBeHero is a fully-integrated data-driven checkout experince designed to advance your businessa impact</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <img src="img/merchands-landing-page/youbehero-business-socia-responsibility.png" class="img-fluid">
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="row mb-5 mt-5">
+        <div class="col-md-6">
+          <img src="img/merchands-landing-page/youbehero-for_business-shares.png" class="img-fluid">
+        </div>
+        <div class="col-md-6 text-left position-relative" >
+            <div class="position-absolute top-50 start-50 translate-middle">
+                  <span class="text-nowrap font-weight-bold bigger-3">Όρισε εσύ το ποσό των δωρεών ανά περίοδο</span>
+                  <span class="text-wrap">lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sollicitum nunc as lorem viverra</span>
+          </div>
+        </div>
+      </div>
+
+      <hr>
+      
+
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4">
+           
+        
+      <form >
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Όνομα Καταστήματος</label>
+          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Σελίδα Καταστήματος</label>
+          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Επωνυμία εταιρίας</label>
+          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Email επικοινωνίας υπευθύνου</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">ΑΦΜ</label>
+          <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Τηλέφωνο</label>
+          <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <button type="submit" class="btn btn-primary text-center">Εγγραφή</button>
+      </form>
+      </div>
+      </div>
+      </div>
+      
+
+      <footer class="row-fluid footer bg-white border border-left-0 border-right-0 border-bottom-0">
+        <div class="container pt-5 px-md-0">
+          <div class="row">
+            <div class="col-6 col-sm-4 col-md pb-3">
+              <h6 class="text-muted font-weight-bold smaller-1">Πλοήγηση
+              </h6>
+              <ul class="list-group">
+                <li class="list-group-item py-1">
+                  <a class="smaller-2 text-muted" href="index.html">Αρχική
+                  </a>
+                </li>
+                <li class="list-group-item py-1">
+                  <a class="smaller-2 text-muted" href="categoriesCause.html">Κοινωφελείς σκοποί
+                  </a>
+                </li>
+                <li class="list-group-item py-1">
+                  <a class="smaller-2 text-muted" href="categories.html">Ηλεκτρονικά καταστήματα
+                  </a>
+                </li>
+                <li class="list-group-item py-1">
+                  <a class="smaller-2 text-muted" href="plugin.html">Ηρωικός ενθυμητής
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-6 col-sm-4 col-md pb-3">
+              <h6 class="text-muted font-weight-bold smaller-1">Σελίδες εγγραφής
+              </h6>
+              <ul class="list-group">
+                <li class="list-group-item py-1">
+                  <a class="smaller-2 text-muted" href="charitylp.html">Εγγραφή σκοπού
+                  </a>
+                </li>
+                <li class="list-group-item py-1">
+                  <a class="smaller-2 text-muted" href="teamlp.html">Εγγραφή ομάδας
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-6 col-sm-4 col-md pb-3">
+              <h6 class="text-muted font-weight-bold smaller-1">Επικοινωνία
+              </h6>
+              <ul class="list-group">
+                <li class="list-group-item py-1">
+                  <a class="smaller-2 text-muted" href="aboutus.html">Ποιοι είμαστε
+                  </a>
+                </li>
+                <li class="list-group-item py-1">
+                  <a class="smaller-2 text-muted" href="contactus.html">Φόρμα επικοινωνίας
+                  </a>
+                </li>
+                <li class="list-group-item py-1">
+                  <a class="smaller-2 text-muted" href="javascript:void(0);">Θέσεις εργασίας
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-12 col-lg-4 pb-3">
+              <div class="row">
+                <div class="col-12 pb-3">
+                  <h6 class="text-muted font-weight-bold smaller-1">Κοινωνικά δίκτυα
+                  </h6>
+                  <ul class="list-group">
+                    <li class="list-group-item py-1">
+                      <a class="text-muted bigger-2 mr-1 text-decoration-none" href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="" data-original-title="Facebook">
+                        <i class="fab fa-facebook-square" aria-hidden="true">
+                        </i>
+                      </a>
+                      <a class="text-muted bigger-2 mr-1 text-decoration-none" href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="" data-original-title="Twitter">
+                        <i class="fab fa-twitter-square" aria-hidden="true">
+                        </i>
+                      </a>
+                      <a class="text-muted bigger-2 mr-1 text-decoration-none" href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="" data-original-title="Blog">
+                        <i class="fab fa-wordpress-simple" aria-hidden="true">
+                        </i>
+                      </a>
+                      <a class="text-muted bigger-2 mr-1 text-decoration-none" href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="" data-original-title="Instagram">
+                        <i class="fab fa-instagram" aria-hidden="true">
+                        </i>
+                      </a>
+                      <a class="text-muted bigger-2 mr-1 text-decoration-none" href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="LinkedIn">
+                        <i class="fab fa-linkedin" aria-hidden="true">
+                        </i>
+                      </a>
+                      <a class="text-muted bigger-2 mr-1 text-decoration-none" href="javascript:void(0);" data-toggle="tooltip" data-placement="top" title="YouTube">
+                        <i class="fab fa-youtube" aria-hidden="true">
+                        </i>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-12 pb-3">
+                  <!-- Begin MailChimp Signup Form -->
+                  <div id="mc_embed_signup">
+                    <form action="https://oneclickmore.us11.list-manage.com/subscribe/post?u=002f91629d56d1d3fdf44d440&amp;id=bed218e151" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate="">
+                      <label for="mce-EMAIL"> 
+                        <h6 class="text-muted font-weight-bold smaller-1">Κράτα επαφή
+                        </h6>
+                      </label>
+                      <div id="mc_embed_signup_scroll" class="input-group mb-1">
+                        <input value="" name="EMAIL" id="mce-EMAIL" placeholder="Διεύθυνση email" required="required" aria-describedby="Φόρμα" class="form-control rounded-0 email" type="email">
+                        <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                        <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                          <input name="b_002f91629d56d1d3fdf44d440_bed218e151" tabindex="-1" value="" type="text">
+                        </div>
+                        <input value="Εγγραφή" name="subscribe" id="mc-embedded-subscribe" class="btn btn-outline-secondary rounded-0 ml-2" type="submit">
+                      </div>
+                    </form>
+                  </div>
+                  <!--End mc_embed_signup-->
+                </div>
+              </div>
+            </div>
+            <div class="row-fluid">
+              <div class="col-12 pb-3 pt-5">
+                <ul class="list-inline">
+                  <li class="list-inline-item">
+                    <span class="smaller-3 text-muted">
+                      Το 
+                      <strong>YouBeHero
+                      </strong> διανείμεται με άδεια χρήσης 
+                      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener" class="text-muted">Creative Commons license (CC BY-NC-SA 4.0)
+                      </a>
+                    </span>
+                  </li>
+                  <li class="list-inline-item">
+                    <a href="termsandconditions.html" class="smaller-3 text-muted">Όροι χρήσης
+                    </a>
+                  </li>
+                  <li class="list-inline-item d-none d-md-inline-block">
+                    <span class="text-muted">|
+                    </span>
+                  </li>
+                  <li class="list-inline-item">
+                    <a class="smaller-3 text-muted" href="faq.html">
+                      <i class="far fa-question-circle mr-1" aria-hidden="true">
+                      </i>Βοήθεια
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+
+      
+    </body>
+    </html>
