@@ -30,8 +30,8 @@ if (in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_
     // Put your plugin code here
     //Main Admin Pages Registration
     //include "includes/admin-pages/admin-page.php";
-    // include testing banner
-    include "dev-banner.php";
+   //  include testing banner
+    //include "dev-banner.php";
     //Plugin Options
     function ubh_register_settings() {
         add_option( 'ubh-iframe-url', '');
@@ -138,25 +138,45 @@ if (in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_
         /*
          * Do something after WooCommerce set an order status as completed
          */
-        add_action('woocommerce_thankyou', 'ybh_successful_checkout', 1);
-        add_action('woocommerce_thankyou_', 'ybh_successful_checkout', 1);
-        add_action('woocommerce_before_thankyou', 'ybh_successful_checkout', 1);
+//         add_action('woocommerce_thankyou', 'ybh_successful_checkout', 1);
+//         add_action('woocommerce_thankyou_', 'ybh_successful_checkout', 1);
+//         add_action('woocommerce_before_thankyou', 'ybh_successful_checkout', 1);
 
 	
-	    //add_action('woocommerce_order_status_processing', 'ybh_successful_checkout', 1);
+	    add_action('woocommerce_order_status_processing', 'ybh_successful_checkout', 1);
 
         function ybh_successful_checkout($order_id) {            
             $order = wc_get_order( $order_id );
             if (isset($_SESSION['ybh-user-id'])) { // Check if user comes from youbehero start
             $total_without_tax = $order->total - $order->total_tax;              
-        echo '<img src="https://youbehero.com/gr/test/trackTransaction?ubhTr='. $_SESSION["ybh-user-id"] . '&sale_amount='.  $total_without_tax .'&transaction_id='.  $order->id .'"/>';
+        //echo '<img src="https://youbehero.com/gr/test/trackTransaction?ubhTr='. $_SESSION["ybh-user-id"] . '&sale_amount='.  $total_without_tax .'&transaction_id='.  $order->id .'"/>';
             ?>             
             <?php   
+				setcookie("ybh-user-id", $_SESSION["ybh-user-id"] , time() + (86400), "/");
+				setcookie("ybh_total_without_tax", $total_without_tax , time() + (86400), "/");
+				setcookie("ybh_order_id", $order->id , time() + (86400), "/");
+				setcookie("ybh_option", "notused");
             } // Check if user comes from youbehero end
 			
         };
         //Cart Page after checout info End================================
 } //Check if WooCommerce is active End=======================
+
+add_action( 'init', 'process_ybh_contact' );
+function process_ybh_contact() {
+		
+	if( $_COOKIE["ybh-user-id"] ) {
+		if($_COOKIE["ybh_option"] == "notused"){
+ 	  		echo '<img src="https://youbehero.com/gr/test/trackTransaction?ubhTr='. $_COOKIE["ybh-user-id"] . '&sale_amount='.  $_COOKIE["ybh_total_without_tax"] .'&transaction_id='.  $_COOKIE["ybh_order_id"] .'" style="display:none;" />';
+			setcookie("ybh-user-id", " ", time() + (86400), "/");
+			setcookie("ybh_total_without_tax", " ", time() + (86400), "/");
+			setcookie("ybh_order_id", " ", time() + (86400), "/");
+			setcookie("ybh_option", " ", time() + (86400), "/");
+		}
+	}
+	
+}
+
 function main_admin_menu() {
     $base_54 = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAACVSURBVHgB7ZLRDYAgDERbF1EnkRHczBEcxRF0A93AESommsClVD6IP/oSEkqvl1Ig+hwcBiKyRknmViuydGgoIOSEYVJXUWGKGxYHZ9hESeZNK7J07z6Kr6vpoTsEDTeIe6XGQbyQ0dEgMXvYkd+781ODZrQMnehMfs2JXEMWSpcWA+WQaZpnFph253zgqut11tHPzQHWJ/6q54M6fgAAAABJRU5ErkJggg==";
   //add_menu_page( string $page_title, string $menu_title, string $capability, string $menu_slug, callable $function = '', string $icon_url = '', int $position = null )
