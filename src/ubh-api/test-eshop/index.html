@@ -83,41 +83,33 @@
 	</section>
 	
 	<!-- page's main script -->
-	<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-
 	<script>
-
-		$(document).ready(function(){
-			setTimeout(function(){
-				$('.card-toggle').get(0).click();
-			}, 1000);
-		});
-
+		
 		document.addEventListener( "DOMContentLoaded" , function() {
 			
-		const queryString= new URLSearchParams( window.location.search ) ;
-		const keys = [ "ubhTr" , "commission_percentage" , "cause_name" , "cause_logo_url" ] ;
-		const informSpan = document.querySelector( "#inform-span" ) ;
-		
-		if ( hasArrivedFromYbh() ) {
-			informSpan.textContent = " " + "(It looks like you came here through YouBeHero - Cool!)" ;
-			informSpan.classList.add( "has-text-success" ) ;
-		} else {
-			informSpan.textContent = " " + "(It looks like you haven't come through YouBeHero...No fun!)" ;
-			informSpan.classList.add( "has-text-danger" ) ;
-		}
-		
-		function hasArrivedFromYbh() {
-			const hasAllKeys = keys.every( key => queryString.has( key ) ) ;
-			if ( hasAllKeys ) {
-				const values = keys.map( key => queryString.get( key ) ) ;
-				const hasAllValues = values.every( value => value ) ;
-				if ( hasAllValues ) {
-					return true ;
-				}
+			const queryString= new URLSearchParams( window.location.search ) ;
+			const keys = [ "ubhTr" , "commission_percentage" , "cause_name" , "cause_logo_url" ] ;
+			const informSpan = document.querySelector( "#inform-span" ) ;
+			
+			if ( hasArrivedFromYbh() ) {
+				informSpan.textContent = " " + "(It looks like you came here through YouBeHero - Cool!)" ;
+				informSpan.classList.add( "has-text-success" ) ;
+			} else {
+				informSpan.textContent = " " + "(It looks like you haven't come through YouBeHero...No fun!)" ;
+				informSpan.classList.add( "has-text-danger" ) ;
 			}
-			return false ;
-		}
+			
+			function hasArrivedFromYbh() {
+				const hasAllKeys = keys.every( key => queryString.has( key ) ) ;
+				if ( hasAllKeys ) {
+					const values = keys.map( key => queryString.get( key ) ) ;
+					const hasAllValues = values.every( value => value ) ;
+					if ( hasAllValues ) {
+						return true ;
+					}
+				}
+				return false ;
+			}
 			
 		} ) ;
 	</script>
@@ -125,7 +117,9 @@
 	<!-- ybh referral & tracking client side script -->
 	<script src="../ybh-client.js"></script>
 	
-	<!-- script for "ybh-api" development section -->
+	<!-- scripts for "ybh-api" development section -->
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+	
 	<script>
 		document.addEventListener( "DOMContentLoaded" , function() {
 			
@@ -151,6 +145,14 @@
 			}
 			
 		} ) ;
+	</script>
+	
+	<script>
+		$(document).ready(function(){
+			setTimeout(function(){
+				$('.card-toggle').get(0).click();
+			}, 1000);
+		});
 	</script>
 	
 </body>
