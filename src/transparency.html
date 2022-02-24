@@ -1,0 +1,2332 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,user-scalable=no,minimum-scale=1,maximum-scale=1">
+    <title>Διαφάνεια - YouBeHero</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="css/styles.css"/>
+
+		<script src="js/jquery.min.js" type="text/javascript"></script>
+    <script src="js/Chart.min.js" type="text/javascript"></script>
+    <script src='https://cdn.plot.ly/plotly-2.8.3.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js'></script>
+
+  </head>
+  <body style="background: #F9F8FF;" data-spy="scroll" data-target="#contentsNavbar" data-offset="30">
+
+  	<div class="row-fluid mt-4">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-12 d-lg-none">
+                    <img src="/img/transparency/diafaneia-youbehero.svg" alt="Διαφάνεια στη YouBeHero" class="img-fluid" />
+                </div>
+
+
+                <div class="col-12 col-lg-6 mb-4">
+                    <h1 class="display-5 superstrong">Δωρεά χρημάτων και διαφάνεια σε Ελληνικές ΜΚΟ</h1>
+                    <p>Εδώ, κάθε online αγορά είναι και μια δωρεά άρρηκτα συνδεδεμένη με την οικονομική διαφάνεια των ΜΚΟ στην Ελλάδα. Σε συνεργασία με 93 οργανώσεις σε όλη τη χώρα, η YouBeHero παρουσιάζει με διαύγεια όλα τα νούμερα που προκύπτουν από τις δωρεές που συλλέγουν καθημερινά οι ήρωες. Γιατί μέσα από τη διαφάνεια χτίζουμε μια σχέση εμπιστοσύνης.</p>
+                    
+                    <button class="btn btn-primary pill-rounded d-none d-md-block scroll btn-lg shadow vertical" onclick="location.href = '#sinolikaEsoda'">Προβολή στατιστικών</button>
+                </div>
+
+                <div class="col-12 col-lg-6 d-none d-lg-inline-block">
+                    <img src="/img/transparency/diafaneia-youbehero.svg" alt="Διαφάνεια στη YouBeHero" class="img-fluid" />
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+		  	<div class="row-fluid mt-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center mb-n5 mb-md-0">
+                        <h2 class="bigger-4"><strong>Η δωρεά χρημάτων με βάση την κυκλική οικονομία</strong></h2>
+                        <p class="mb-5 mb-md-3">Μια νέα μορφή δωρεάς που βασίζεται στην ψηφιακή εποχή. Αειφορία και βιωσιμότητα μέσα από κάτι τόσο απλό όσο οι online αγορές μας.</p>
+                    </div>
+
+
+                    <div class="col-12 col-lg-11 mx-auto">
+                      <div class="card rounded-0">
+                        <div class="card-body pb-4">
+                          <div class="row d-flex align-items-end">
+                          
+                            <div class="col-12 col-md-9">
+                              <div class="row">
+                                <div class="col-12">
+                                  <p><strong>Ρύθμιση περιόδου</strong></p>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-12">
+                                  <select class="custom-select" name="select">
+                                    <option value="start">Από την αρχή (Απρίλιος 2019)</option>
+                                    <option value="lastMonth">Περασμένος μήνας</option>
+                                    <option value="halfYear">Περασμένο εξάμηνο</option>
+                                    <option value="lastYear">Περασμένο έτος</option>
+                                  </select>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="col-12 col-md">
+                               <div class="row">
+                                  <div class="col-12">
+                                    <button type="submit" onclick="" class="btn btn-primary btn-block">
+                                      <i aria-hidden="true" class="fas fa-search mr-2 smaller-1"></i>Αναζήτηση
+                                    </button>
+                                  </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+
+                    <div class="col-12 col-lg-11 mx-auto mt-4">
+  										<div class="card rounded" id="esodaBreakDown">
+  											<div class="card-header text-center">
+  												<p class="bigger-1 mb-0"><strong>Με μια ματιά</strong></p>
+  											</div>
+                          <div class="card-body">
+                              <div class="row">
+                                  <div class="col-12">
+                                   	<canvas style="overflow: visible !important;" id="esodaBreakDownChart" class="mt-2" width="450" height="130"></canvas>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+
+                    	<script>
+                  			new Chart(document.getElementById("esodaBreakDownChart"), {
+													"type": "line",
+													"data": {
+													    "labels": ["2019", "2020", "2021", "2022"],
+													    "datasets": [{
+													        "label": "Προμήθειες",
+													        "data": [1028.03, 4801.04, 9596.62, 8.49],
+													        "fill": true,
+													        "backgroundColor": "rgba(0, 0, 0, 0)",
+													        "borderColor": "#badc58",
+													        "lineTension": .3,
+													    }, {
+													        "label": "Δωρεές",
+													        "data": [821.35, 3599.70, 7211.92, 6.37],
+													        "fill": true,
+													        "backgroundColor": "rgba(0, 0, 0, 0)",
+													        "borderColor": "#e056fd",
+													        "lineTension": .3,
+													    }, {
+													        "label": "YouBeHero",
+													        "data": [224.87, 1199.94, 2406.40, 2.13],
+													        "fill": true,
+													        "backgroundColor": "rgba(0, 0, 0, 0)",
+													        "borderColor": "#30336b",
+													        "lineTension": .3,
+													    }]
+													}
+												});
+                    	</script>
+
+
+                    </div>
+
+                    <div class="col-12 col-lg-11 mx-auto mt-4">
+  										<div class="card rounded" id="esodaBreakDown">
+  											<div class="card-header text-center">
+  												<p class="bigger-1 mb-0"><strong>Ροή εσόδων πλατφόρμας</strong></p>
+  											</div>
+                          <div class="card-body">
+                              <div class="row">
+                                  <div class="col-12">
+                                   	<div id="myDiv"></div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+
+                    	<script>
+												var data = {
+												  type: "sankey",
+												  orientation: "h",
+												  node: {
+												    pad: 15,
+												    thickness: 30,
+												    line: {
+												      color: "black",
+												      width: 0.5
+												    },
+												   label: [
+													   "0Έσοδα",
+													   "1Προμήθειες",
+													   "2Χορηγίες", 
+													   "3Ανθρωποκεντρικοί στόχοι", 
+													   "4Φιλοζωικοί στόχοι", 
+													   "5Περιβαλλοντικοί στόχοι", 
+													   "6Έξοδα YBH", 
+													   "7Due diligence manager", 
+													   "8Social media manager",
+													   "9Ενοίκιο",
+													   "10Λογιστής",
+													   "11Νομική κάλυψη",
+													   "12Servers/Domains",
+													   "13Διάφορα",
+												   ],
+												   
+												   color: [
+												   	"yellow", 
+												   	"orange", 
+												   	"brown", 
+												   	"purple", 
+												   	"green", 
+												   	"blue",
+												   	"#f9ca24",
+												   	"#f0932b",
+												   	"#eb4d4b",
+												   	"#6ab04c",
+												   	"#c7ecee",
+												   	"#e056fd",
+												   	"#686de0",
+												   	"#30336b"
+												   ]
+												  },
+
+												  link: {
+												    source: [0,0,1,1,1,2,1,6,6,6,6,6,6,6],
+												    target: [1,2,3,4,5,6,6,7,8,9,10,11,12,13],
+												    value:  [3,3,3,3,3,5,1,2,2,2,2,2,2,2]
+												  }
+												}
+
+												var data = [data]
+
+												var layout = {
+												  title: "Sankey diagram",
+												  font: {
+												    size: 10
+												  }
+												}
+
+												Plotly.react('myDiv', data, layout)
+
+                    	</script>
+
+
+                    </div>	
+                </div>
+
+                <div class="row mt-5">
+                    <div class="col-12 col-lg-11 mx-auto">
+
+                      <h3 class="bigger-4 text-center"><strong>Πιο αναλυτικά</strong></h3>
+                      <p class="mb-5 mb-md-3 text-center">Μια νέα μορφή δωρεάς που βασίζεται στην ψηφιακή εποχή. Αειφορία και βιωσιμότητα μέσα από κάτι τόσο απλό όσο οι online αγορές μας.</p>
+
+                      <div class="row">
+                              
+                          <div class="col-12 bgColor pt-5 mb-3 d-lg-none sticky-top text-center mt-n5">
+                              <select name="periodPicker2" id="periodPicker2" class="shadow-sm rounded custom-select custom-select-sm w-75 mt-4">
+                                  <option value="start">Από την αρχή (Απρίλιος 2019)</option>
+                                  <option value="lastMonth">Περασμένος μήνας</option>
+                                  <option value="halfYear">Περασμένο εξάμηνο</option>
+                                  <option value="lastYear">Περασμένο έτος</option>
+                              </select>
+                              </div>
+
+                          <div class="col-12 col-lg-7 position-relative">
+                                  <div class="row">
+                                      <div class="col-12">
+                                          <div class="card rounded" id="sinolikaEsoda">
+                                              <div class="card-body">
+                                                  <div class="row">
+                                                      <div class="col-9">
+                                                          <h3 class="bigger-1 mb-0">Συνολικά έσοδα πλατφόρμας</h3>
+                                                          <p class="mb-0" style="font-size: 2.0rem;"><strong>61.946,99€</strong></p>
+                                                          <p class="text-primary bigger-1"><strong>+23.34€</strong><span class="smaller-3 pl-1 align-middle">vs. περασμένο μήνα</span></p>
+                                                      </div>
+
+                                                      <div class="col-3 text-right">
+                                                          <button class="btn btn-link text-muted px-1" data-toggle="tooltip" title="Μοιραστείτε αυτό το γράφημα"><i class="fas fa-share-alt"></i></button>
+                                                          
+                                                          <canvas style="overflow: visible !important;" id="sinolikaEsodaChart" class="mt-2" width="450" height="130"></canvas>
+
+                                                          
+
+                                                          
+                                                      </div>
+                                                  
+                                                      <div class="col-12 mt-3">
+                                                          <div class="row">
+                                                              <div class="col-6">
+
+                                                                  <p class="smaller-1 mb-0">Προμήθειες<span class="pl-1"><a tabindex="0" class="px-0 pointer text-muted" role="button" data-toggle="popover" data-trigger="focus" title="Προμήθεια" data-content="Το ποσό που προκύπτει για κάθε αγορά που κάνει κάποιος μέσω YouBeHero."><i class="fas fa-info-circle smaller-2"></i></a></span>
+                                                                  </p>
+
+                                                                  <p class="smaller-1">Χορηγίες<span class="pl-1"><a tabindex="0" class="px-0 pointer text-muted" role="button" data-toggle="popover" data-trigger="focus" title="Χορηγία" data-content="Το ποσό που έχει δώσει κάποιος προς την εκπλήρωση του στόχου της πλατφόρμας."><i class="fas fa-info-circle smaller-2"></i></a></span>
+                                                                  </p>
+
+                                                              </div>
+                                                              <div class="col-6 text-right">
+                                                                  <p class="mb-0 smaller-1"><strong>15.717,89€</strong></p>
+                                                                  <p class="smaller-1"><strong>25.000€</strong></p>
+                                                              </div>
+                                                          </div>
+                                                      </div>
+
+                                                      <div class="col-12">
+                                                          <hr class="my-1">
+                                                      </div>
+
+                                                      <div class="col-12 mt-2">
+                                                          <p class="smaller-2 mb-1">Από τις προμήθειες τα <strong>856.71€</strong> είναι σε εκκρεμότητα.</p>
+                                                          <p class="smaller-1">Οι χορηγίες αφορούν την κάλυψη του μισθού μιας full-time due-diligence manager που με μεγάλη ευγνωμοσύνη, δεχθήκαμε τον ΜαΪο του 2021 από το <a href="javascript:void(0);">Κοινωφελές Ίδρυμα Ιωάννη Σ. Λάτση</a> καθώς και από το <a href="javascript:void(0);">Ίδρυμα Vodafone</a> τον Φεβρουάριο του 2022 για την κάλυψη μιας full-time social media manager. Ευχαριστούμε ολόψυχα!</p>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+
+                                      <div class="col-12 mt-4">
+                                          <div class="card rounded" id="doreesArithmo">
+                                              <div class="card-body">
+                                                  <div class="row">
+                                                      <div class="col-9">
+                                                          <h3 class="bigger-1 mb-0">Δωρεές σε αριθμό</h3>
+                                                          <p class="mb-0" style="font-size: 2.0rem;"><strong>7864</strong></p>
+                                                          <p class="text-primary bigger-1"><strong>+79</strong><span class="smaller-3 pl-1 align-middle">vs. περασμένο μήνα</span></p>
+                                                      </div>
+
+                                                      <div class="col-3 text-right">
+                                                          <button class="btn btn-link text-muted px-1" data-toggle="tooltip" title="Μοιραστείτε αυτό το γράφημα"><i class="fas fa-share-alt"></i></button>
+                                                          
+                                                          <canvas style="overflow: visible !important;" id="doreesArithmoChart" class="mt-2" width="450" height="130"></canvas>
+
+                                                          
+                                                      </div>
+                                                  
+                                                      <div class="col-12 mt-3">
+                                                          <div class="row">
+                                                              <div class="col-6">
+                                                                  <p class="smaller-1 mb-0">Εγκεκριμένες<span class="pl-1"><a tabindex="0" class="px-0 pointer text-muted" role="button" data-toggle="popover" data-trigger="focus" title="Εγκεκριμένες δωρεές" data-content="Το συνολικό ποσό που έχει επιβεβαιωθεί από τα συνεργαζόμενα καταστήματα και αναμένουμε τη λήψη των χρημάτων στον επόμενο κύκλο πληρωμής."><i class="fas fa-info-circle smaller-2"></i></a></span>
+                                                                  </p>
+
+                                                                  <p class="smaller-1">Σε εκκρεμότητα<span class="pl-1"><a tabindex="0" class="px-0 pointer text-muted" role="button" data-toggle="popover" data-trigger="focus" title="Δωρεές σε εκκρεμότητα" data-content="Η κατάσταση μιας δωρεάς Εκκρεμεί έως ότου οριστικοποιηθεί η συσχετιζόμενη αγορά και επιβεβαιωθεί από το συνεργαζόμενο κατάστημα (από 7 έως 60 ημέρες αναλόγως το κατάστημα)."><i class="fas fa-info-circle smaller-2"></i></a></span>
+                                                                  </p>
+                                                              </div>
+                                                              <div class="col-6 text-right">
+                                                                  <p class="mb-0 smaller-1"><strong>7431</strong></p>
+                                                                  <p class="smaller-1"><strong>437</strong></p>
+                                                              </div>
+                                                          </div>
+                                                      </div>
+
+                                                      <div class="col-12">
+                                                          <hr class="my-1">
+                                                      </div>
+
+                                                      <div class="col-12 mt-2">
+                                                          <p class="smaller-1">Καταστήματα με τις περισσότερες δωρεές</p>
+                                                          <div class="row">
+                                                              <div class="col-6">
+                                                                  <p class="mb-0 smaller-1"><a href="javascript:void(0);">AliExpress</a></p>
+                                                                  <p class="mb-0 smaller-1"><a href="javascript:void(0);">ΑΒ Βασιλόπουλος</a></p>
+                                                                  <p class="mb-0 smaller-1"><a href="javascript:void(0);">E-Shop</a></p>
+                                                                  <p class="mb-0 smaller-1"><a href="javascript:void(0);">Public</a></p>
+                                                                  <p class="mb-0 smaller-1"><a href="javascript:void(0);">BrandsGalaxy</a></p>
+                                                              </div>
+                                                              <div class="col-6 text-right">
+                                                                  <p class="mb-0 smaller-1"><strong>1502</strong></p>
+                                                                  <p class="mb-0 smaller-1"><strong>921</strong></p>
+                                                                  <p class="mb-0 smaller-1"><strong>628</strong></p>
+                                                                  <p class="mb-0 smaller-1"><strong>616</strong></p>
+                                                                  <p class="mb-0 smaller-1"><strong>403</strong></p>
+                                                              </div>
+                                                          </div>
+                                                          
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+
+                                      <div class="col-12 mt-4">
+                                          <div class="card rounded" id="aksiaAgoron">
+                                              <div class="card-body">
+                                                  <div class="row">
+                                                      <div class="col-9">
+                                                          <h3 class="bigger-1 mb-0">Αξία αγορών (revenue)<span class="pl-1"><a tabindex="0" class="px-0 pointer text-muted" role="button" data-toggle="popover" data-trigger="focus" title="Αξία αγορών (revenue)" data-content="Το ποσό αυτό αφορά το κόστος των προϊόντων και υπηρεσιών που αγοράστηκαν στα συνεργαζόμενα με την πλατφόρμα καταστήματα"><i class="fas fa-info-circle smaller-2"></i></a></span></h3>
+                                                          <p class="mb-0" style="font-size: 2.0rem;"><strong>356,604.64€</strong></p>
+                                                          <p class="text-primary bigger-1"><strong>+440,18€</strong><span class="smaller-3 pl-1 align-middle">vs. περασμένο μήνα</span></p>
+                                                      </div>
+
+                                                      <div class="col-3 text-right">
+                                                          <button class="btn btn-link text-muted px-1" data-toggle="tooltip" title="Μοιραστείτε αυτό το γράφημα"><i class="fas fa-share-alt"></i></button>
+
+                                                          <canvas style="overflow: visible !important;" id="aksiaAgoronChart" class="mt-2" width="450" height="130"></canvas>
+
+                                                          
+
+                                                      </div>
+                                                  
+                                                      <div class="col-12 mt-3">
+                                                          <div class="row">
+                                                              <div class="col-6">
+                                                                  <p class="smaller-1 mb-0">Εγκεκριμένες<span class="pl-1"><a tabindex="0" class="px-0 pointer text-muted" role="button" data-toggle="popover" data-trigger="focus" title="Εγκεκριμένες αγορές" data-content="Το συνολικό ποσό που έχει επιβεβαιωθεί από τα συνεργαζόμενα καταστήματα."><i class="fas fa-info-circle smaller-2"></i></a></span>
+                                                                  </p>
+
+                                                                  <p class="smaller-1">Σε εκκρεμότητα<span class="pl-1"><a tabindex="0" class="px-0 pointer text-muted" role="button" data-toggle="popover" data-trigger="focus" title="Αγορές σε εκκρεμότητα" data-content="Η κατάσταση μιας αγοράς Εκκρεμεί έως ότου παραληφθεί από τον αγοραστή και δεν επιστραφεί πίσω (από 7 έως 60 ημέρες αναλόγως το κατάστημα)."><i class="fas fa-info-circle smaller-2"></i></a></span>
+                                                                  </p>
+                                                              </div>
+                                                              <div class="col-6 text-right">
+                                                                  <p class="mb-0 smaller-1"><strong>335,684.43€</strong></p>
+                                                                  <p class="smaller-1"><strong>20,797.57€</strong></p>
+                                                              </div>
+                                                          </div>
+                                                      </div>
+
+
+
+
+                                                      <div class="col-12 mt-2">
+
+
+                                                          <div class="accordion mt-3" id="shopCategoriesAccordion">
+                                                                <div class="card rounded border-0 ">
+                                                                  <div class="card-header bg-white p-0" id="headingOne">
+                                                                      <button class="px-0 pt-1 pb-3 smaller-1 btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseShopCategories" aria-expanded="true" aria-controls="collapseShopCategories">
+                                                                        Δημοφιλέστερες κατηγορίες καταστημάτων<i class="pl-1 smaller-2 fas fa-chevron-down"></i>
+                                                                      </button>
+                                                                  </div>
+
+                                                                  <div id="collapseShopCategories" class="collapse" aria-labelledby="headingOne" data-parent="#shopCategoriesAccordion">
+                                                                    <div class="card-body">
+                                                                          <div class="row-fluid">
+                                                                                  <div class="row">
+                                                                                      <div class="col-6">
+                                                                                          <p class="mb-0 text-truncate smaller-1"><a href="javascript:void(0);">Super market</a></p>
+                                                                                          <p class="text-muted">19.69%</p>
+                                                                                      </div>
+                                                                                      <div class="col-6 text-right">
+                                                                                          <p class="mb-1 smaller-1"><strong>114,071.36€</strong></p>
+                                                                                      </div>
+                                                                                  </div>
+
+                                                                                  <div class="row">
+                                                                                      <div class="col-6">
+                                                                                          <p class="mb-0 text-truncate smaller-1"><a href="javascript:void(0);">Η/Υ Ηλεκτρονικά</a></p>
+                                                                                          <p class="text-muted">18.05%</p>
+                                                                                      </div>
+                                                                                      <div class="col-6 text-right">
+                                                                                          <p class="mb-1 smaller-1"><strong>83,766.96€</strong></p>
+                                                                                      </div>
+                                                                                  </div>
+
+                                                                                  <div class="row">
+                                                                                      <div class="col-6">
+                                                                                          <p class="mb-0 text-truncate smaller-1"><a href="javascript:void(0);">Βιβλία / CD / DVD</a></p>
+                                                                                          <p class="text-muted">18.05%</p>
+                                                                                      </div>
+                                                                                      <div class="col-6 text-right">
+                                                                                          <p class="mb-1 smaller-1"><strong>63.063,66€</strong></p>
+                                                                                      </div>
+                                                                                  </div>
+
+
+                                                                                  <div class="row">
+                                                                                      <div class="col-6">
+                                                                                          <p class="mb-0 text-truncate smaller-1"><a href="javascript:void(0);">Παπούτσια</a></p>
+                                                                                          <p class="text-muted">10.02%</p>
+                                                                                      </div>
+                                                                                      <div class="col-6 text-right">
+                                                                                          <p class="mb-1 smaller-1"><strong>57.736,68€</strong></p>
+                                                                                      </div>
+                                                                                  </div>
+                                                                                  
+                                                                                  <div class="row">
+                                                                                      <div class="col-6">
+                                                                                          <p class="mb-0 text-truncate smaller-1"><a href="javascript:void(0);">Αεροπορικά εισιτήρια</a></p>
+                                                                                          <p class="text-muted">13.65%</p>
+                                                                                      </div>
+                                                                                      <div class="col-6 text-right">
+                                                                                          <p class="mb-1 smaller-1"><strong>57.736,68€</strong></p>
+                                                                                      </div>
+                                                                                  </div>
+                                                                                  
+                                                                                  <div class="row">
+                                                                                      <div class="col-6">
+                                                                                          <p class="mb-0 text-truncate smaller-1"><a href="javascript:void(0);">Σπίτι & Κήπος</a></p>
+                                                                                          <p class="text-muted">11.51%</p>
+                                                                                      </div>
+                                                                                      <div class="col-6 text-right">
+                                                                                          <p class="mb-1 smaller-1"><strong>44.564,05€</strong></p>
+                                                                                      </div>
+                                                                                  </div>
+
+                                                                                  <div class="row">
+                                                                                      <div class="col-6">
+                                                                                          <p class="mb-0 text-truncate smaller-1"><a href="javascript:void(0);">Παιδικά ρούχα / παππούτσια</a></p>
+                                                                                          <p class="text-muted">11.51%</p>
+                                                                                      </div>
+                                                                                      <div class="col-6 text-right">
+                                                                                          <p class="mb-1 smaller-1"><strong>44.564,05€</strong></p>
+                                                                                      </div>
+                                                                                  </div>
+
+                                                                                  <div class="row">
+                                                                                      <div class="col-6">
+                                                                                          <p class="mb-0 text-truncate smaller-1"><a href="javascript:void(0);">Λοιπές</a></p>
+                                                                                          <p class="text-muted">11.51%</p>
+                                                                                      </div>
+                                                                                      <div class="col-6 text-right">
+                                                                                          <p class="mb-1 smaller-1"><strong>44.564,05€</strong></p>
+                                                                                      </div>
+                                                                                  </div>
+                                                                              
+                                                                          </div>
+
+                                                                    </div>
+                                                                  </div>
+                                                                </div>
+                                                                
+                                                                
+                                                              </div>
+
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+
+                                      <div class="col-12 mt-4">
+                                          <div class="card rounded" id="doreesEuro">
+                                              <div class="card-body">
+                                                  <div class="row">
+                                                      <div class="col-9">
+                                                          <h3 class="bigger-1 mb-0">Δωρεές σε ευρώ</h3>
+                                                          <p class="mb-0" style="font-size: 2.0rem;"><strong>11.879,31€</strong></p>
+                                                          <p class="text-primary bigger-1"><strong>+2.76€</strong><span class="smaller-3 pl-1 align-middle">vs. περασμένο μήνα</span></p>
+                                                      </div>
+
+                                                      <div class="col-3 text-right">
+                                                          <button class="btn btn-link text-muted px-1" data-toggle="tooltip" title="Μοιραστείτε αυτό το γράφημα"><i class="fas fa-share-alt"></i></button>
+                                                          
+
+                                                          <canvas style="overflow: visible !important;" id="doreesEuroChart" class="mt-2" width="450" height="130"></canvas>
+
+                                                          
+                                                      </div>
+                                                  
+                                                      <div class="col-12 mt-3">
+                                                          <div class="row">
+                                                              <div class="col-6">
+                                                                  <p class="smaller-1 mb-0">Εγκεκριμένες<span class="pl-1"><a tabindex="0" class="px-0 pointer text-muted" role="button" data-toggle="popover" data-trigger="focus" title="Εγκεκριμένες δωρεές" data-content="Το συνολικό ποσό που έχει επιβεβαιωθεί από τα συνεργαζόμενα καταστήματα και αναμένουμε τη λήψη των χρημάτων στον επόμενο κύκλο πληρωμής."><i class="fas fa-info-circle smaller-2"></i></a></span>
+                                                                  </p>
+
+                                                                  <p class="smaller-1">Σε εκκρεμότητα<span class="pl-1"><a tabindex="0" class="px-0 pointer text-muted" role="button" data-toggle="popover" data-trigger="focus" title="Δωρεές σε εκκρεμότητα" data-content="Η κατάσταση μιας δωρεάς Εκκρεμεί έως ότου οριστικοποιηθεί η συσχετιζόμενη αγορά και επιβεβαιωθεί από το συνεργαζόμενο κατάστημα (από 7 έως 60 ημέρες αναλόγως το κατάστημα)."><i class="fas fa-info-circle smaller-2"></i></a></span>
+                                                                  </p>
+                                                              </div>
+                                                              <div class="col-6 text-right">
+                                                                  <p class="mb-0 smaller-1"><strong>11.263,53€</strong></p>
+                                                                  <p class="smaller-1"><strong>630.77€</strong></p>
+                                                              </div>
+                                                          </div>
+                                                      </div>
+
+                                                      <div class="col-12">
+                                                          <hr class="my-1">
+                                                      </div>
+
+                                                      <div class="col-12 mt-2">
+                                                          <p class="smaller-1">Καταστήματα με τον μεγαλύτερο αντίκτυπο (σε δωρεές)</p>
+                                                          <div class="row">
+                                                              <div class="col-6">
+                                                                  <p class="mb-0 smaller-1"><a href="javascript:void(0);">ΑΒ Βασιλόπουλος</a></p>
+                                                                  <p class="mb-0 smaller-1"><a href="javascript:void(0);">Aegean Airlines</a></p>
+                                                                  <p class="mb-0 smaller-1"><a href="javascript:void(0);">E-Fresh</a></p>
+                                                                  <p class="mb-0 smaller-1"><a href="javascript:void(0);">Celestino</a></p>
+                                                                  <p class="mb-0 smaller-1"><a href="javascript:void(0);">Public</a></p>
+                                                              </div>
+                                                              <div class="col-6 text-right">
+                                                                  <p class="mb-0 smaller-1"><strong>1.770,66€ </strong></p>
+                                                                  <p class="mb-0 smaller-1"><strong>653.22€ </strong></p>
+                                                                  <p class="mb-0 smaller-1"><strong>646.33€ </strong></p>
+                                                                  <p class="mb-0 smaller-1"><strong>544.38€ </strong></p>
+                                                                  <p class="mb-0 smaller-1"><strong>492.61€ </strong></p>
+                                                              </div>
+
+                                                          </div>
+                                                          
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+
+
+                                      <div class="col-12 mt-4">
+                                      <div class="card rounded" id="registeredUsers">
+                                          <div class="card-body">
+                                              <div class="row">
+                                                  <div class="col-9">
+                                                      <h3 class="bigger-1 mb-0">Αριθμός εγγεγραμμένων χρηστών</h3>
+                                                      <p class="mb-0" style="font-size: 2.0rem;"><strong>4429</strong></p>
+                                                      <p class="text-primary bigger-1"><strong>+39</strong><span class="smaller-3 pl-1 align-middle">vs. περασμένο μήνα</span></p>
+                                                  </div>
+
+                                                  <div class="col-3 text-right" style="overflow: visible !important;">
+                                                      <button class="btn btn-link text-muted px-1" data-toggle="tooltip" title="Μοιραστείτε αυτό το γράφημα"><i class="fas fa-share-alt"></i></button>
+                                                      
+
+                                                      <canvas style="overflow: visible !important;" id="registeredUsersChart" class="mt-2" width="450" height="130"></canvas>
+
+                                                          
+                                                  </div>
+
+                                                  <div class="col-12 mt-1">
+                                                      <p class="smaller-1">Μεγαλύτεροι ευεργέτες και μεγαλύτερες ευεργέτριες</p>
+                                                      <div class="row">
+                                                          <div class="col-6">
+                                                              <p class="mb-0 smaller-1"><a href="javascript:void(0);">τζινα</a></p>
+                                                              <p class="mb-0 smaller-1"><a href="javascript:void(0);">Αντώνης</a></p>
+                                                              <p class="mb-0 smaller-1"><a href="javascript:void(0);">Gabriela</a></p>
+                                                              <p class="mb-0 smaller-1"><a href="javascript:void(0);">Dennie</a></p>
+                                                              <p class="mb-0 smaller-1"><a href="javascript:void(0);">Sotiris</a></p>
+                                                          </div>
+                                                          <div class="col-6 text-right">
+                                                              <p class="mb-0 smaller-1"><strong>304.04€</strong></p>
+                                                              <p class="mb-0 smaller-1"><strong>281.87€</strong></p>
+                                                              <p class="mb-0 smaller-1"><strong>203.46€</strong></p>
+                                                              <p class="mb-0 smaller-1"><strong>168.47€</strong></p>
+                                                              <p class="mb-0 smaller-1"><strong>155.96€</strong></p>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+
+                                                  <div class="col-12 mt-3">
+                                                      <hr class="my-1">
+                                                  </div>
+
+                                                  <div class="col-12 mt-2">
+                                                      <p class="smaller-1">Yποστηρικτές ανά κατηγορία οργάνωσης</p>
+                                                      <div class="row">
+                                                          <div class="col-12 text-center">
+                                                              <canvas style="overflow: visible !important;" id="userpercategoryPie" class="mt-2" width="450" height="250"></canvas>
+
+                                                              
+                                                          </div>
+                                                      </div>
+                                                  </div>
+
+                                              </div>
+                                          </div>
+                                      </div>
+                                      </div>
+
+
+                                      <div class="col-12 mt-4">
+                                      <div class="card rounded" id="doreesEpiskepton">
+                                          <div class="card-body">
+                                              <div class="row">
+                                                  <div class="col-9">
+                                                      <h3 class="bigger-1 mb-0">Δωρεές επισκεπτών</h3>
+                                                      <p class="mb-0" style="font-size: 2.0rem;"><strong>3429</strong></p>
+                                                      <p class="text-primary bigger-1"><strong>+39</strong><span class="smaller-3 pl-1 align-middle">vs. περασμένο μήνα</span></p>
+                                                  </div>
+
+                                                  <div class="col-3 text-right">
+                                                      <button class="btn btn-link text-muted px-1" data-toggle="tooltip" title="Μοιραστείτε αυτό το γράφημα"><i class="fas fa-share-alt"></i></button>
+                                                      
+
+                                                      <canvas style="overflow: visible !important;" id="doreesEpiskeptonChart" class="mt-2" width="450" height="130"></canvas>
+
+
+                                                  </div>
+
+                                                  <div class="col-12 mt-1">
+                                                      <p class="smaller-1">Ποσοστό δωρεών από επισκέπτες vs. εγγεγραμμένοι χρήστες</p>
+                                                      <div class="row">
+                                                          <div class="col-12 text-center">
+                                                              <canvas style="overflow: visible !important;" id="registeredUsersPie" class="mt-2" width="450" height="250"></canvas>
+
+                                                              
+                                                          </div>
+                                                      </div>
+                                                  </div>
+
+                                                  <div class="col-12 mt-3">
+                                                      <hr class="my-1">
+                                                  </div>
+
+                                                  <div class="col-12 mt-3">
+                                                      <p class="smaller-1">*Δωρεές επισκεπτών</p>
+                                                      <p class="smaller-1">Όταν ο επισκέπτης δεν έχει επιλέξει συγκεκριμένη ΜΚΟ, αλλά προχωράει σε online αγορά, τότε την δωρεά θα λάβει η «Οργάνωση της Εβδομάδας» που επιλέγεται με σειρά προτεραιότητας ανάλογα την ημερομηνία εγγραφής της οργάνωσης στη YouBeHero. Έτσι, η ψηφιακή αλληλεγγύη προς τις ΜΚΟ στην Ελλάδα συνεχίζεται και με κάθε επίσκεψη στην πλατφόρμα.</p>
+                                                      <p>Η οργάνωση αυτής της εβδομάδας είναι: <a href="https://youbehero.com/gr/organosi-ebdomadas">Η Αμυμώνη</a></p>
+                                                  </div>
+
+                                              </div>
+                                          </div>
+                                      </div>
+                                      </div>
+
+
+                                      <div class="col-12 mt-4">
+                                      <div class="card rounded" id="iroikosEnthimitis">
+                                          <div class="card-body">
+                                              <div class="row">
+                                                  <div class="col-9">
+                                                      <h3 class="bigger-1 mb-0">Χρήστες με εγκαταστημένο Ηρωικό Ενθυμητή</h3>
+                                                      <p class="mb-0" style="font-size: 2.0rem;"><strong>1102</strong></p>
+                                                      <p class="text-primary bigger-1"><strong>+2</strong><span class="smaller-3 pl-1 align-middle">vs. περασμένο μήνα</span></p>
+                                                  </div>
+
+                                                  <div class="col-3 text-right" style="overflow: visible !important;">
+                                                      <button class="btn btn-link text-muted px-1" data-toggle="tooltip" title="Μοιραστείτε αυτό το γράφημα"><i class="fas fa-share-alt"></i></button>
+                                                      
+
+                                                      <canvas style="overflow: visible !important;" id="iroikosEnthimitisChart" class="mt-2" width="450" height="130"></canvas>
+
+                                                          
+                                                  </div>
+
+
+                                                  <div class="col-12 mt-3">
+                                                      <div class="row">
+                                                          <div class="col-6">
+                                                              <p class="mb-0 smaller-1">Chrome/Edge</p>
+                                                              <p class="smaller-1">Firefox</p>
+                                                          </div>
+                                                          <div class="col-6 text-right">
+                                                              <p class="mb-0 smaller-1"><strong>926</strong></p>
+                                                              <p class="smaller-1"><strong>176</strong></p>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+
+                                                  <div class="col-12 mt-3">
+                                                      <hr class="my-1">
+                                                  </div>
+
+                                                  <div class="col-12 mt-3">
+                                                      <p class="smaller-1">Ο αριθμός <strong>1102</strong> αντιστοιχεί στο <strong>24%</strong> από τους συνολικά <strong>4039</strong> εγγεγραμμένους χρήστες της πλατφόρμας.</p>
+                                                      <p class="smaller-1">Ο Ηρωικός Ενθυμητής είναι ίσως το πιο σημαντικό κομμάτι της YouBeHero. Σε βοηθάει να μην ξεχνάς να κάνεις καμία δωρεά.</p>
+                                                  </div>
+
+                                                  <div class="col-12 mt-1">
+                                                      <button class="btn btn-outline-primary smaller-1 rounded-pill btn-block">Εγκατάσταση σε Chrome</button>
+                                                  </div>
+
+                                              </div>
+                                          </div>
+                                      </div>
+                                      </div>
+
+
+
+                                      <div class="col-12 mt-4">
+                                      <div class="card rounded" id="completedGoals">
+                                          <div class="card-body">
+                                              <div class="row">
+                                                  <div class="col-9">
+                                                      <h3 class="bigger-1 mb-0">Επιτευγμένοι στόχοι</h3>
+                                                      <p class="mb-0" style="font-size: 2.0rem;"><strong>74</strong></p>
+                                                      <p class="text-danger bigger-1"><strong>-7</strong><span class="smaller-3 pl-1 align-middle">vs. περασμένο μήνα</span></p>
+                                                  </div>
+
+                                                  <div class="col-3 text-right" style="overflow: visible !important;">
+                                                      <button class="btn btn-link text-muted px-1" data-toggle="tooltip" title="Μοιραστείτε αυτό το γράφημα"><i class="fas fa-share-alt"></i></button>
+                                                      
+
+                                                      <canvas style="overflow: visible !important;" id="completedGoalsChart" class="mt-2" width="450" height="130"></canvas>
+
+                                                          
+
+
+                                                  </div>
+
+                                                  <div class="col-12 mt-3">
+                                                      <div class="row">
+                                                          <div class="col-6">
+                                                              <p class="mb-1 smaller-1"><a href="javascript:void(0);">Για τον άνθρωπο (24)</a></p>
+                                                              <p class="mb-1 smaller-1"><a href="javascript:void(0);">Φιλοζωϊκές (51)</a></p>
+                                                              <p class="mb-1 smaller-1"><a href="javascript:void(0);">Περιβαλλοντικές (10)</a></p>
+                                                          </div>
+                                                          <div class="col-6 text-right">
+                                                              <p class="mb-1 smaller-1"><strong>653.22€</strong></p>
+                                                              <p class="mb-1 smaller-1"><strong>176€</strong></p>
+                                                              <p class="mb-1 smaller-1"><strong>326€</strong></p>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+
+                                              </div>
+                                          </div>
+                                      </div>
+                                      </div>
+
+
+
+                                      <div class="col-12 mt-4">
+                                      <div class="card rounded" id="registeredNonprofits">
+                                          <div class="card-body">
+                                              <div class="row">
+                                                  <div class="col-9">
+                                                      <h3 class="bigger-1 mb-0">Αριθμός οργανώσεων</h3>
+                                                      <p class="mb-0" style="font-size: 2.0rem;"><strong>85</strong></p>
+                                                      <p class="text-danger bigger-1"><strong>-2</strong><span class="smaller-3 pl-1 align-middle">vs. περασμένο μήνα</span></p>
+                                                  </div>
+
+                                                  <div class="col-3 text-right" style="overflow: visible !important;">
+                                                      <button class="btn btn-link text-muted px-1" data-toggle="tooltip" title="Μοιραστείτε αυτό το γράφημα"><i class="fas fa-share-alt"></i></button>
+                                                      
+                                                      <canvas style="overflow: visible !important;" id="registeredNonprofitsChart" class="mt-2" width="450" height="130"></canvas>
+
+                                                          
+
+                                                  </div>
+
+                                                  <script src="http://maps.google.com/maps/api/js?key=AIzaSyClDC9jtJf6d4nmQsHNN1ylhJ6_mHRxyuU" type="text/javascript"></script>
+
+                                                  <div class="col-12 mt-1">
+                                                      <p class="smaller-1">Τοποθεσίες στον χάρτη</p>
+                                                      <div class="row">
+                                                          <div class="col-12 text-center">
+                                                              <div id="map" style="width: 100%; height: 430px;"></div>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+
+                                                    
+
+                                                  <div class="col-12 mt-3">
+                                                      <hr class="my-1">
+                                                  </div>
+
+
+                                                  <div class="col-12 mt-3">
+                                                      <p class="smaller-1">Δημοφιλέστερες οργανώσεις</p>
+                                                      <div class="row">
+                                                          <div class="col-6">
+                                                              <p class="mb-1 smaller-1 text-truncate"><a href="javascript:void(0);">Ζωοφιλική Ένωση Ηλιούπολης</a></p>
+                                                              <p class="mb-1 smaller-1 text-truncate"><a href="javascript:void(0);">Φροντίδα</a></p>
+                                                              <p class="mb-1 smaller-1 text-truncate"><a href="javascript:void(0);">Πνοή Αγάπης</a></p>
+                                                              <p class="mb-1 smaller-1 text-truncate"><a href="javascript:void(0);">Κιβωτός του Κόσμου</a></p>
+                                                              <p class="mb-1 smaller-1 text-truncate"><a href="javascript:void(0);">Σύλλογος Νοσηλεία</a></p>
+                                                          </div>
+                                                          <div class="col-6 text-right">
+                                                              <p class="mb-1 smaller-1"><strong>1.763,66€ </strong></p>
+                                                              <p class="mb-1 smaller-1"><strong>653.22€</strong></p>
+                                                              <p class="mb-1 smaller-1"><strong>646.33€</strong></p>
+                                                              <p class="mb-1 smaller-1"><strong>542.48€</strong></p>
+                                                              <p class="mb-1 smaller-1"><strong>490.74€</strong></p>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+
+
+                                                  <div class="col-12 my-4">
+                                                      <hr class="my-1">
+                                                  </div>
+
+                                                  <div class="col-12">
+                                                      <p class="smaller-1">New entries</p>
+                                                      <div class="row">
+                                                          <div class="col-12">
+                                                              <p class="mb-1 smaller-1 text-truncate"><a href="javascript:void(0);">ANKAA Project</a></p>
+                                                              <p class="mb-1 smaller-1 text-truncate"><a href="javascript:void(0);">Πολιτιστικός Φιλοζωικός Σύλλογος Τρίπολης</a></p>
+                                                              <p class="mb-1 smaller-1 text-truncate"><a href="javascript:void(0);">Genderhood</a></p>
+                                                          </div>
+                                                          
+                                                      </div>
+                                                  </div>
+
+                                              </div>
+                                          </div>
+                                      </div>
+                                      </div>
+
+
+
+                                      <div class="col-12 mt-4">
+                                      <div class="card rounded" id="ybhPercentage">
+                                          <div class="card-body">
+                                              <div class="row">
+                                                  <div class="col-9">
+                                                      <h3 class="bigger-1 mb-0">Ποσοστό YouBeHero από τις προμήθειες (25%)</h3>
+                                                      <p class="mb-0" style="font-size: 2.0rem;"><strong>3.912,16€</strong></p>
+                                                      <p class="text-primary bigger-1"><strong>+5.10€</strong><span class="smaller-3 pl-1 align-middle">vs. περασμένο μήνα</span></p>
+                                                  </div>
+
+                                                  <div class="col-3 text-right" style="overflow: visible !important;">
+                                                      <button class="btn btn-link text-muted px-1" data-toggle="tooltip" title="Μοιραστείτε αυτό το γράφημα"><i class="fas fa-share-alt"></i></button>
+                                                      
+
+                                                      <canvas style="overflow: visible !important;" id="ybhPercentageChart" class="mt-2" width="450" height="130"></canvas>
+
+                                                          
+                                                  </div>
+
+                                                  <div class="col-12 mt-3">
+                                                      <div class="row">
+                                                          <div class="col-6">
+                                                              <p class="mb-1 smaller-1">Εγκεκριμένες</p>
+                                                              <p class="mb-1 smaller-1">Σε εκκρεμότητα</p>
+                                                          </div>
+                                                          <div class="col-6 text-right">
+                                                              <p class="mb-1 smaller-1"><strong>3.692,79€</strong></p>
+                                                              <p class="mb-1 smaller-1"><strong>210.57€</strong></p>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+
+                                              </div>
+                                          </div>
+                                      </div>
+                                      </div>
+
+
+                                      <div class="col-12 mt-4">
+                                      <hr/>
+                                  </div>
+
+
+                                      <div class="col-12 mt-4">
+                                      <div class="card rounded" id="eksodaYBH">
+                                          <div class="card-body">
+                                              <div class="row">
+                                                  <div class="col-9">
+                                                      <h3 class="bigger-1 mb-0">Λειτουργικά έξοδα της πλατφόρμας /μήνα</h3>
+                                                      <p class="mb-0" style="font-size: 2.0rem;"><strong>1.300€</strong></p>
+                                                      <p class="text-primary bigger-1"><strong>+10.35€</strong><span class="smaller-3 pl-1 align-middle">vs. περασμένο μήνα</span></p>
+                                                  </div>
+
+                                                  <div class="col-3 text-right" style="overflow: visible !important;">
+                                                      <button class="btn btn-link text-muted px-1" data-toggle="tooltip" title="Μοιραστείτε αυτό το γράφημα"><i class="fas fa-share-alt"></i></button>
+                                                      
+
+                                                      <canvas style="overflow: visible !important;" id="eksodaYBHChart" class="mt-2" width="450" height="130"></canvas>
+
+                                                          
+
+
+                                                  </div>
+
+                                                  <div class="col-12 mt-3">
+                                                      <div class="row">
+                                                          <div class="col-12">
+                                                              <p class="mb-1 smaller-2">Στα λειτουργικά έξοδα της πλατφόρμας περιλαμβάνονται το ενοίκιο, οι σέρβερς, ο λογιστής, φόροι, η κάλυψη του μισθού μιας full-time due-diligence manager και μιας social media manager.</p>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+
+                                              </div>
+                                          </div>
+                                      </div>
+                                      </div>
+
+
+                                      <div class="col-12 mt-4">
+                                      <div class="card rounded" id="volunteers">
+                                          <div class="card-body">
+                                              <div class="row">
+                                                  <div class="col-9">
+                                                      <h3 class="bigger-1 mb-0">Εθελοντές της YouBeHero</h3>
+                                                      <p class="mb-0" style="font-size: 2.0rem;"><strong>73</strong></p>
+                                                      <p class="text-primary bigger-1"><strong>+3</strong><span class="smaller-3 pl-1 align-middle">vs. περασμένο μήνα</span></p>
+                                                  </div>
+
+                                                  <div class="col-3 text-right" style="overflow: visible !important;">
+                                                      <button class="btn btn-link text-muted px-1" data-toggle="tooltip" title="Μοιραστείτε αυτό το γράφημα"><i class="fas fa-share-alt"></i></button>
+                                                      
+                                                      <canvas style="overflow: visible !important;" id="volunteersChart" class="mt-2" width="450" height="130"></canvas>
+
+                                                          
+
+
+                                                  </div>
+
+
+                                                  <div class="col-12 mt-3">
+                                                      <div class="row">
+                                                          <div class="col-6">
+                                                              <p class="mb-1 smaller-1">Ενεργοί</p>
+                                                              <p class="mb-1 smaller-1">Στην ιστορία</p>
+                                                          </div>
+                                                          <div class="col-6 text-right">
+                                                              <p class="mb-1 smaller-1"><strong>29</strong></p>
+                                                              <p class="mb-1 smaller-1"><strong>44</strong></p>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+
+                                                  <div class="col-12 my-2">
+                                                      <hr class="my-1">
+                                                  </div>
+
+                                                  <div class="col-12">
+                                                      <div class="row">
+                                                          <div class="col-12">
+                                                              <p class="mb-1 smaller-2">Για να γνωρίσεις την ομάδα μας και να δεις πως μπορείς να συνεισφέρεις, μάθε περισσότερα στην σελίδα <a href="javascript:void(0);">ποιοι είμαστε</a>.</p>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+
+                                              </div>
+                                          </div>
+                                      </div>
+                                      </div>
+
+
+
+                                  </div>
+                              </div>
+
+                          
+
+                              <div class="col-5 d-none d-lg-inline-block">
+                              <div class="sticky-top" style="top: 10px">
+                                  <div class="card rounded bg-light">
+                                      <div class="card-body">
+                                              <p class="smaller-1 mb-1"><strong>Περίοδος στατιστικών</strong></p>
+                                              
+                                              <select name="periodPicker" id="periodPicker" class="pill-rounded custom-select custom-select-lg">
+                                              <option value="start">Από την αρχή (Απρίλιος 2019)</option>
+                                              <option value="lastMonth">Περασμένος μήνας</option>
+                                              <option value="halfYear">Περασμένο εξάμηνο</option>
+                                              <option value="lastYear">Περασμένο έτος</option>
+                                          </select>
+
+
+                                              <nav id="contentsNavbar" class="navbar px-0">
+                                                
+                                                <nav class="nav nav-pills flex-column">
+                                                  <p class="smaller-2 mb-0 mt-2"><strong>Πόσα συλλέχθηκαν</strong></p>
+                                                      <a href="#sinolikaEsoda" class="nav-link smaller-2">Συνολικά έσοδα πλατφόρμας</a>
+                                                      <a href="#doreesArithmo" class="nav-link smaller-2">Δωρεές σε αριθμό</a>
+                                                  </nav>
+                                                  
+                                              <nav class="nav nav-pills flex-column">
+                                              <p class="smaller-2 mb-0 mt-2"><strong>Πως προέκυψαν</strong></p>
+                                                      <a href="#aksiaAgoron" class="nav-link smaller-2">Αξία αγορών (revenue)</a>
+                                                      <a href="#doreesEuro" class="nav-link smaller-2">Δωρεές σε ευρώ</a>
+                                                      <a href="#registeredUsers" class="nav-link smaller-2">Αριθμός εγγεγραμμένων χρηστών</a>
+                                                      <a href="#doreesEpiskepton" class="nav-link smaller-2">Δωρεές επισκεπτών</a>
+                                                      <a href="#iroikosEnthimitis" class="nav-link smaller-2">Χρήστες με εγκαταστημένο Ηρωικό Ενθυμητή</a>
+                                              </nav>
+
+                                              <nav class="nav nav-pills flex-column">
+                                                <p class="smaller-2 mb-0 mt-2"><strong>Που δόθηκαν</strong></p>
+                                                      <a href="#completedGoals" class="nav-link smaller-2">Επιτευγμένοι στόχοι</a>
+                                                      <a href="#registeredNonprofits" class="nav-link smaller-2">Αριθμός οργανώσεων</a>
+                                                      <a href="#ybhPercentage" class="nav-link smaller-2">Ποσοστό YouBeHero από τις προμήθειες (25%)</a>
+                                                      <a href="#eksodaYBH" class="nav-link smaller-2">Λειτουργικά έξοδα της πλατφόρμας /μήνα</a>
+                                              </nav>
+
+                                              <nav class="nav nav-pills flex-column">
+                                                  <p class="smaller-2 mb-0 mt-2"><strong>Διάφορα</strong></p>
+                                                      <a href="#volunteers" class="nav-link smaller-2">Εθελοντές της YouBeHero</a>
+                                                  </nav>
+
+                                              </nav>
+
+                                          </div>
+                                      </div>
+
+                                      <p class="smaller-3 mt-2 mb-0 text-muted">
+                                              *Τα δεδομένα ανανεώνονται κάθε 15 λεπτά.
+                                          </p>
+
+                                  </div>
+                          </div>
+
+                          
+                      </div>
+                  </div>
+                    
+
+        </div>
+      </div>
+    </div>
+
+		<div class="row-fluid mt-5 py-5 bg-white">
+            <div class="container">
+                        
+                <div class="row">
+                    <div class="col-12 text-center py-4">
+                        <h3><strong>Σχετικά με τα στατιστικά</strong></h3>
+                    </div>
+                    
+                    <div class="col-12 col-lg-6 mb-5">
+                        <p>Η δημοσιοποίηση των στατιστικών δεδομένων αυξάνει την διαφάνεια της ηλεκτρονικής μας πλατφόρμας και δίνει τη δυνατότητα στους εγγεγραμμένους χρήστες και τις συνεργαζόμενες κοινωφελείς οργανώσεις να έχουν άμεση πρόσβαση στα δεδομένα.</p>
+                        <p>Η ηλεκτρονική πλατφόρμα YouBeHero βοηθάει τις κοινωφελείς οργανώσεις να: </p>
+                        <ul>
+                            <li>Βεβαιώνουν ότι τα χρήματα χρησιμοποιούνται εκεί που πρέπει</li>
+                            <li>Αποδεικνύουν ότι εκτελούν και εκπληρώνουν την κοινωνική τους αποστολή</li>
+                            <li>Αποκτούν την ικανότητα να δείχνουν ότι η χρηματοδότηση χρησιμοποιείται αποτελεσματικά</li>
+                        </ul>
+                    </div>
+
+                    <div class="col-12 col-lg-6 mt-n1">
+                        <img src="/img/transparency/data-science-youbehero.svg" alt="Η YouBeHero είναι ένα εργοστάσιο αλληλεγγύης" class="img-fluid">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+		<div class="row-fluid mt-5">
+        <div class="container">
+                    
+                <div class="row">
+
+                    <div class="col-12 text-center py-4">
+                        <h3 class="bigger-4"><strong>Συχνές ερωτήσεις</strong></h3>
+                    </div>
+
+
+                    <div class="col-12 col-lg-9 mx-auto">
+
+                        <div class="accordion" id="faqAccordion">
+                              
+                              <div class="card">
+                                <div class="card-header bg-white" id="headingOne">
+                                  <h2 class="mb-0">
+                                    <button class="btn btn-link btn-block px-0 text-left collapsed py-2" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                      Τι είναι η YouBeHero και πως λειτουργεί;
+                                    </button>
+                                  </h2>
+                                </div>
+                                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#faqAccordion">
+                                  <div class="card-body">
+                                    <p>Η YouBeHero είναι ένας δωρεάν και εύκολος τρόπος για να συλλέγεις δωρεές προς την αγαπημένη σου οργάνωση.</p>
+
+                                    <p>Μόλις γραφτείς, μπορείς να βρεις μέσα από την πλατφόρμα μας το ηλεκτρονικό κατάστημα από το οποίο θέλεις να κάνεις κάποια αγορά. Πάτα στο κουμπί «Επίσκεψη καταστήματος» για να πας στην σελίδα του και συνέχισε τις αγορές σου κανονικά.</p>
+
+                                    <p>Μόλις ολοκληρώσεις την αγορά σου, θα σου στείλουμε ένα email για να σου πούμε πόσα χρήματα δώρισες και να σε ευχαριστήσουμε μέσα από την καρδιά μας εκ μέρους της οργάνωσης που διάλεξες.</p>
+
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="card">
+                                <div class="card-header bg-white" id="headingTwo">
+                                  <h2 class="mb-0">
+                                    <button class="btn btn-link btn-block px-0 text-left collapsed py-2" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                      Για ποιες οργανώσεις μπορώ να συλλέξω χρήματα;
+                                    </button>
+                                  </h2>
+                                </div>
+                                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#faqAccordion">
+                                  <div class="card-body">
+                                    <p>Τις οργανώσεις που συνεργαζόμαστε μπορείς να τις δεις αναλυτικά <a href="cause-categories">εδώ</a>. Αν θέλεις να προτείνεις κάποια εσύ, μην διστάσεις να μας στείλεις ένα μήνυμα <a href="contact-us">εδώ</a>. Η λίστα των οργανώσεων ανανεώνεται συνεχώς.</p>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="card">
+                                <div class="card-header bg-white" id="headingThree">
+                                  <h2 class="mb-0">
+                                    <button class="btn btn-link btn-block px-0 text-left collapsed py-2" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                      Πόσα χρήματα μπορώ να δωρίσω στην οργάνωσή μου;
+                                    </button>
+                                  </h2>
+                                </div>
+                                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#faqAccordion">
+                                  <div class="card-body">
+                                    <p>Το ποσό της δωρεάς διαφέρει από κατάστημα σε κατάστημα. Τις περισσότερες φορές δωρίζεις ένα ποσοστό από αυτά που ξοδεύεις (μεταξύ 1% και 10%) ωστόσο κάποιες φορές το ποσό είναι σταθερό (π.χ. 3€)</p>
+                                    <p>Σε κάποια καταστήματα το ποσοστό διαφέρει αναλόγως με το τι αγοράζεις. Για παράδειγμα μπορεί να προκύπτει διαφορετικό ποσοστό σε κινητά τηλέφωνα και διαφορετικό ποσοστό σε είδη χαρτοπωλείου.</p>
+                                  </div>
+                                </div>
+                              </div>
+
+
+                              <div class="card">
+                                <div class="card-header bg-white" id="headingFour">
+                                  <h2 class="mb-0">
+                                    <button class="btn btn-link btn-block px-0 text-left collapsed py-2" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                      Και είναι όντως δωρεάν;
+                                    </button>
+                                  </h2>
+                                </div>
+                                <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#faqAccordion">
+                                  <div class="card-body">
+                                    <p>Ναι! Δεν πληρώνεις τίποτα επιπλέον για τις αγορές σου και η δωρεά δεν σου κοστίζει τίποτα. Επίσης δωρεάν είναι η συμμετοχή για την οργάνωση σου με 0 έξοδα εγγραφής.</p>
+                                  </div>
+                                </div>
+                              </div>
+
+
+                              <div class="card">
+                                <div class="card-header bg-white" id="headingFive">
+                                  <h2 class="mb-0">
+                                    <button class="btn btn-link btn-block px-0 text-left collapsed py-2" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                      Πότε θα λάβει η οργάνωση την δωρεά μου;
+                                    </button>
+                                  </h2>
+                                </div>
+                                <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#faqAccordion">
+                                  <div class="card-body">
+                                    <p>Μπορείς να δεις από την σελίδα του προφίλ σου την κατάσταση της δωρεάς. Μια δωρεά συνήθως χρειάζεται 1 με 2 μήνες για να φτάσει στον προορισμό της.</p>
+                                  </div>
+                                </div>
+                              </div>
+
+
+                              <div class="card">
+                                <div class="card-header bg-white" id="headingNine">
+                                  <h2 class="mb-0">
+                                    <button class="btn btn-link btn-block px-0 text-left collapsed py-2" type="button" data-toggle="collapse" data-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+                                      Πως ξοδεύονται οι δωρεές;
+                                    </button>
+                                  </h2>
+                                </div>
+                                <div id="collapseNine" class="collapse" aria-labelledby="headingNine" data-parent="#faqAccordion">
+                                  <div class="card-body">
+                                    <p>Ζητάμε απο τις οργανώσεις να θέτουν στόχους έτσι ώστε όλοι μας να γνωρίζουμε τον προορισμό των δωρεών μας.</p>
+                                  </div>
+                                </div>
+                              </div>
+
+
+                              <div class="card">
+                                <div class="card-header bg-white" id="headingSix">
+                                  <h2 class="mb-0">
+                                    <button class="btn btn-link btn-block px-0 text-left collapsed py-2" type="button" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                      Από που προέρχεται η δωρεά;
+                                    </button>
+                                  </h2>
+                                </div>
+                                <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#faqAccordion">
+                                  <div class="card-body">
+                                    <p>Σαν ένα «ευχαριστώ» για τις αγορές των πελατών που τους στέλνουμε, τα καταστήματα μας δίνουν μια προμήθεια.</p>
+                                    <p>Χρησιμοποιούμε αυτή την προμήθεια για να την δωρίσουμε στην οργάνωση της επιλογής σου.</p>
+                                  </div>
+                                </div>
+                              </div>
+
+
+                              <div class="card">
+                                <div class="card-header bg-white" id="headingSeven">
+                                  <h2 class="mb-0">
+                                    <button class="btn btn-link btn-block px-0 text-left collapsed py-2" type="button" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                                      Πως βγάζει η YouBeHero χρήματα;
+                                    </button>
+                                  </h2>
+                                </div>
+                                <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#faqAccordion">
+                                  <div class="card-body">
+                                    <p>Δωρίζουμε το 75% της προμήθειας που παίρνουμε από το κατάστηματα που έγινε η αγορά και με το υπόλοιπο 25% χρηματοδοτούμε την συνεχόμενη ανάπτυξη του YouBeHero που είναι δωρεάν για όλες τις οργανώσεις και τους χρήστες.</p>
+                                    <p>Το ποσοστό δωρεάς που εμφανίζεται στην σελίδα του καταστήματος, αντικατοπτρίζει το τελικό ποσό.</p>
+                                  </div>
+                                </div>
+                              </div>
+
+
+                              <div class="card">
+                                <div class="card-header bg-white" id="headingEight">
+                                  <h2 class="mb-0">
+                                    <button class="btn btn-link btn-block px-0 text-left collapsed py-2" type="button" data-toggle="collapse" data-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                                      Πόσο ασφαλής είναι η YouBeHero;
+                                    </button>
+                                  </h2>
+                                </div>
+                                <div id="collapseEight" class="collapse" aria-labelledby="headingEight" data-parent="#faqAccordion">
+                                  <div class="card-body">
+                                   <p>Όλα τα δεδομένα μεταξύ του χρήστη και της πλατφόρμας YouBeHero συναλλάσσονται με την χρήση πρωτοκόλλου <a href="https://el.wikipedia.org/wiki/SSL" target="_blank" rel="nofollow" title="Wikipedia page">SSL (SecureSocketsLayer)</a> το οποίο είναι ο πλέον διαδεδομένος και ασφαλής τρόπος επικοινωνίας μεταξύ ενός χρήστη και μιας ιστοσελίδας.
+                                        </p>
+                                        <p>Το μόνο που κάνει η YouBeHero είναι μια ανακατεύθυνση του χρήστη στο eshop της επιλογής του με ένα αναγνρωστικό στην διεύθυνση.</p>
+
+                                  </div>
+                                </div>
+                              </div>
+
+
+
+
+
+                            </div>
+                        
+                        </div>
+
+                        <div class="col-12 col-lg-9 mx-auto mt-3">
+                         <p class="smaller-1">*Βρες αναλυτικότερες πληροφορίες στις <a href="https://help.youbehero.com" target="_blank" title="Ανοίγει νέο tab με τις οδηγίες χρήσης της πλατφόρμας">οδηγίες χρήσης</a>.
+                         </p>
+                        </div>
+
+                    </div>
+                </div>
+
+        </div>
+
+
+		<div class="row-fluid mt-5">
+      <div class="col-12 px-5">
+          <div class="row">
+
+            <div class="col-12 text-center py-4">
+                <h3 class="bigger-4"><strong>Είπαν για εμάς ❤️</strong></h3>
+                <p>Οι άνθρωποι των οργανώσεων είναι αυτοί για τους οποίους χαιρόμαστε να ξεπερνάμε τα εμπόδια!</p>
+            </div>
+
+            <div class="card-columns">
+
+            
+              <div class="card shadow rounded-lg">
+                <div class="card-body pt-4">
+                  <p class="card-text">
+                    <span class="position-relative">«Από την πρώτη στιγμή της συνεργασίας μας με το  YouBeHero νοιώσαμε πως βρήκαμε τους καλύτερους συνοδοιπόρους σε αυτή την τόσο δύσκολη αλλά και όμορφη διαδρομή της κοινωνικής ευαισθητοποίησης. Είμαστε για πάντα ευγνώμονες για την ύπαρξη σας.»
+                    </span>
+                  </p>
+                  <div class="media py-3">
+                    <img style="max-height: 60px" class="mr-3 rounded-circle avatarImg" src="/img/transparency/testimonials/GABRIELA-TELEKFALVI-KINITRO-YOUBEHERO.jpg" alt="Γκαμπριέλα Τελεκφάλβι" title="Γκαμπριέλα Τελεκφάλβι">
+                    <div class="media-body">
+                      <p class="pt-1 my-0 font-weight-bold">Γκαμπριέλα Τελεκφάλβι</p>
+                      <span class="smaller-1"><a href="https://youbehero.com/gr/cause/labyrinth-of-senses" title="Labyrinth of Senses  στη YouBeHero" target="_blank">Labyrinth of Senses</a>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+
+            
+              <div class="card shadow rounded-lg">
+                <div class="card-body pt-4">
+                  <p class="card-text">
+                    <span class="position-relative">«Ευχαριστούμε τους ήρωες των χνουδωτών μας φίλων για τη συνεχή στήριξη και βοήθεια που μας προσφέρουν!»
+                    </span>
+                  </p>
+                  <div class="media py-3">
+                    <img style="max-height: 60px" class="mr-3 rounded-circle avatarImg" src="/img/transparency/testimonials/GIANNIS-GARDOUNIS-ZEIL-YOUBEHERO.jpg" alt="Γιάννης Γαρδούνης" title="Γιάννης Γαρδούνης">
+                    <div class="media-body">
+                      <p class="pt-1 my-0 font-weight-bold">Γιάννης Γαρδούνης</p>
+                      <span class="smaller-1"><a href="https://youbehero.com/gr/cause/zeil" title="Ζωοφιλική Ένωση Ηλιούπολης στη YouBeHero" target="_blank">Ζωοφιλική Ένωση Ηλιούπολης</a>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+
+            
+              <div class="card shadow rounded-lg">
+                <div class="card-body pt-4">
+                  <p class="card-text">
+                    <span class="position-relative">«Μια απλή ιδέα και η καλή συνεργασία μπορούν να  μετατρέψουν τις ευγενείς προθέσεις σε πράξεις προσφοράς κι αλληλεγγύης! Η συνεργασία με την εξαιρετική ομάδας του YouBeHero ήταν πραγματικά άψογη! Εισπράξαμε θετική διάθεση, κατανόηση κι έμπρακτη στήριξη από τους εθελοντές της ΥouBeHero! Τέτοιες απλές ιδέες μπορούν να αλλάξουν τον κόσμο!»
+                    </span>
+                  </p>
+                  <div class="media py-3">
+                    <img style="max-height: 60px" class="mr-3 rounded-circle avatarImg" src="/img/transparency/testimonials/VASO-MARAKA-POAMSKP-YOUBEHERO.jpg" alt="Βάσω Μαράκα" title="Βάσω Μαράκα">
+                    <div class="media-body">
+                      <p class="pt-1 my-0 font-weight-bold">Βάσω Μαράκα</p>
+                      <span class="smaller-1"><a href="https://youbehero.com/gr/cause/panellinia-omospondia-atomon-me-sklirinsi-kata-plakas" title="Πανελλήνια Ομοσπονδία Ατόμων με Σκλήρυνση Κατά Πλάκας στη YouBeHero" target="_blank">Πανελλήνια Ομοσπονδία Ατόμων με Σκλήρυνση Κατά Πλάκας</a>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+
+            
+              <div class="card shadow rounded-lg">
+                <div class="card-body pt-4">
+                  <p class="card-text">
+                    <span class="position-relative">«Η πρωτοβουλία YouBeHero είναι πρωτότυπη και δείχνει το δρόμο για το μέλλον. Κάθε συνιστώσα της καθημερινότητάς μας και των ενεργειών της αν είχαν ένα χαρακτήρα υποστήριξης κοινωνικών σκοπών, τότε σίγουρα η αδικία στον κόσμο θα ήταν πιο περιορισμένη. Συγχαρητήρια στους ιδρυτές και ευχές για καλή και δυναμική συνέχεια.»
+                    </span>
+                  </p>
+                  <div class="media py-3">
+                    <img style="max-height: 60px" class="mr-3 rounded-circle avatarImg" src="/img/transparency/testimonials/SANDRA-ZAFEIRAKOPOULOU-MAKE-A-WISH-YOUBEHERO2.jpg" alt="Σάντρα Ζαφειρακοπούλου" title="Σάντρα Ζαφειρακοπούλου">
+                    <div class="media-body">
+                      <p class="pt-1 my-0 font-weight-bold">Σάντρα Ζαφειρακοπούλου</p>
+                      <span class="smaller-1"><a href="https://youbehero.com/gr/cause/make-a-wish-kane-mia-euchi-ellados" title="Make-A-Wish (Κάνε-Μια-Ευχή Ελλάδος) στη YouBeHero" target="_blank">Make-A-Wish (Κάνε-Μια-Ευχή Ελλάδος)</a>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+
+            
+              
+            
+
+            
+              
+            
+
+            
+              <div class="card shadow rounded-lg">
+                <div class="card-body pt-4">
+                  <p class="card-text">
+                    <span class="position-relative">«Έχουμε ήδη καλύψει τον πρώτο μας στόχο και βρισκόμαστε στα μισά του δεύτερου, αυξάνοντας παράλληλα την αναγνωρισιμότητά μας στη μερίδα των ανθρώπων που ενδιαφέρονται για τον άνθρωπο, τον πολιτισμό και το περιβάλλον.»
+                    </span>
+                  </p>
+                  <div class="media py-3">
+                    <img style="max-height: 60px" class="mr-3 rounded-circle avatarImg" src="/img/transparency/testimonials/FAIH-ORFANIDOU-KATHETI-YOUBEHERO.jpg" alt="Φαίη Ορφανίδου" title="Φαίη Ορφανίδου">
+                    <div class="media-body">
+                      <p class="pt-1 my-0 font-weight-bold">Φαίη Ορφανίδου</p>
+                      <span class="smaller-1"><a href="https://youbehero.com/gr/cause/katheti" title="Καθετή στη YouBeHero" target="_blank">Καθετή</a>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+
+            
+              <div class="card shadow rounded-lg">
+                <div class="card-body pt-4">
+                  <p class="card-text">
+                    <span class="position-relative">«Δίνουμε μεγάλη βάση στις συνεργασίες με κοινές αξίες και με τη YouBeHero μοιραζόμαστε πολλές από αυτές. Ευχαριστούμε που μας βοηθάτε να ευαισθητοποιήσουμε περισσότερους ανθρώπους γύρω από το θέμα της αστεγίας μέσα από την επαφή τους μαζί μας! Η υποστήριξη και η ανταπόκριση όλων είναι σπουδαία!»
+                    </span>
+                  </p>
+                  <div class="media py-3">
+                    <img style="max-height: 60px" class="mr-3 rounded-circle avatarImg" src="/img/transparency/testimonials/NIKI-GOULA-ITHACA-YOUBHERO.jpg" alt="Νίκη Γούλα" title="Νίκη Γούλα">
+                    <div class="media-body">
+                      <p class="pt-1 my-0 font-weight-bold">Νίκη Γούλα</p>
+                      <span class="smaller-1"><a href="https://youbehero.com/gr/cause/ithaca-laundry" title="Ithaca Laundry στη YouBeHero" target="_blank">Ithaca Laundry</a>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="card shadow rounded-lg">
+                <div class="card-body pt-4">
+                  <p class="card-text">
+                    <span class="position-relative">«Η συνεργασία μας με το YouBeHero, συμβάλλει θετικά στη διάδοση του έργου μας σε πανελλήνιο επίπεδο και μας προσφέρει περισσότερη αναγνώριση. Μας δίνει την ευκαιρία να παρουσιάζουμε τους τομείς των δράσεων μας, να ακούγεται η φωνή μας και να επωφελούμαστε από την ενεργή συμβολή του κοινού στο καθημερινό έργο μας. Ευχαριστούμε YouBeHero! Νιώθουμε υπερηφάνεια κι ευγνωμοσύνη για κάθε δωρεά!»
+                    </span>
+                  </p>
+                  <div class="media py-3">
+                    <img style="max-height: 60px" class="mr-3 rounded-circle avatarImg" src="/img/transparency/testimonials/EVAGGELIA-AGGELIDOU-ALZHEIMER-YOUBEHERO.jpg" alt="Ευαγγελία Αγγελίδου" title="Ευαγγελία Αγγελίδου">
+                    <div class="media-body">
+                      <p class="pt-1 my-0 font-weight-bold">Ευαγγελία Αγγελίδου</p>
+                      <span class="smaller-1"><a href="https://youbehero.com/gr/cause/Alzheimer-Chalkida" title="Ελληνική Εταιρεία Νόσου Alzheimer στη YouBeHero" target="_blank">Ελληνική Εταιρείας Νόσου Alzheimer</a>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+
+            
+              <div class="card shadow rounded-lg">
+                <div class="card-body pt-4">
+                  <p class="card-text">
+                    <span class="position-relative">«Ευχαριστούμε πολύ τη δημιουργική ομάδα του YouBeHero που εδώ και 2 χρόνια στηρίζει έμπρακτα την Emfasis. Χάρη σε εσάς καταφέρνουμε να βρισκόμαστε αδιάκοπα δίπλα στους ευάλωτους συνανθρώπους μας στην Αττική και σε άλλα μέρη της Ελλάδας. Είναι πραγματικά προνόμιο να είμαστε συνοδοιπόροι σε αυτό το ταξίδι αλληλεγγύης και ανθρωπιάς! Thank you YouBeHero!»
+                    </span>
+                  </p>
+                  <div class="media py-3">
+                    <img style="max-height: 60px" class="mr-3 rounded-circle avatarImg" src="/img/transparency/testimonials/JOANNA-PASSOULA-EMFASIS.jpg" alt="Τζοάννα Πάσουλα" title="Τζοάννα Πάσουλα">
+                    <div class="media-body">
+                      <p class="pt-1 my-0 font-weight-bold">Τζοάννα Πάσουλα</p>
+                      <span class="smaller-1"><a href="https://youbehero.com/gr/cause/emfasis-foundation" title="Emfasis Foundation στη YouBeHero" target="_blank">Emfasis Foundation</a>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+              
+
+            
+              <div class="card shadow rounded-lg">
+                <div class="card-body pt-4">
+                  <p class="card-text">
+                    <span class="position-relative">«Χάρη στο YouBeHero, έχει καλυφθεί το 41% των χρημάτων που απαιτούνται για την αγορά κονσόλας ήχου στο studio μας. Χάρη στο YouBeHero, όλοι, με την υπεύθυνη συμπεριφορά μας σαν καταναλωτές, μπορούμε να  γίνουμε μέρος της λύσης του μεγάλου κοινωνικού προβλήματος της μη ισότιμης πρόσβασης στη γνώση, στη μάθηση και στα βιβλία. Κάποιοι δίνουν κάτι λίγο και κάποιοι άλλοι το βλέπουν πολύ!»
+                    </span>
+                  </p>
+                  <div class="media py-3">
+                    <img style="max-height: 60px" class="mr-3 rounded-circle avatarImg" src="/img/transparency/testimonials/ARGIRO-SPIRIDAKI-DIAVAZO-GIA-TOUS-ALLOUS-YOUBEHERO.jpg" alt="Αργυρώ Σπυριδάκη" title="Αργυρώ Σπυριδάκη">
+                    <div class="media-body">
+                      <p class="pt-1 my-0 font-weight-bold">Αργυρώ Σπυριδάκη</p>
+                      <span class="smaller-1"><a href="https://youbehero.com/gr/cause/diavazo-gia-tous-allous" title="Διαβάζω για τους Άλλους στη YouBeHero" target="_blank">Διαβάζω για τους Άλλους</a>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+              <div class="card shadow rounded-lg">
+                <div class="card-body pt-4">
+                  <p class="card-text">
+                    <span class="position-relative">«Η πρωτοβουλία του YouBeHero είναι εξαιρετική! Η προσφορά των δωρητών για τη στήριξη επιζώντων της εμπορίας ανθρώπων έχει εξέχουσα σημασία. Χάρη σε αυτές συνεχίζουμε να αλλάζουμε ζωές.»
+                    </span>
+                  </p>
+                  <div class="media py-3">
+                    <img style="max-height: 60px" class="mr-3 rounded-circle avatarImg" src="/img/transparency/testimonials/MARINA-DONOPOULOU-A21-YOUBEHERO.jpg" alt="Μαρίνα Ντονοπούλου" title="Μαρίνα Ντονοπούλου">
+                    <div class="media-body">
+                      <p class="pt-1 my-0 font-weight-bold">Μαρίνα Ντονοπούλου</p>
+                      <span class="smaller-1"><a href="https://youbehero.com/gr/cause/a21-enantia-stin-emporia-anthropon" title="Α21 Ελλάδας στη YouBeHero" target="_blank">Α21 Ελλάδας</a>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="card shadow rounded-lg">
+                <div class="card-body pt-4">
+                  <p class="card-text">
+                    <span class="position-relative">«Η YouBeHero είναι η φωτεινή απόδειξη ότι η αλληλεγγύη προς τον συνάνθρωπο είναι τρόπος ζωής. Χωρίς να αλλάξεις καμία από τις συνήθειές σου μπορείς να στηρίξεις «έξυπνα» αυτούς που το χρειάζονται!» <strong>#ShareMedicineShareLife</strong>
+                    </span>
+                  </p>
+                  <div class="media py-3">
+                    <img style="max-height: 60px" class="mr-3 rounded-circle avatarImg" src="/img/transparency/testimonials/nikoleta-koutsotheodori-givmed-YOUBEHERO.jpg" alt="Νικολέτα Κουτσοθεοδωρή" title="Νικολέτα Κουτσοθεοδωρή">
+                    <div class="media-body">
+                      <p class="pt-1 my-0 font-weight-bold">Νικολέτα Κουτσοθεοδωρή</p>
+                      <span class="smaller-1"><a href="https://youbehero.com/gr/cause/givmed" title="GIVMED στη YouBeHero" target="_blank">GIVMED</a>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+
+
+
+
+            
+              <div class="card shadow rounded-lg">
+                <div class="card-body pt-4">
+                  <p class="card-text">
+                    <span class="position-relative">«Το YouBeHero ήρθε να ανοίξει νέες προοπτικές στη μακρόχρονη  προσπάθειά μας να υποστηρίξουμε ευάλωτα παιδιά στην Αιθιοπία. Μας φέρνει σε επαφή με ανθρώπους που μαθαίνουν για μας μέσα από την καθημερινή πράξη μιας αγοράς και έτσι συμμετέχουν κι αυτοί στο έργο μας. Εκ μέρους όλων αυτών των παιδιών ευχαριστούμε θερμά τους υποστηρικτές μας που καλύπτουν επιτακτικές ανάγκες για την καλύτερη διαβίωσή τους.»
+                    </span>
+                  </p>
+                  <div class="media py-3">
+                    <img style="max-height: 60px" class="mr-3 rounded-circle avatarImg" src="/img/transparency/testimonials/lalibela.jpg" alt="Νίκος Βουτσίνος" title="Νίκος Βουτσίνος">
+                    <div class="media-body">
+                      <p class="pt-1 my-0 font-weight-bold">Νίκος Βουτσίνος</p>
+                      <span class="smaller-1"><a href="https://youbehero.com/gr/cause/sillogos-voithias-paidion-lalibela" title="Σύλλογος Βοήθειας Παιδιών - Lalibela στη YouBeHero" target="_blank">Σύλλογος Βοήθειας Παιδιών - Lalibela</a>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+
+
+            
+              
+            
+
+          </div>
+
+          </div>
+      </div>
+    </div>
+
+		<div class="row-fluid mt-5">
+      <div class="container">
+          <div class="row">
+            <div class="col-12 text-center py-4">
+                <h3><strong>Δες τον κόσμο μας να βελτιώνεται. Χάρη σε 'σένα!</strong></h3>
+
+                <div class="col-12 col-lg-8 mx-auto mt-3">
+                    <p class="smaller-1">Από ευπαθείς ομάδες ανθρώπων, μέχρι την στήριξη των ζώων και του περιβάλλοντος, όλες οι εθελοντικές οργανώσεις είναι εδώ! Στηρίζω, συμμετέχω και δημιουργώ ενεργά έναν ανιδιοτελή κόσμο.</p>
+                </div>
+
+                <div class="col-12 col-lg-5 mx-auto text-center mt-4">
+                    <img src="/img/transparency/team-work.svg" alt="Συνεργασία εθελοντών" class="img-fluid" />
+                    <a href="javascript:void(0);" class="btn btn-primary btn-lg btn-block rounded mt-3 mb-2">Δωρεάν εγγραφή</a>
+                    <a href="javascript:void(0);" class="btn btn-outline-primary btn-block rounded mb-2">Εγγραφή οργάνωσης</a>
+                    <a href="javascript:void(0);" class="btn btn-outline-primary btn-block rounded mb-2">Εγγραφή eshop</a>
+                </div>
+
+                                        
+            </div>
+          </div>
+      </div>
+    </div>
+
+
+		
+
+
+<div class="row-fluid py-5 bg-white">
+  <div class="container">
+              
+      <div class="row">
+          <div class="col-12 text-center py-4">
+              <h3><strong>Κάντο δικό σου</strong></h3>
+              <p>Όλα τα δεδομένα της πλατφόρμας YouBeHero σκοπό είναι ανοιχτά και προσβάσιμα σε <strong>beta στάδιο</strong> από όλους και σε μορφή <a href="https://en.wikipedia.org/wiki/Representational_state_transfer" target="_blank" title="Σελίδα Wikipedia για το τι είναι ένα restful API">restful API</a>.</p>
+          </div>
+
+          <div class="col-12 col-lg-7 ml-n5">
+              <img src="/img/transparency/causes-json.svg" alt="Η YouBeHero είναι ένα εργοστάσιο αλληλεγγύης" class="img-fluid">
+          </div>
+          
+          <div class="col-12 col-lg-5 mb-5">
+              <p>Το API της YouBeHero θα είναι ανοιχτό και όχι αποκλειστικά προς:</p>
+              <ul>
+                  <li>φοιτητές</li>
+                  <li>εκπαιδευτικά ιδρύματα</li>
+                  <li>ελεγκτικούς φορείς</li>
+                  <li>mobile & web app developers</li>
+                  <li>eshops που θέλουν να έχουν κοινωνικό αντίκτυπο</li>
+              </ul>
+
+              <p>Ο διαμοιρασμός των δεδομένων αυτών μέσω του API έχει σκοπό την περαιτέρω στήριξη της αποστολής της πλατφόρμας που είναι: «Η δημιουργία δωρεάν, επαναλαμβανόμενων δωρεών προς τις οργανώσεις για την επίτευξη των στόχων τους και η ενημέρωση του κόσμου γύρω από το έργο που παράγουν.»</p>
+
+              <p>Καθώς και την διευκόλυνση στην λήψη αποφάσεων.</p>
+
+              <p>Εάν ενδιαφέρεστε να μάθετε περισσότερα σχετικά με το YouBeHero API, <a href="/contact-us" title="Φόρμα επικοινωνίας" target="_blank">επικοινωνήστε μαζί μας</a>.</p>
+              
+          </div>
+
+          
+
+      </div>
+
+  </div>
+
+</div>
+
+
+<div class="row-fluid bg-primary mt-4 py-5">
+      <div class="col-12 col-lg-7 mx-auto text-white">
+        <div class="media py-3">
+          <img style="max-height: 60px" class="mr-3 rounded-circle avatarImg" src="/img/transparency/testimonials/michael-dertouzos-youbehero.jpg" alt="Μιχάλης Δερτούζος" title="Μιχάλης Δερτούζος">
+          <div class="media-body">
+              <p class="bigger-1"><i>«Για να καταστήσουμε την τεχνολογία χρήσιμη, πρέπει να τη συνδυάσουμε με την ανθρωπότητα. Αυτή η διαδικασία θα μας εξυπηρετήσει καλύτερα εάν, παράλληλα με τις πιο υποσχόμενες τεχνολογίες μας, φέρουμε την πλήρη ανθρωπιά μας, αυξάνοντας την δύναμη της λογικής με τα συναισθήματα, τις πράξεις και την πίστη μας. Δεν μπορούμε να το κάνουμε αυτό μόνο με τη λογική!»</i></p>
+            <p class="pt-1 my-0 font-weight-bold"><strong>Μιχάλης Δερτούζος</strong></p>
+            <span class="smaller-1">Διευθυντής εργαστηρίου πληροφορικής στο MIT από  το 1974 έως το 2001
+            </span>
+          </div>
+        </div>
+    </div>
+
+
+    <div class="col-12 col-lg-8 mx-auto text-white text-center mt-5">
+        <p class="bigger-1 mt-3 mb-1"><strong>Sharing is caring 💞</strong></p>
+        <div class="row text-white d-flex justify-content-center">
+
+            <span class="pr-2">
+                <a href="https://www.facebook.com/youbeheroGR/" target="_blank" class="text-white bigger-2 mr-1 text-decoration-none" title="Facebook">
+                    <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                </a>
+            </span>
+
+            <span class="pr-2">
+                <a href="javascript:void(0);" target="_blank" class="text-white bigger-2 mr-1 text-decoration-none" title="WhatsApp">
+                    <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                </a>
+            </span>
+
+            <span class="pr-2">
+                <a href="https://www.linkedin.com/company/youbehero/" target="_blank" class="text-white bigger-2 mr-1 text-decoration-none" title="LinkedIn">
+                    <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+                </a>
+            </span>
+
+            <span class="pr-2">
+                <a href="javascript:void(0);" target="_blank" class="text-white bigger-2 mr-1 text-decoration-none" title="Viber">
+                    <i class="fab fa-viber" aria-hidden="true"></i>
+                </a>
+            </span>
+
+        </div>
+    </div>
+
+
+</div>
+
+<script src="js/popper.min.js" type="text/javascript"></script>
+<script src="js/bootstrap.min.js" type="text/javascript"></script>
+<script src="js/moment.min.js" type="text/javascript"></script>
+<script src="js/daterangepicker.js" type="text/javascript"></script>
+<script src="js/myJS.js" type="text/javascript"></script>
+
+  <script>
+  	$( document ).ready(function() {
+  		$('[data-toggle="tooltip"]').tooltip();
+  		$('[data-toggle="popover"]').popover();
+  	});
+
+    var locations = [
+	    ['Αγκαλιά', 37.9879609, 23.707048100000065],
+			['Αρκτούρος', 40.6443596, 21.494323699999995],
+			['Ελπιδοχώρι', 37.69850229999999, 22.64912479999998],
+			['Φροντίδα', 37.9622571, 23.656604199999947],
+			['Γιατροί Χωρίς Σύνορα (MSF)', 37.98157559999999, 23.758392100000037],
+			['Ζωοφιλική Ένωση Ηλιούπολης', 37.98724709999999, 23.728293699999995],
+			['Ένα παιδί μετράει τα άστρα (Look to the Stars)', 39.3561454, 22.889356399999997],
+			['Κιβωτός του Κόσμου', 37.9877316, 23.759556699999962],
+			['Πνοή Αγάπης', 37.94954500000001, 23.739292100000057],
+			['Labyrinth of Senses', 40.6365492, 22.934553600000072],
+			['Make-A-Wish (Κάνε-Μια-Ευχή Ελλάδος)', 37.961116, 23.722384000000034],
+			['ΕΛΙΖΑ - Εταιρία κατά της Κακοποίησης του Παιδιού', 37.95471879999999, 23.716064200000005],
+			['GIVMED | Share medicine Share life', 37.9762803, 23.72825839999996],
+			['Social Hackers Academy', 37.9862192, 23.723851400000058],
+			['ActionAid', 37.9758108, 23.726837899999964],
+			['Ithaca Laundry', 38.0019175, 23.790515099999993],
+			['Σύλλογος Νοσηλεία', 37.9779912, 23.7247693],
+			['HIGGS Higher Incubator Giving Growth and Sustainability', 38.0147175, 23.731265200000053],
+			['Σε Αναμονή / On Hold', 37.986219, 23.723850999999968],
+			['Emfasis Foundation', 37.986219, 23.723850999999968],
+			['Άλμα Ζωής', 37.9783678, 23.722598300000072],
+			['Be Visible Be You', 37.99015829999999, 23.7291715],
+			['Δώσε Ζωή', 37.9971803, 23.731391499999972],
+			['Σύλλογος Σκελετικής Υγείας Πεταλούδα', 38.0209302, 23.736229200000025],
+			['Φροντίζω', 38.0648449, 23.806331399999976],
+			['Ένωση Κυριών Δράμας - Σπίτι Ανοιχτής Φιλοξενίας', 38.16926839999999, 21.677315499999963],
+			['Σύλλογος Προστασίας Παιδιών ΒΕΝΙΑΜΙΝ', 41.1514759, 24.14373820000003],
+			['Διαβάζω Για Τους Άλλους', 40.27869219999999, 22.50088119999998],
+			['ART HUB Athens', 37.9506329, 23.63084559999993],
+			['SPIN - Space Innovation', 37.98230099999999, 23.725864099999967],
+			['Αμυμώνη', 36.54990000000001, 9.442266399999994],
+			['Σύλλογος «Ορίζοντας»', 37.9537606, 23.720341400000052],
+			['Μέριμνα', 37.9849841, 23.781916499999966],
+			['Φιλανθρωπικό Σωματείο "Οι Φίλοι του Παιδιού"', 37.9862192, 23.723851400000058],
+			['Eyes of Light', 37.9674117, 23.71080889999996],
+			['People Behind', 35.5141883, 24.021861400000034],
+			['CHEERing', 38.001157, 23.822004500000048],
+			['ΦΙΞ in art (Αναζητητές Θεάτρου)', 37.8943778, 23.746267],
+			['Σύλλογος Βοήθειας Παιδιών - Lalibela', 37.9659501, 23.7476331],
+			['e-Nable Greece', 35.5117262, 24.01517279999999],
+			['iSea', 38.0233167, 23.7902764],
+			['Καθετή', 37.9819567, 23.7141521],
+			['MYARTIST', 37.9758339, 23.7071709],
+			['Ελληνική Εταιρεία Νόσου Alzheimer και Συγγενών Διαταραχών Χαλκίδας', 37.9938188, 23.77471259999999],
+			['Σώμα Ελλήνων Προσκόπων', 37.99742119999999, 23.7281416],
+			['PRAKSIS', 40.6401265, 22.9221487],
+			['SCARS', 37.982381, 23.7267244],
+			['A21 - Ενάντια στην Εμπορία Ανθρώπων', 37.9698344, 23.6525764],
+			['Γέφυρα Ζωής', 41.2235139, 24.8321801],
+			['Ασπίδα Κοιν.ΣΕΠ περιβάλλον-άνθρωποι-ζώα', 37.9550752, 23.6827719],
+			['Genderhood', 37.9366036, 23.658035],
+			['Εθελοντική Ομάδα Διάσωσης και Υγειονομικών Αποστολών', 38.4601979, 23.5973712],
+			['Πολιτιστικός Φιλοζωικός Σύλλογος Τρίπολης', 37.9875583, 23.7291158],
+			['Φιλοζωικός Σύλλογος Χίου', 37.9718001, 23.7446812],
+			['ANKAA Project', 40.63117099999999, 22.9455086],
+			['Women Do Business', 38.0065435, 23.6524405],
+			['Σκοπός Ζωής', 39.6370678, 22.4367084],
+			['ALL FOR BLUE', 37.9858719, 23.7324474],
+			['Σύνδεσμος Θεραπευτικής Ιππασίας Ελλάδας-ΣΘΙΕ', 39.6365558, 22.4124485],
+			['ifakarAid', 37.5101357, 22.372644],
+			['Πανελλήνια Ομοσπονδία Ατόμων με Σκλήρυνση Κατά Πλάκας', 38.32377390000001, 26.1255367],
+			['Ζω.Ε.Σ. (Ζωοφιλικές Ενημερώσεις Σχολείων, Ιδρυμάτων και Οργανισμών)', 37.9792228, 23.6989122],
+			['Παγκρήτιος Σύλλογος Γονέων και Φίλων παιδιών με νεοπλασία "Η ΗΛΙΑΧΤΙΔΑ"', 35.3303175, 25.1398141],
+			['Include Διεπιστημονικό Δίκτυο Ειδικής και Διαπολιτισμικής Αγωγής', 37.94392819999999, 23.6474116],
+			['ΑμΚΕ ΙΑΣΙΣ', 37.93049259999999, 23.6906821],
+			['APICCO -Community Based Art', 37.8983194, 23.7482634],
+			['Σώμα Φίλων ΑμεΑ "Δράση για το κάτι άλλο"', 40.6222958, 22.4408584],
+			['IPPOTHESIS', 37.9885244, 23.7792019],
+			['Προστασία Αδέσποτων Ζώων Η Αγάπη', 35.3375018, 25.1330746],
+			['Σύλλογος αλληλεγγύης και εθελοντισμού Γρεβενών Ελπίδα', 40.62319360000001, 22.970566],
+			['Άγγελοι της Χαράς', 37.96644939999999, 23.7273759],
+			['Greek Eco Project', 38.0733381, 23.9633486],
+			['Socialinnov', 40.6077114, 22.9711343],
+			['Κοινωνική Μέριμνα Μοσχάτου', 37.9953738, 23.718774],
+			['ΑΜΚΕ Visit Agiasos', 40.6025411, 22.982024],
+			['Κιβωτός Μυτιλήνης', 40.0839899, 21.4314026],
+			['Σύλλογος Ασθενών Ήπατος Ελλάδος «Προμηθέας»', 37.98254720000001, 23.7613458],
+			['Σχολή Σκύλων Οδηγών Λάρα', 40.6008565, 22.9891271],
+			['Πνοή Ελπίδας', 37.97540289999999, 23.7105759],
+			['NAOMI', 37.953149, 23.6826495],
+			['Το Φωτεινό Αστέρι', 38.0009182, 23.7378382],
+			['The Bee Camp', 39.1032932, 26.5323035],
+			['Θάρρος και Ζωή', 37.9871089, 23.7595708],
+			['Καθ Οδόν', 37.9862192, 23.7238514],
+			['Stray Planet - Αδέσποτος Πλανήτης', 40.5504943, 23.0488671],
+			['Σύλλογος Γονέων και Φίλων Αυτιστικών Ατόμων Αναγέννηση', 40.63902739999999, 22.9400971],
+			['Γη Θεραπαινίς', 39.0820946, 26.3724138],
+			['Δίκτυο για τα Δικαιώματα του Παιδιού - Network for Childrens Rights', 38.097555, 23.8209768],
+			['ΕΠΙΛΕΚΤΗ ΟΜΑΔΑ ΕΙΔΙΚΩΝ ΑΠΟΣΤΟΛΩΝ ΕΛΛΑΔΟΣ', 38.0455736, 23.7527406],
+			['Ελληνικός Σύλλογος Προστασίας Ιπποειδών', 38.2325679, 21.7359471]
+    ];
+    
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 6,
+      center: new google.maps.LatLng(38.474207, 24.824312),
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+    
+    var infowindow = new google.maps.InfoWindow();
+
+    var marker, i;
+    
+    for (i = 0; i < locations.length; i++) {  
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+        map: map
+      });
+      
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent(locations[i][0]);
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+    }
+
+
+
+
+	new Chart(document.getElementById("sinolikaEsodaChart"), {
+	"type": "line",
+	"data": {
+	    "labels": [" ", " ", " ", " ", " ", " ", " "],
+	    "datasets": [{
+	        "label": "Hidden",
+	        "data": [65, 59, 80, 81, 56, 55, 40],
+	        "fill": true,
+	        "backgroundColor": "#d7efe4",
+	        "borderColor": "rgb(75, 192, 192)",
+	        "lineTension": .3,
+
+	    }]
+	},
+	"options": {
+		tooltips: {
+			enabled: false
+		},
+		elements: {
+	    point:{
+	        radius: 0
+	    }
+    },
+		legend: {
+      display: false
+    },
+    scales: {
+	    yAxes: [{
+	    	display: false
+	    
+	    }],
+	    xAxes: [{
+	    	display: false
+	    
+	    }]
+		}
+	}
+	});
+
+
+	new Chart(document.getElementById("doreesArithmoChart"), {
+	"type": "line",
+	"data": {
+	    "labels": [" ", " ", " ", " ", " ", " ", " "],
+	    "datasets": [{
+	        "label": "Hidden",
+	        "data": [65, 59, 80, 81, 56, 55, 40],
+	        "fill": true,
+	        "backgroundColor": "#d7efe4",
+	        "borderColor": "rgb(75, 192, 192)",
+	        "lineTension": .3,
+
+	    }]
+	},
+	"options": {
+		tooltips: {
+			enabled: false
+		},
+		elements: {
+	    point:{
+	        radius: 0
+	    }
+    },
+		legend: {
+      display: false
+    },
+    scales: {
+	    yAxes: [{
+	    	display: false
+	    
+	    }],
+	    xAxes: [{
+	    	display: false
+	    
+	    }]
+		}
+	}
+	});
+
+
+
+
+	new Chart(document.getElementById("aksiaAgoronChart"), {
+	"type": "line",
+	"data": {
+	    "labels": [" ", " ", " ", " ", " ", " ", " "],
+	    "datasets": [{
+	        "label": "Hidden",
+	        "data": [65, 59, 80, 81, 56, 55, 40],
+	        "fill": true,
+	        "backgroundColor": "#d7efe4",
+	        "borderColor": "rgb(75, 192, 192)",
+	        "lineTension": .3,
+
+	    }]
+	},
+	"options": {
+		tooltips: {
+			enabled: false
+		},
+		elements: {
+	    point:{
+	        radius: 0
+	    }
+    },
+		legend: {
+      display: false
+    },
+    scales: {
+	    yAxes: [{
+	    	display: false
+	    
+	    }],
+	    xAxes: [{
+	    	display: false
+	    
+	    }]
+		}
+	}
+	});
+
+	new Chart(document.getElementById("doreesEuroChart"), {
+	"type": "line",
+	"data": {
+	    "labels": [" ", " ", " ", " ", " ", " ", " "],
+	    "datasets": [{
+	        "label": "Hidden",
+	        "data": [65, 59, 80, 81, 56, 55, 40],
+	        "fill": true,
+	        "backgroundColor": "#d7efe4",
+	        "borderColor": "rgb(75, 192, 192)",
+	        "lineTension": .3,
+
+	    }]
+	},
+	"options": {
+		tooltips: {
+			enabled: false
+		},
+		elements: {
+	    point:{
+	        radius: 0
+	    }
+    },
+		legend: {
+      display: false
+    },
+    scales: {
+	    yAxes: [{
+	    	display: false
+	    
+	    }],
+	    xAxes: [{
+	    	display: false
+	    
+	    }]
+		}
+	}
+	});
+
+	new Chart(document.getElementById("doreesEpiskeptonChart"), {
+	"type": "line",
+	"data": {
+	    "labels": [" ", " ", " ", " ", " ", " ", " "],
+	    "datasets": [{
+	        "label": "Hidden",
+	        "data": [65, 59, 80, 81, 56, 55, 40],
+	        "fill": true,
+	        "backgroundColor": "#d7efe4",
+	        "borderColor": "rgb(75, 192, 192)",
+	        "lineTension": .3,
+
+	    }]
+	},
+	"options": {
+		tooltips: {
+			enabled: false
+		},
+		elements: {
+	    point:{
+	        radius: 0
+	    }
+    },
+		legend: {
+      display: false
+    },
+    scales: {
+	    yAxes: [{
+	    	display: false
+	    
+	    }],
+	    xAxes: [{
+	    	display: false
+	    
+	    }]
+		}
+	}
+	});
+
+
+	new Chart(document.getElementById("registeredUsersChart"), {
+	"type": "line",
+	"data": {
+	    "labels": [" ", " ", " ", " ", " ", " ", " "],
+	    "datasets": [{
+	        "label": "Hidden",
+	        "data": [65, 59, 80, 81, 56, 55, 40],
+	        "fill": true,
+	        "backgroundColor": "#d7efe4",
+	        "borderColor": "rgb(75, 192, 192)",
+	        "lineTension": .3,
+
+	    }]
+	},
+	"options": {
+		tooltips: {
+			enabled: false
+		},
+		elements: {
+	    point:{
+	        radius: 0
+	    }
+    },
+		legend: {
+      display: false
+    },
+    scales: {
+	    yAxes: [{
+	    	display: false
+	    
+	    }],
+	    xAxes: [{
+	    	display: false
+	    
+	    }]
+		}
+	}
+	});
+
+
+	var barColors = [
+	  "#ffcd56",
+      "#ff6384",
+      "#36a2eb"
+	];
+	new Chart(document.getElementById("userpercategoryPie"), {
+    "type": "pie",
+    "data": {
+        "labels": ["Ανθρωποκεντρικές", "Φιλοζωϊκές", "Περιβαλλοντικές"],
+        "datasets": [{
+            "label": "Hidden",
+            "data": [40, 25, 35],
+            "fill": false,
+            "backgroundColor": barColors,
+
+        }]
+    },
+    "options": {
+	    scales: {
+        yAxes: [{
+        	display: false
+        
+        }],
+        xAxes: [{
+        	display: false
+        
+        }]
+    }
+	}
+	});
+
+
+
+	var barColors = [
+	  "#ffcd56",
+      "#ff6384"
+	];
+	new Chart(document.getElementById("registeredUsersPie"), {
+    "type": "pie",
+    "data": {
+        "labels": ["Εγγεγραμμένοι", "Επισκέπτες"],
+        "datasets": [{
+            "label": "Hidden",
+            "data": [65, 35],
+            "fill": false,
+            "backgroundColor": barColors,
+
+        }]
+    },
+    "options": {
+	    scales: {
+        yAxes: [{
+        	display: false
+        
+        }],
+        xAxes: [{
+        	display: false
+        
+        }]
+    }
+	}
+	});
+
+
+	new Chart(document.getElementById("iroikosEnthimitisChart"), {
+	"type": "line",
+	"data": {
+	    "labels": [" ", " ", " ", " ", " ", " ", " "],
+	    "datasets": [{
+	        "label": "Hidden",
+	        "data": [65, 59, 80, 81, 56, 55, 40],
+	        "fill": true,
+	        "backgroundColor": "#d7efe4",
+	        "borderColor": "rgb(75, 192, 192)",
+	        "lineTension": .3,
+
+	    }]
+	},
+	"options": {
+		tooltips: {
+			enabled: false
+		},
+		elements: {
+	    point:{
+	        radius: 0
+	    }
+    },
+		legend: {
+      display: false
+    },
+    scales: {
+	    yAxes: [{
+	    	display: false
+	    
+	    }],
+	    xAxes: [{
+	    	display: false
+	    
+	    }]
+		}
+	}
+	});
+
+
+
+	new Chart(document.getElementById("completedGoalsChart"), {
+	"type": "line",
+	"data": {
+	    "labels": [" ", " ", " ", " ", " ", " ", " "],
+	    "datasets": [{
+	        "label": "Hidden",
+	        "data": [65, 59, 40, 31, 26, 15, 4],
+	        "fill": true,
+	        "backgroundColor": "#f7ccd4",
+	        "borderColor": "#dc3545",
+	        "lineTension": .3,
+
+	    }]
+	},
+	"options": {
+		tooltips: {
+			enabled: false
+		},
+		elements: {
+	    point:{
+	        radius: 0
+	    }
+    },
+		legend: {
+      display: false
+    },
+    scales: {
+	    yAxes: [{
+	    	display: false
+	    
+	    }],
+	    xAxes: [{
+	    	display: false
+	    
+	    }]
+		}
+	}
+	});
+
+
+	new Chart(document.getElementById("registeredNonprofitsChart"), {
+	"type": "line",
+	"data": {
+	    "labels": [" ", " ", " ", " ", " ", " ", " "],
+	    "datasets": [{
+	        "label": "Hidden",
+	        "data": [65, 59, 80, 81, 56, 45, 30],
+	        "fill": true,
+	        "backgroundColor": "#f7ccd4",
+	        "borderColor": "#dc3545",
+	        "lineTension": .3,
+
+	    }]
+	},
+	"options": {
+		tooltips: {
+			enabled: false
+		},
+		elements: {
+	    point:{
+	        radius: 0
+	    }
+    },
+		legend: {
+      display: false
+    },
+    scales: {
+	    yAxes: [{
+	    	display: false
+	    
+	    }],
+	    xAxes: [{
+	    	display: false
+	    
+	    }]
+		}
+	}
+	});
+
+
+	new Chart(document.getElementById("ybhPercentageChart"), {
+	"type": "line",
+	"data": {
+	    "labels": [" ", " ", " ", " ", " ", " ", " "],
+	    "datasets": [{
+	        "label": "Hidden",
+	        "data": [65, 59, 80, 81, 56, 55, 40],
+	        "fill": true,
+	        "backgroundColor": "#d7efe4",
+	        "borderColor": "rgb(75, 192, 192)",
+	        "lineTension": .3,
+
+	    }]
+	},
+	"options": {
+		tooltips: {
+			enabled: false
+		},
+		elements: {
+	    point:{
+	        radius: 0
+	    }
+    },
+		legend: {
+      display: false
+    },
+    scales: {
+	    yAxes: [{
+	    	display: false
+	    
+	    }],
+	    xAxes: [{
+	    	display: false
+	    
+	    }]
+		}
+	}
+	});
+
+
+	new Chart(document.getElementById("eksodaYBHChart"), {
+	"type": "line",
+	"data": {
+	    "labels": [" ", " ", " ", " ", " ", " ", " "],
+	    "datasets": [{
+	        "label": "Hidden",
+	        "data": [65, 59, 80, 81, 56, 55, 40],
+	        "fill": true,
+	        "backgroundColor": "#d7efe4",
+	        "borderColor": "rgb(75, 192, 192)",
+	        "lineTension": .3,
+
+	    }]
+	},
+	"options": {
+		tooltips: {
+			enabled: false
+		},
+		elements: {
+	    point:{
+	        radius: 0
+	    }
+    },
+		legend: {
+      display: false
+    },
+    scales: {
+	    yAxes: [{
+	    	display: false
+	    
+	    }],
+	    xAxes: [{
+	    	display: false
+	    
+	    }]
+		}
+	}
+	});
+
+
+	new Chart(document.getElementById("volunteersChart"), {
+	"type": "line",
+	"data": {
+	    "labels": [" ", " ", " ", " ", " ", " ", " "],
+	    "datasets": [{
+	        "label": "Hidden",
+	        "data": [65, 59, 80, 81, 56, 55, 40],
+	        "fill": true,
+	        "backgroundColor": "#d7efe4",
+	        "borderColor": "rgb(75, 192, 192)",
+	        "lineTension": .3,
+
+	    }]
+	},
+	"options": {
+		tooltips: {
+			enabled: false
+		},
+		elements: {
+	    point:{
+	        radius: 0
+	    }
+    },
+		legend: {
+      display: false
+    },
+    scales: {
+	    yAxes: [{
+	    	display: false
+	    
+	    }],
+	    xAxes: [{
+	    	display: false
+	    
+	    }]
+		}
+	}
+	});
+
+
+											  
+  </script>
+    
+
+  </body>
+</html>
